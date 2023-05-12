@@ -395,16 +395,18 @@ namespace Swashbuckler
                 .SetDefaultBuild(null)
                 .SetPrestigeClass(false)
                 .SetDifficulty(4)
+                .AddToStartingItems(ItemWeaponRefs.ColdIronRapier.Reference.Get(), ItemArmorRefs.LeatherStandard.Reference.Get(), ItemArmorRefs.BucklerArmorItem.Reference.Get(), ItemEquipmentUsableRefs.PotionOfCureLightWounds.Reference.Get())
+                .SetStartingGold(411)
                 .Configure();
 
             swash_class.MaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().MaleEquipmentEntities;
             swash_class.FemaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().FemaleEquipmentEntities;
             swash_class.PrimaryColor = CharacterClassRefs.MagusClass.Reference.Get().PrimaryColor;
-            swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;
-            swash_class.StartingGold = CharacterClassRefs.FighterClass.Reference.Get().StartingGold;            ;
-            swash_class.m_StartingItems = CharacterClassRefs.RogueClass.Reference.Get().m_StartingItems;
+            swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;   
 
             var panache_feature = CreatePanache();
+            var finesse = CreateFinesse();
+            var profs = CreateProficiencies();
             var swash_bonus_feats = CreateBonusFeat();
             swash_weapon_training = CreateWeaponTraining();
             var swash_weapon_mastery = CreateWeaponMastery();
@@ -418,8 +420,7 @@ namespace Swashbuckler
             var deeds19 = CreateDeeds19();
 
             var lb = new LevelEntryBuilder();
-            lb.AddEntry(0, panache_feature, CreateFinesse(), CreateProficiencies());
-            lb.AddEntry(1, deeds1);
+            lb.AddEntry(1, deeds1, panache_feature, finesse, profs);
             lb.AddEntry(2, CreateCharmed());
             lb.AddEntry(3, nimble, deeds3);
             lb.AddEntry(4, ftraining, swash_bonus_feats);
@@ -440,6 +441,7 @@ namespace Swashbuckler
             ui.AddGroup(swash_bonus_feats);
             ui.AddGroup(swash_weapon_training, swash_weapon_mastery);
             ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19);
+            ui.SetGroupDeterminators(panache_feature, finesse, profs);
 
             var prog = ProgressionConfigurator.New(Progression, ProgressionGuid)
                 .AddToLevelEntries(lb.GetEntries())
