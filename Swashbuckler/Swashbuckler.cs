@@ -395,7 +395,7 @@ namespace Swashbuckler
                 .SetDefaultBuild(null)
                 .SetPrestigeClass(false)
                 .SetDifficulty(4)
-                .AddToStartingItems(ItemWeaponRefs.ColdIronRapier.Reference.Get(), ItemArmorRefs.LeatherStandard.Reference.Get(), ItemArmorRefs.BucklerArmorItem.Reference.Get(), ItemEquipmentUsableRefs.PotionOfCureLightWounds.Reference.Get())
+                .AddToStartingItems(ItemWeaponRefs.ColdIronRapier.Reference.Get(), ItemArmorRefs.LeatherStandard.Reference.Get(), ItemShieldRefs.Buckler.Reference.Get(), ItemEquipmentUsableRefs.PotionOfCureLightWounds.Reference.Get())
                 .SetStartingGold(411)
                 .Configure();
 
@@ -468,8 +468,7 @@ namespace Swashbuckler
               {
                   FeatureRefs.SimpleWeaponProficiency.Reference.Get(),
                   FeatureRefs.MartialWeaponProficiency.Reference.Get(),
-                  FeatureRefs.LightArmorProficiency.Reference.Get(),
-                  FeatureRefs.BucklerProficiency.Reference.Get()
+                  FeatureRefs.LightArmorProficiency.Reference.Get()
               })
               .Configure();
         }
