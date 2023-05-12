@@ -1,0 +1,10 @@
+{
+  "Id": "Swashbuckler",
+  "DisplayName": "Swashbuckler",
+  "Author": "",
+  "Version": "0.1",
+  "ManagerVersion": "0.21.3",
+  "Requirements": [],
+  "AssemblyName": "Swashbuckler.dll",
+  "EntryMethod": "Swashbuckler.Main.Load"
+}
