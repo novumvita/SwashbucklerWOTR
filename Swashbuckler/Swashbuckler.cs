@@ -572,7 +572,7 @@ namespace Swashbuckler
                 .SetDisplayName(FTrainingDisplayName)
                 .SetDescription(FTrainingDescription)
                 .SetIcon(FeatureRefs.FighterTraining.Reference.Get().Icon)
-                .AddClassLevelsForPrerequisites(actualClass: SwashName, fakeClass: CharacterClassRefs.FighterClass.Reference.Get())
+                .AddClassLevelsForPrerequisites(actualClass: SwashName, fakeClass: CharacterClassRefs.FighterClass.Reference.Get(), modifier: 1)
                 .Configure();
         }
 
