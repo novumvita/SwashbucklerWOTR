@@ -468,7 +468,8 @@ namespace Swashbuckler
               {
                   FeatureRefs.SimpleWeaponProficiency.Reference.Get(),
                   FeatureRefs.MartialWeaponProficiency.Reference.Get(),
-                  FeatureRefs.LightArmorProficiency.Reference.Get()
+                  FeatureRefs.LightArmorProficiency.Reference.Get(),
+                  FeatureRefs.BucklerProficiency.Reference.Get()
               })
               .Configure();
         }

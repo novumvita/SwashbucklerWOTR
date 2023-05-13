@@ -1,4 +1,5 @@
-﻿using Kingmaker.PubSubSystem;
+﻿using BlueprintCore.Blueprints.References;
+using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using System;
@@ -13,7 +14,7 @@ namespace Swashbuckler.Components
     {
         public void OnEventAboutToTrigger(RuleAttackRoll evt)
         {
-            if (Owner.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) < 1 || !SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(evt.Weapon.Blueprint, evt.Initiator) || (Owner.Body.SecondaryHand.HasWeapon && base.Owner.Body.SecondaryHand.MaybeWeapon != base.Owner.Body.EmptyHandWeapon) || Owner.Body.SecondaryHand.HasShield)
+            if (Owner.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) < 1 || !SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(evt.Weapon.Blueprint, evt.Initiator) || (Owner.Body.SecondaryHand.HasWeapon && base.Owner.Body.SecondaryHand.MaybeWeapon != base.Owner.Body.EmptyHandWeapon) || (Owner.Body.SecondaryHand.HasShield && Owner.Body.SecondaryHand.MaybeShield.ArmorComponent.Blueprint.ProficiencyGroup != Kingmaker.Blueprints.Items.Armors.ArmorProficiencyGroup.Buckler))
                 return;
 
             int swash_level = Owner.Progression.GetClassLevel(Swashbuckler.swash_class);
