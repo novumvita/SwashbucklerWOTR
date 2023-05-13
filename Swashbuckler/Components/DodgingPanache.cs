@@ -1,6 +1,7 @@
 ﻿using BlueprintCore.Blueprints.References;
 using Kingmaker;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.Root;
 using Kingmaker.Controllers.Projectiles;
 using Kingmaker.Enums;
@@ -22,7 +23,7 @@ namespace Swashbuckler.Components
         private bool willSpend = false;
         public void OnEventAboutToTrigger(RuleAttackWithWeapon evt)
         {
-            if (!evt.Weapon.Blueprint.IsMelee)
+            if (!evt.Weapon.Blueprint.IsMelee || !((base.Owner.Body.Armor.HasArmor && base.Owner.Body.Armor.Armor.Blueprint.ProficiencyGroup == ArmorProficiencyGroup.Light) || !base.Owner.Body.Armor.HasArmor))
                 return;
 
             willSpend= true;
@@ -36,17 +37,14 @@ namespace Swashbuckler.Components
         {
             if (willSpend)
             {
-                var temp = evt.Initiator.CombatState.AttackOfOpportunityCount;
-                evt.Initiator.CombatState.AttackOfOpportunityCount = 0;
+                evt.Initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+                evt.Target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
 
                 var displacement = (evt.Target.Position - evt.Initiator.Position).normalized;
-
                 var initialPos = evt.Target.Position;
                 evt.Target.Position = initialPos + displacement;
 
                 Game.Instance.ProjectileController.Launch(evt.Target, evt.Target, ProjectileRefs.WindProjectile00.Reference.Get(), initialPos, delegate (Projectile p){});
-
-                evt.Initiator.CombatState.AttackOfOpportunityCount = temp;
 
                 Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
                 willSpend = false;

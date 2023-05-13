@@ -9,56 +9,30 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kingmaker.Blueprints.Items.Armors;
-using Epic.OnlineServices;
-using Swashbuckler.Utilities;
-using Kingmaker.Visual.CharacterSystem;
-using BlueprintCore.Blueprints.Configurators.Visual;
 using BlueprintCore.Utils;
-using Kingmaker.ResourceLinks;
-using System.Configuration;
-using BlueprintCore.Utils.Assets;
 using BlueprintCore.Blueprints.CustomConfigurators;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using BlueprintCore.Actions.Builder;
-using BlueprintCore.Blueprints.Components.Replacements;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
-using Kingmaker.UnitLogic.Mechanics;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic;
-using Kingmaker.ElementsSystem;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using UnityEngine;
 using Swashbuckler.Components;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
-using Kingmaker.View.Animation;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.UnitLogic.Commands.Base;
-using System.Data;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using System.Threading;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Conditions.Builder.ContextEx;
 using HarmonyLib;
 using BlueprintCore.Blueprints.Configurators.Root;
-using Kingmaker.Utility;
 using Swashbuckler.Patches;
-using Kingmaker.UnitLogic.Buffs;
 using BlueprintCore.Actions.Builder.ContextEx;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.Properties;
 using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 
 namespace Swashbuckler
@@ -195,6 +169,7 @@ namespace Swashbuckler
         private const string PreciseBuffGuid = "B3BB46CE-DE7F-4A64-897F-ED4E6F5F1F1E";
         private const string PreciseDisplayName = "Precise.Name";
         private const string PreciseDescription = "Precise.Description";
+        private const string PreciseAbilityDescription = "PreciseAbility.Description";
 
         private const string Initiative = "SwashbucklerInitiative";
         private const string InitiativeGuid = "ADD89C02-BB1A-4C7D-A5EA-D37451C9949A";
@@ -209,6 +184,7 @@ namespace Swashbuckler
         private const string GraceBuffGuid = "C96EF7DF-7754-41F3-BD73-F82E93DC2AE2";
         private const string GraceDisplayName = "Grace.Name";
         private const string GraceDescription = "Grace.Description";
+        private const string GraceAbilityDescription = "GraceAbility.Description";
 
         private const string FeintDebuff = "FeintDebuff";
         private const string FeintDebuffGuid = "B9291969-6985-402B-A84B-9FC71B803226";
@@ -471,6 +447,7 @@ namespace Swashbuckler
                   FeatureRefs.LightArmorProficiency.Reference.Get(),
                   FeatureRefs.BucklerProficiency.Reference.Get()
               })
+              .SetIsClassFeature()
               .Configure();
         }
 
@@ -489,6 +466,7 @@ namespace Swashbuckler
                 .AddAbilityResources(resource: panache_resource, restoreAmount: true)
                 .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, criticalHit: true)
                 .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, reduceHPToZero: true)
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -501,6 +479,7 @@ namespace Swashbuckler
                 .AddComponent<AttackStatReplacementForSwashbucklerWeapon>()
                 .AddReplaceStatForPrerequisites(StatType.Charisma, StatType.Intelligence)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
+                .SetIsClassFeature()
                 .Configure();
 
             FeatureConfigurator.For(FeatureRefs.WeaponFinesse)
@@ -544,6 +523,7 @@ namespace Swashbuckler
                 .SetIcon(FeatureRefs.WitchHexFortuneFeature.Reference.Get().Icon)
                 .AddAbilityResources(resource: charmed_resource, restoreAmount: true)
                 .AddFacts(new() { charmed_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -563,6 +543,7 @@ namespace Swashbuckler
                 .SetDescription(NimbleDescription)
                 .SetIcon(FeatureRefs.ArmorTraining.Reference.Get().Icon)
                 .AddBuffOnLightOrNoArmor(nimble_buff)
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -573,6 +554,7 @@ namespace Swashbuckler
                 .SetDescription(FTrainingDescription)
                 .SetIcon(FeatureRefs.FighterTraining.Reference.Get().Icon)
                 .AddClassLevelsForPrerequisites(actualClass: SwashName, fakeClass: CharacterClassRefs.FighterClass.Reference.Get(), modifier: 1)
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -582,6 +564,7 @@ namespace Swashbuckler
                 .CopyFrom(FeatureSelectionRefs.FighterFeatSelection)
                 .SetDisplayName(BFeatDisplayName)
                 .SetDescription(BFeatDescription)
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -597,6 +580,10 @@ namespace Swashbuckler
                 .AddWeaponTrainingBonuses(stat: StatType.AdditionalDamage, descriptor: ModifierDescriptor.UntypedStackable)
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(WTraining))
                 .SetRanks(4)
+                .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
+                .AddToGroups(FeatureGroup.WeaponTraining)
+                .SkipAddToSelections()
+                .SetIsClassFeature()
                 .Configure();
 
             ParametrizedFeatureConfigurator.For(ParametrizedFeatureRefs.ImprovedCritical)
@@ -614,6 +601,7 @@ namespace Swashbuckler
                 .SetIcon(ParametrizedFeatureRefs.WeaponMasteryParametrized.Reference.Get().Icon)
                 .AddComponent<CritAutoconfirmWithSwashbucklerWeapons>()
                 .AddComponent<IncreasedCriticalMultiplierWithSwashbucklerWeapon>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -642,6 +630,7 @@ namespace Swashbuckler
                 .SetDescription(DerringDescription)
                 .SetIcon(FeatureRefs.BloodlineFeyWoodlandStride.Reference.Get().Icon)
                 .AddFacts(new() { derring_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -670,6 +659,7 @@ namespace Swashbuckler
                 .SetDescription(DodgingDescription)
                 .SetIcon(AbilityRefs.MirrorImage.Reference.Get().Icon)
                 .AddFacts(new() { dodging_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -698,6 +688,7 @@ namespace Swashbuckler
                 .SetDescription(SwashParryDescription)
                 .SetIcon(ActivatableAbilityRefs.DuelistParrySelfAbility.Reference.Get().Icon)
                 .AddFacts(new() { parry_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -707,6 +698,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateDerringDo(), CreateDodgingPanache(), CreateParry() })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -735,6 +727,7 @@ namespace Swashbuckler
                 .SetIcon(AbilityRefs.TouchOfGracelessness.Reference.Get().Icon)
                 .AddFacts(new() { kip_ability })
                 .AddComponent<KipUp>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -759,6 +752,7 @@ namespace Swashbuckler
                 .SetDescription(MenacingDescription)
                 .SetIcon(FeatureRefs.ShatterConfidence.Reference.Get().Icon)
                 .AddFacts(new() { menacing_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -766,7 +760,7 @@ namespace Swashbuckler
         {
             precise_strike_buff = BuffConfigurator.New(PreciseBuff, PreciseBuffGuid)
                 .SetDisplayName(PreciseDisplayName)
-                .SetDescription(PreciseDescription)
+                .SetDescription(PreciseAbilityDescription)
                 .AddNotDispelable()
                 .SetIcon(FeatureRefs.PreciseStrikeAbility.Reference.Get().Icon)
                 .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.m_Resource = panache_resource.ToReference<BlueprintAbilityResourceReference>(); c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
@@ -775,9 +769,10 @@ namespace Swashbuckler
 
             var precise_ability = AbilityConfigurator.New(PreciseAbility, PreciseAbilityGuid)
                 .SetDisplayName(PreciseDisplayName)
-                .SetDescription(PreciseDescription)
+                .SetDescription(PreciseAbilityDescription)
                 .SetIcon(FeatureRefs.PreciseStrikeAbility.Reference.Get().Icon)
                 .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Personal)
                 .SetAnimation(UnitAnimationActionCastSpell.CastAnimationStyle.Immediate)
                 .SetActionType(UnitCommand.CommandType.Swift)
                 .AddAbilityEffectRunAction(ActionsBuilder.New()
@@ -791,6 +786,7 @@ namespace Swashbuckler
                 .SetIcon(FeatureRefs.PreciseStrikeAbility.Reference.Get().Icon)
                 .AddFacts(new() { precise_ability })
                 .AddComponent<SwashbucklerPreciseStrike>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -801,6 +797,7 @@ namespace Swashbuckler
                 .SetDescription(InitiativeDescription)
                 .SetIcon(FeatureRefs.Evasion.Reference.Get().Icon)
                 .AddComponent<SwashbucklerInitiative>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -810,6 +807,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateKipUp(), CreateMenacing(), CreatePrecise(), CreateInitiative() })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -823,7 +821,7 @@ namespace Swashbuckler
 
             var grace_ability = ActivatableAbilityConfigurator.New(GraceAbility, GraceAbilityGuid)
                 .SetDisplayName(GraceDisplayName)
-                .SetDescription(GraceDescription)
+                .SetDescription(GraceAbilityDescription)
                 .SetIcon(ActivatableAbilityRefs.MobilityUseAbility.Reference.Get().Icon)
                 .SetBuff(grace_buff)
                 .SetDeactivateImmediately()
@@ -834,6 +832,7 @@ namespace Swashbuckler
                 .SetDescription(GraceDescription)
                 .SetIcon(ActivatableAbilityRefs.MobilityUseAbility.Reference.Get().Icon)
                 .AddFacts(new() { grace_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -865,6 +864,7 @@ namespace Swashbuckler
                 .SetDescription(SupFeintDescription)
                 .SetIcon(FeatureRefs.SwordlordDefensiveParryFeature.Reference.Get().Icon)
                 .AddFacts(new() { superior_feint_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -950,6 +950,7 @@ namespace Swashbuckler
                 .SetDescription(TargetedStrikeDescription)
                 .SetIcon(FeatureRefs.TwoHandedFighterBackswing.Reference.Get().Icon)
                 .AddFacts(new() { targeted_strike_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -959,6 +960,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateGrace(), CreateSupFeint(), CreateTargetedStrike() })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1099,6 +1101,7 @@ namespace Swashbuckler
                 .SetDescription(BWoundDescription)
                 .SetIcon(ActivatableAbilityRefs.DuelistCripplingCriticalBleedAbility.Reference.Get().Icon)
                 .AddFacts(new() { bleeding_wound_ability, bleed_ability, strength_bleed_ability, dexterity_bleed_ability, constitution_bleed_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1109,6 +1112,7 @@ namespace Swashbuckler
                 .SetDescription(EvasiveDescription)
                 .SetIcon(FeatureRefs.Evasion.Reference.Get().Icon)
                 .AddComponent<Evasive>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1119,6 +1123,7 @@ namespace Swashbuckler
                 .SetDescription(SubtleDescription)
                 .SetIcon(FeatureRefs.TwoHandedFighterStrongGrip.Reference.Get().Icon)
                 .AddComponent<SubtleBlade>()
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1128,6 +1133,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateBleedingWound(), CreateEvasive(), CreateSubtle() })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1156,6 +1162,7 @@ namespace Swashbuckler
                 .SetDescription(DizzyingDescription)
                 .SetIcon(AbilityRefs.MageShield.Reference.Get().Icon)
                 .AddFacts(new() { dizzying_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1182,7 +1189,6 @@ namespace Swashbuckler
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityCasterHasAtLeastOnePanache>()
-                .AddAbilityResourceLogic(requiredResource: panache_resource, isSpendResource: true, amount: 1)
                 .Configure();
 
             return FeatureConfigurator.New(PerfectThrustFeature, PerfectThrustFeatureGuid)
@@ -1190,6 +1196,7 @@ namespace Swashbuckler
                 .SetDescription(PerfectThrustDescription)
                 .SetIcon(FeatureRefs.DuelistParryFeature.Reference.Get().Icon)
                 .AddFacts(new() { perfect_thrust_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1215,6 +1222,7 @@ namespace Swashbuckler
                 .SetDescription(EdgeDescription)
                 .SetIcon(FeatureRefs.BloodlineFeyWoodlandStride.Reference.Get().Icon)
                 .AddFacts(new() { edge_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1224,6 +1232,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateDizzying(), CreatePerfectThrust(), CreateEdge() })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1248,6 +1257,7 @@ namespace Swashbuckler
                 .SetDescription(CheatDeathDescription)
                 .SetIcon(AbilityRefs.ShadowConjurationGreater.Reference.Get().Icon)
                 .AddFacts(new() { cheat_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1276,6 +1286,7 @@ namespace Swashbuckler
                 .SetDescription(DeadlyDescription)
                 .SetIcon(FeatureRefs.TwoHandedFighterDevastatingBlowFeature.Reference.Get().Icon)
                 .AddFacts(new() { deadly_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1303,6 +1314,7 @@ namespace Swashbuckler
                 .SetDescription(StunningDescription)
                 .SetIcon(FeatureRefs.MasterStrike.Reference.Get().Icon)
                 .AddFacts(new() { stunning_ability })
+                .SetIsClassFeature()
                 .Configure();
         }
 
@@ -1312,6 +1324,7 @@ namespace Swashbuckler
                 .SetDisplayName(DeedsDisplayName)
                 .SetDescription(DeedsDescription)
                 .AddFacts(new() { CreateCheatDeath(), CreateDeadly(), CreateStunning() })
+                .SetIsClassFeature()
                 .Configure();
         }
     }
