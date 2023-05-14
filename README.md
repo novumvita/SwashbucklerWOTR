@@ -1,13 +1,14 @@
 # Swashbuckler for Pathfinder: Wrath of the Righteous 
 
 Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/) class.
+* Archetypes
+  * [Inspired Blade](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/inspired-blade) 
 
 ## Deviations from TableTop
 Some abilities which required immediate action now only use free action.
 
 ## Planned Content
 * Archetypes
-  * [Inspired Blade](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/inspired-blade)
   * [Bravo](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/bravo-swashbuckler-archetype/)
  
 ## Problems or Suggestions
