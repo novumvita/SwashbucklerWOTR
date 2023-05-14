@@ -452,5 +452,82 @@
   {
     "Key": "Stunning.Description",
     "enGB": "At 19th level, when a swashbuckler hits a creature with a light or one-handed piercing melee weapon, she can spend 2 panache points to stun the creature for 1 round. The creature must succeed at a Fortitude saving throw (DC = 10 + 1/2 the swashbuckler’s level + the swashbuckler’s Dexterity modifier) or be stunned for 1 round. Creatures that are immune to critical hits are also immune to this effect."
+  },
+
+  {
+    "Key": "InspiredBlade.Name",
+    "enGB": "Inspired Blade"
+  },
+
+  {
+    "Key": "InspiredBlade.Description",
+    "enGB": "An inspired blade is both a force of personality and a sage of swordplay dedicated to the perfection of combat with the rapier. They use the science and geometry with swordplay to beautiful and deadly effect."
+  },
+
+  {
+    "Key": "InspiredPanache.Name",
+    "enGB": "Inspired Panache"
+  },
+
+  {
+    "Key": "InspiredPanache.Description",
+    "enGB": "Each day, an inspired blade gains a number of panache points equal to her Charisma modifier (minimum 1) plus her Intelligence modifier (minimum 1), instead of just her Charisma modifier.\n Unlike other swashbucklers, an inspired blade regains no panache from scoring a killing blow. She regains panache only from scoring a critical hit with a rapier."
+  },
+
+  {
+    "Key": "InspiredFinesse.Name",
+    "enGB": "Inspired Finesse"
+  },
+
+  {
+    "Key": "InspiredFinesse.Description",
+    "enGB": "At 1st level, an inspired blade gains the benefits of Weapon Finesse with the rapier (this ability counts as having the Weapon Finesse feat for the purpose of meeting feat prerequisites) and gains Weapon Focus (rapier) as a bonus feat."
+  },
+
+  {
+    "Key": "InspiredStrike.Name",
+    "enGB": "Inspired Strike"
+  },
+
+  {
+    "Key": "InspiredStrike.Description",
+    "enGB": "At 11th level, an inspired blade can spend 1 panache point when making an attack with a rapier to gain an insight bonus on that attack roll equal to her Intelligence modifier (minimum +1). When an inspired blade hits with an attack augmented by inspired strike, she can spend 1 additional panache point to make the hit a critical threat, though if she does so, she does not regain panache if she confirms that critical threat. The cost of this deed cannot be reduced by abilities such as Signature Deed."
+  },
+
+  {
+    "Key": "InspiredStrikeAbility.Description",
+    "enGB": "An inspired blade can spend 1 panache point when making an attack with a rapier to gain an insight bonus on that attack roll equal to her Intelligence modifier (minimum +1)."
+  },
+
+  {
+    "Key": "InspiredStrikeCritAbility.Name",
+    "enGB": "Inspired Strike (Critical)"
+  },
+
+  {
+    "Key": "InspiredStrikeCritAbility.Description",
+    "enGB": "When an inspired blade hits with an attack augmented by inspired strike, she can spend 1 additional panache point to make the hit a critical threat, though if she does so, she does not regain panache if she confirms that critical threat."
+  },
+
+  {
+    "Key": "RTraining.Name",
+    "ProcessTemplates": false,
+    "enGB": "Rapier Training"
+  },
+
+  {
+    "Key": "RTraining.Description",
+    "enGB": "At 5th level, an inspired blade gains a +1 bonus on attack rolls and a +2 bonus on damage rolls with rapiers. While wielding a rapier, she gains the benefit of the Improved Critical feat. These attack and damage bonuses increase by 1 for every 4 levels beyond 5th (to a maximum of +4 on attack rolls and +5 on damage rolls at 17th level)."
+  },
+
+  {
+    "Key": "RMastery.Name",
+    "ProcessTemplates": false,
+    "enGB": "Rapier Weapon Mastery"
+  },
+
+  {
+    "Key": "RMastery.Description",
+    "enGB": "At 20th level, when an inspired blade threatens a critical hit with a rapier, that critical hit is automatically confirmed. Furthermore, the critical threat range increases by 1 (this increase to the critical threat range stacks with the increase from rapier training, to a total threat range of 14–20), and the critical modifier of the weapon increases by 1 (×2 becomes ×3, for example)."
   }
 ]

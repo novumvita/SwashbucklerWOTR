@@ -55,9 +55,12 @@ namespace Swashbuckler
 
           Logger.Info("Configuring blueprints.");
 
+          Logger.Info("Configuring Swashbuckler.");
           Swashbuckler.Configure();
-        }
-        catch (Exception e)
+
+
+                }
+                catch (Exception e)
         {
           Logger.Error("Failed to configure blueprints.", e);
         }

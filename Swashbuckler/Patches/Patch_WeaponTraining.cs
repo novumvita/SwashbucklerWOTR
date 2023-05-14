@@ -19,6 +19,7 @@ namespace Swashbuckler.Patches
     class Patch_UnitPartWeaponTraining_GetWeaponRank
     {
         static BlueprintFeature swashbuckler_weapon_training = Swashbuckler.swash_weapon_training;
+        static BlueprintFeature rapier_training = Archetypes.InspiredBlade.rapier_training;
 
         static public void Postfix(UnitPartWeaponTraining __instance, ItemEntityWeapon weapon, ref int __result)
         {
@@ -30,6 +31,18 @@ namespace Swashbuckler.Patches
             var fact = __instance.Owner.GetFact(swashbuckler_weapon_training);
 
             if (fact != null && SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(weapon.Blueprint, __instance.Owner.Unit.Descriptor))
+            {
+                var rank = fact.GetRank();
+
+                if (rank > __result)
+                {
+                    __result = rank;
+                }
+            }
+
+            fact = __instance.Owner.GetFact(rapier_training);
+
+            if (fact != null && weapon.Blueprint.Category == WeaponCategory.Rapier)
             {
                 var rank = fact.GetRank();
 

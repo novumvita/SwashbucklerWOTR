@@ -39,317 +39,326 @@ namespace Swashbuckler
 {
     internal class Swashbuckler
     {
-        static public BlueprintCharacterClass swash_class;
+        static internal BlueprintCharacterClass swash_class;
 
-        static public BlueprintAbilityResource panache_resource;
+        static internal BlueprintAbilityResource panache_resource;
+        static internal BlueprintFeature panache_feature;
 
-        static public BlueprintFeature swash_weapon_training;
+        static internal BlueprintFeature swash_finesse;
 
-        static public BlueprintBuff kip_buff;
-        static public BlueprintFeature kip_feature;
+        static internal BlueprintFeature swash_weapon_training;
+        static internal BlueprintFeature swash_weapon_mastery;
 
-        static public BlueprintBuff precise_strike_buff;
+        static internal BlueprintFeature deeds11;
 
-        static public BlueprintBuff dizzying_defense_buff;
+        static internal BlueprintBuff kip_buff;
+        static internal BlueprintFeature kip_feature;
 
-        private const string SwashName = "Swashbuckler";
-        private const string SwashGuid = "338ABF27-23C1-4C1A-B0F1-7CD7E3020444";
-        private const string SwashDisplayName = "Swashbuckler.Name";
-        private const string SwashDescription = "Swashbuckler.Description";
+        static internal BlueprintBuff precise_strike_buff;
 
-        private const string Proficiencies = "SwashbucklerProficiencies";
-        private const string ProficienciesGuid = "2B04D289-36C1-45FC-9641-EC1D16CEA836";
-        private const string ProficienciesDisplayName = "Proficiencies.Name";
-        private const string ProficienciesDescription = "Proficiencies.Description";
+        static internal BlueprintBuff dizzying_defense_buff;
 
-        private const string Progression = "SwashbucklerProgression";
-        private const string ProgressionGuid = "CB3F7F94-2433-44BE-B20F-4954BC9848C3";
+        static internal BlueprintFeature evasive_feature;
+        static internal BlueprintFeature subtle_feature;
 
-        private const string PanacheResource = "SwashbucklerPanacheResource";
-        private const string PanacheResourceGuid = "AC63BFCF-EC31-43DC-A5CE-04617A3BC854";
-        private const string PanacheFeature = "SwashbucklerPanacheFeature";
-        private const string PanacheFeatureGuid = "1FC7D950-A017-4C15-AA42-BDB7657174E8";
-        private const string PanacheDisplayName = "Panache.Name";
-        private const string PanacheDescription = "Panache.Description";
-        private const string PanacheDescriptionShort = "Panache.DescriptionShort";
+        internal const string SwashName = "Swashbuckler";
+        internal const string SwashGuid = "338ABF27-23C1-4C1A-B0F1-7CD7E3020444";
+        internal const string SwashDisplayName = "Swashbuckler.Name";
+        internal const string SwashDescription = "Swashbuckler.Description";
 
-        private const string Finesse = "SwashbucklerFinesse";
-        private const string FinesseGuid = "A4422438-8C1C-4EDC-B2AB-7BCE5ED9124A";
-        private const string FinesseDisplayName = "Finesse.Name";
-        private const string FinesseDescription = "Finesse.Description";
+        internal const string Proficiencies = "SwashbucklerProficiencies";
+        internal const string ProficienciesGuid = "2B04D289-36C1-45FC-9641-EC1D16CEA836";
+        internal const string ProficienciesDisplayName = "Proficiencies.Name";
+        internal const string ProficienciesDescription = "Proficiencies.Description";
 
-        private const string Nimble = "SwashbucklerNimble";
-        private const string NimbleGuid = "EF896BC9-0A5E-4FF7-AAF6-251BE4F9875B";
-        private const string NimbleBuff = "SwashbucklerNimbleBuff";
-        private const string NimbleBuffGuid = "43A17E35-5D72-44F6-8A78-23D142EB61BF";
-        private const string NimbleDisplayName = "Nimble.Name";
-        private const string NimbleDescription = "Nimble.Description";
+        internal const string Progression = "SwashbucklerProgression";
+        internal const string ProgressionGuid = "CB3F7F94-2433-44BE-B20F-4954BC9848C3";
 
-        private const string FTraining = "SwashbucklerFTraining";
-        private const string FTrainingGuid = "46279B21-6903-4C8F-9699-2B915D51EC15";
-        private const string FTrainingDisplayName = "FTraining.Name";
-        private const string FTrainingDescription = "FTraining.Description";
+        internal const string PanacheResource = "SwashbucklerPanacheResource";
+        internal const string PanacheResourceGuid = "AC63BFCF-EC31-43DC-A5CE-04617A3BC854";
+        internal const string PanacheFeature = "SwashbucklerPanacheFeature";
+        internal const string PanacheFeatureGuid = "1FC7D950-A017-4C15-AA42-BDB7657174E8";
+        internal const string PanacheDisplayName = "Panache.Name";
+        internal const string PanacheDescription = "Panache.Description";
+        internal const string PanacheDescriptionShort = "Panache.DescriptionShort";
 
-        private const string WTraining = "SwashbucklerWTraining";
-        private const string WTrainingGuid = "4B3C4EFC-D405-4F90-B923-1F02A2B3B884";
-        private const string WTrainingDisplayName = "WTraining.Name";
-        private const string WTrainingDescription = "WTraining.Description";
+        internal const string Finesse = "SwashbucklerFinesse";
+        internal const string FinesseGuid = "A4422438-8C1C-4EDC-B2AB-7BCE5ED9124A";
+        internal const string FinesseDisplayName = "Finesse.Name";
+        internal const string FinesseDescription = "Finesse.Description";
 
-        private const string WMastery = "SwashbucklerWMastery";
-        private const string WMasteryGuid = "2B7D02C7-5AB2-4F1E-8BF0-7F6E45598AE0";
-        private const string WMasteryDisplayName = "WMastery.Name";
-        private const string WMasteryDescription = "WMastery.Description";
+        internal const string Nimble = "SwashbucklerNimble";
+        internal const string NimbleGuid = "EF896BC9-0A5E-4FF7-AAF6-251BE4F9875B";
+        internal const string NimbleBuff = "SwashbucklerNimbleBuff";
+        internal const string NimbleBuffGuid = "43A17E35-5D72-44F6-8A78-23D142EB61BF";
+        internal const string NimbleDisplayName = "Nimble.Name";
+        internal const string NimbleDescription = "Nimble.Description";
 
-        private const string BFeat = "SwashbucklerBFeat";
-        private const string BFeatGuid = "B0A65390-6924-4590-A458-64F049840AD7";
-        private const string BFeatDisplayName = "BFeat.Name";
-        private const string BFeatDescription = "BFeat.Description";
+        internal const string FTraining = "SwashbucklerFTraining";
+        internal const string FTrainingGuid = "46279B21-6903-4C8F-9699-2B915D51EC15";
+        internal const string FTrainingDisplayName = "FTraining.Name";
+        internal const string FTrainingDescription = "FTraining.Description";
 
-        private const string CharmedResource = "CharmedLifeResource";
-        private const string CharmedResourceGuid = "E6AD4AD4-C14C-46A9-B18A-F8D9D82A3B33";
-        private const string CharmedAbility = "CharmedLifeAbility";
-        private const string CharmedAbilityGuid = "F7587906-F3C8-490C-9EE4-646780F748C2";
-        private const string CharmedBuff = "CharmedLifeBuff";
-        private const string CharmedBuffGuid = "31E466E6-47B2-489A-BB1A-94E55B0A4D21";
-        private const string CharmedFeature = "CharmedLifeFeature";
-        private const string CharmedFeatureGuid = "EC125AAA-E6F0-42B4-B829-6070A5E773BA";
-        private const string CharmedDisplayName = "CharmedLife.Name";
-        private const string CharmedDescription = "CharmedLife.Description";
+        internal const string WTraining = "SwashbucklerWTraining";
+        internal const string WTrainingGuid = "4B3C4EFC-D405-4F90-B923-1F02A2B3B884";
+        internal const string WTrainingDisplayName = "WTraining.Name";
+        internal const string WTrainingDescription = "WTraining.Description";
 
-        private const string DerringAbility = "DerringAbility";
-        private const string DerringAbilityGuid = "BE7BD0BE-D940-4648-A98B-E4A60A5678E2";
-        private const string DerringBuff = "DerringBuff";
-        private const string DerringBuffGuid = "3A2CD230-BC48-4B08-A070-37DF7677D6D2";
-        private const string DerringFeature = "DerringFeature";
-        private const string DerringFeatureGuid = "9A939187-3769-4887-ACFA-906DCE81C84C";
-        private const string DerringDisplayName = "Derring.Name";
-        private const string DerringDescription = "Derring.Description";
+        internal const string WMastery = "SwashbucklerWMastery";
+        internal const string WMasteryGuid = "2B7D02C7-5AB2-4F1E-8BF0-7F6E45598AE0";
+        internal const string WMasteryDisplayName = "WMastery.Name";
+        internal const string WMasteryDescription = "WMastery.Description";
 
-        private const string DodgingAbility = "DodgingAbility";
-        private const string DodgingAbilityGuid = "137FF9BA-5DAD-4ED8-A7B1-8106F99FA366";
-        private const string DodgingBuff = "DodgingBuff";
-        private const string DodgingBuffGuid = "85D617F7-148C-4027-8C7F-C8EC859EC6E3";
-        private const string DodgingFeature = "DodgingFeature";
-        private const string DodgingFeatureGuid = "11FEF9EA-1F67-473C-AE69-3106F07FC5B2";
-        private const string DodgingDisplayName = "Dodging.Name";
-        private const string DodgingDescription = "Dodging.Description";
+        internal const string BFeat = "SwashbucklerBFeat";
+        internal const string BFeatGuid = "B0A65390-6924-4590-A458-64F049840AD7";
+        internal const string BFeatDisplayName = "BFeat.Name";
+        internal const string BFeatDescription = "BFeat.Description";
 
-        private const string SwashParryAbility = "SwashParryAbility";
-        private const string SwashParryAbilityGuid = "57916E6D-9A25-4C11-A77B-5147951D441A";
-        private const string SwashParryBuff = "SwashParryBuff";
-        private const string SwashParryBuffGuid = "4D58AB3F-ADC8-4ACB-9D9C-3F5F90799638";
-        private const string SwashParryFeature = "SwashParryFeature";
-        private const string SwashParryFeatureGuid = "355DBBAF-2E09-472C-AC3F-F903269EA2D8";
-        private const string SwashParryDisplayName = "SwashParry.Name";
-        private const string SwashParryDescription = "SwashParry.Description";
+        internal const string CharmedResource = "CharmedLifeResource";
+        internal const string CharmedResourceGuid = "E6AD4AD4-C14C-46A9-B18A-F8D9D82A3B33";
+        internal const string CharmedAbility = "CharmedLifeAbility";
+        internal const string CharmedAbilityGuid = "F7587906-F3C8-490C-9EE4-646780F748C2";
+        internal const string CharmedBuff = "CharmedLifeBuff";
+        internal const string CharmedBuffGuid = "31E466E6-47B2-489A-BB1A-94E55B0A4D21";
+        internal const string CharmedFeature = "CharmedLifeFeature";
+        internal const string CharmedFeatureGuid = "EC125AAA-E6F0-42B4-B829-6070A5E773BA";
+        internal const string CharmedDisplayName = "CharmedLife.Name";
+        internal const string CharmedDescription = "CharmedLife.Description";
 
-        private const string KipFeature = "SwashbucklerKip";
-        private const string KipFeatureGuid = "BE98AD50-9A4C-43CE-9BEC-8DE854581AD1";
-        private const string KipAbility = "KipAbility";
-        private const string KipAbilityGuid = "6FBFAFA5-6546-4400-B75B-CC242494BCA2";
-        private const string KipBuff = "KipBuff";
-        private const string KipBuffGuid = "77BE6680-22F0-4A01-8355-57096C736B43";
-        private const string KipDisplayName = "Kip.Name";
-        private const string KipDescription = "Kip.Description";
+        internal const string DerringAbility = "DerringAbility";
+        internal const string DerringAbilityGuid = "BE7BD0BE-D940-4648-A98B-E4A60A5678E2";
+        internal const string DerringBuff = "DerringBuff";
+        internal const string DerringBuffGuid = "3A2CD230-BC48-4B08-A070-37DF7677D6D2";
+        internal const string DerringFeature = "DerringFeature";
+        internal const string DerringFeatureGuid = "9A939187-3769-4887-ACFA-906DCE81C84C";
+        internal const string DerringDisplayName = "Derring.Name";
+        internal const string DerringDescription = "Derring.Description";
 
-        private const string MenacingFeature = "SwashbucklerMenacing";
-        private const string MenacingFeatureGuid = "C1AAA405-A025-4CA4-A2AB-B0B50FFD5C78";
-        private const string MenacingAbility = "MenacingAbility";
-        private const string MenacingAbilityGuid = "003C1AB7-B45C-46A0-9A16-40E4394FF0C1";
-        private const string MenacingBuff = "MenacingBuff";
-        private const string MenacingBuffGuid = "60F92AC6-1BE6-4E16-BDB6-B31E9CDB1041";
-        private const string MenacingDisplayName = "Menacing.Name";
-        private const string MenacingDescription = "Menacing.Description";
+        internal const string DodgingAbility = "DodgingAbility";
+        internal const string DodgingAbilityGuid = "137FF9BA-5DAD-4ED8-A7B1-8106F99FA366";
+        internal const string DodgingBuff = "DodgingBuff";
+        internal const string DodgingBuffGuid = "85D617F7-148C-4027-8C7F-C8EC859EC6E3";
+        internal const string DodgingFeature = "DodgingFeature";
+        internal const string DodgingFeatureGuid = "11FEF9EA-1F67-473C-AE69-3106F07FC5B2";
+        internal const string DodgingDisplayName = "Dodging.Name";
+        internal const string DodgingDescription = "Dodging.Description";
 
-        private const string PreciseFeature = "SwashbucklerPreciseStrike";
-        private const string PreciseFeatureGuid = "714B3AAA-D00C-417D-8F1F-E504AE0DD4B9";
-        private const string PreciseAbility = "SwashbucklerPreciseStrikeAbility";
-        private const string PreciseAbilityGuid = "F47AF60C-4A8C-45A9-AF04-040E472B45D7";
-        private const string PreciseBuff = "SwashbucklerPreciseStrikeBuff";
-        private const string PreciseBuffGuid = "B3BB46CE-DE7F-4A64-897F-ED4E6F5F1F1E";
-        private const string PreciseDisplayName = "Precise.Name";
-        private const string PreciseDescription = "Precise.Description";
-        private const string PreciseAbilityDescription = "PreciseAbility.Description";
+        internal const string SwashParryAbility = "SwashParryAbility";
+        internal const string SwashParryAbilityGuid = "57916E6D-9A25-4C11-A77B-5147951D441A";
+        internal const string SwashParryBuff = "SwashParryBuff";
+        internal const string SwashParryBuffGuid = "4D58AB3F-ADC8-4ACB-9D9C-3F5F90799638";
+        internal const string SwashParryFeature = "SwashParryFeature";
+        internal const string SwashParryFeatureGuid = "355DBBAF-2E09-472C-AC3F-F903269EA2D8";
+        internal const string SwashParryDisplayName = "SwashParry.Name";
+        internal const string SwashParryDescription = "SwashParry.Description";
 
-        private const string Initiative = "SwashbucklerInitiative";
-        private const string InitiativeGuid = "ADD89C02-BB1A-4C7D-A5EA-D37451C9949A";
-        private const string InitiativeDisplayName = "Initiative.Name";
-        private const string InitiativeDescription = "Initiative.Description";
+        internal const string KipFeature = "SwashbucklerKip";
+        internal const string KipFeatureGuid = "BE98AD50-9A4C-43CE-9BEC-8DE854581AD1";
+        internal const string KipAbility = "KipAbility";
+        internal const string KipAbilityGuid = "6FBFAFA5-6546-4400-B75B-CC242494BCA2";
+        internal const string KipBuff = "KipBuff";
+        internal const string KipBuffGuid = "77BE6680-22F0-4A01-8355-57096C736B43";
+        internal const string KipDisplayName = "Kip.Name";
+        internal const string KipDescription = "Kip.Description";
 
-        private const string Grace = "SwashbucklerGrace";
-        private const string GraceGuid = "27B58D1B-E6FF-4C9B-B4A0-708978E8B2B8";
-        private const string GraceAbility = "SwashbucklerGraceAbility";
-        private const string GraceAbilityGuid = "0E724B68-2E7F-454F-ABBA-FB514C81238B";
-        private const string GraceBuff = "SwashbucklerGraceBuff";
-        private const string GraceBuffGuid = "C96EF7DF-7754-41F3-BD73-F82E93DC2AE2";
-        private const string GraceDisplayName = "Grace.Name";
-        private const string GraceDescription = "Grace.Description";
-        private const string GraceAbilityDescription = "GraceAbility.Description";
+        internal const string MenacingFeature = "SwashbucklerMenacing";
+        internal const string MenacingFeatureGuid = "C1AAA405-A025-4CA4-A2AB-B0B50FFD5C78";
+        internal const string MenacingAbility = "MenacingAbility";
+        internal const string MenacingAbilityGuid = "003C1AB7-B45C-46A0-9A16-40E4394FF0C1";
+        internal const string MenacingBuff = "MenacingBuff";
+        internal const string MenacingBuffGuid = "60F92AC6-1BE6-4E16-BDB6-B31E9CDB1041";
+        internal const string MenacingDisplayName = "Menacing.Name";
+        internal const string MenacingDescription = "Menacing.Description";
 
-        private const string FeintDebuff = "FeintDebuff";
-        private const string FeintDebuffGuid = "B9291969-6985-402B-A84B-9FC71B803226";
-        private const string FeintDebuffDisplayName = "Feint.Name";
-        private const string FeintDebuffDescription = "Feint.Description";
+        internal const string PreciseFeature = "SwashbucklerPreciseStrike";
+        internal const string PreciseFeatureGuid = "714B3AAA-D00C-417D-8F1F-E504AE0DD4B9";
+        internal const string PreciseAbility = "SwashbucklerPreciseStrikeAbility";
+        internal const string PreciseAbilityGuid = "F47AF60C-4A8C-45A9-AF04-040E472B45D7";
+        internal const string PreciseBuff = "SwashbucklerPreciseStrikeBuff";
+        internal const string PreciseBuffGuid = "B3BB46CE-DE7F-4A64-897F-ED4E6F5F1F1E";
+        internal const string PreciseDisplayName = "Precise.Name";
+        internal const string PreciseDescription = "Precise.Description";
+        internal const string PreciseAbilityDescription = "PreciseAbility.Description";
 
-        private const string SupFeint = "SwashbucklerSuperiorFeint";
-        private const string SupFeintGuid = "590C3E64-BE67-4098-98C2-3652B6E16841";
-        private const string SupFeintAbility = "SwashbucklerSuperiorFeintAbility";
-        private const string SupFeintAbilityGuid = "033AA093-DDDF-4967-BB3D-AAB3ABDB629B";
-        private const string SupFeintDisplayName = "SupFeint.Name";
-        private const string SupFeintDescription = "SupFeint.Description";
+        internal const string Initiative = "SwashbucklerInitiative";
+        internal const string InitiativeGuid = "ADD89C02-BB1A-4C7D-A5EA-D37451C9949A";
+        internal const string InitiativeDisplayName = "Initiative.Name";
+        internal const string InitiativeDescription = "Initiative.Description";
 
-        private const string TargetedStrike = "SwashbucklerTargetedStrike";
-        private const string TargetedStrikeGuid = "414C1B70-9220-4183-A37F-2E86B11B5A2E";
-        private const string TargetedStrikeDisplayName = "TargetedStrike.Name";
-        private const string TargetedStrikeDescription = "TargetedStrike.Description";
-        private const string TSAbility = "SwashbucklerTSAbility";
-        private const string TSAbilityGuid = "00EF62F8-DBB0-4F62-B2D0-6790198D832E";
+        internal const string Grace = "SwashbucklerGrace";
+        internal const string GraceGuid = "27B58D1B-E6FF-4C9B-B4A0-708978E8B2B8";
+        internal const string GraceAbility = "SwashbucklerGraceAbility";
+        internal const string GraceAbilityGuid = "0E724B68-2E7F-454F-ABBA-FB514C81238B";
+        internal const string GraceBuff = "SwashbucklerGraceBuff";
+        internal const string GraceBuffGuid = "C96EF7DF-7754-41F3-BD73-F82E93DC2AE2";
+        internal const string GraceDisplayName = "Grace.Name";
+        internal const string GraceDescription = "Grace.Description";
+        internal const string GraceAbilityDescription = "GraceAbility.Description";
 
-        private const string TSArms = "SwashbucklerTSArms";
-        private const string TSArmsGuid = "2DC58E1B-8398-4301-9AA9-CE4F514CDB8D";
-        private const string TSArmsDisplayName = "TSArms.Name";
-        private const string TSArmsDescription = "TSArms.Description";
+        internal const string FeintDebuff = "FeintDebuff";
+        internal const string FeintDebuffGuid = "B9291969-6985-402B-A84B-9FC71B803226";
+        internal const string FeintDebuffDisplayName = "Feint.Name";
+        internal const string FeintDebuffDescription = "Feint.Description";
 
-        private const string TSHead = "SwashbucklerTSHead";
-        private const string TSHeadGuid = "6AAD6010-EB69-49EB-B640-0825D9E9D1C7";
-        private const string TSHeadDisplayName = "TSHead.Name";
-        private const string TSHeadDescription = "TSHead.Description";
+        internal const string SupFeint = "SwashbucklerSuperiorFeint";
+        internal const string SupFeintGuid = "590C3E64-BE67-4098-98C2-3652B6E16841";
+        internal const string SupFeintAbility = "SwashbucklerSuperiorFeintAbility";
+        internal const string SupFeintAbilityGuid = "033AA093-DDDF-4967-BB3D-AAB3ABDB629B";
+        internal const string SupFeintDisplayName = "SupFeint.Name";
+        internal const string SupFeintDescription = "SupFeint.Description";
 
-        private const string TSLegs = "SwashbucklerTSLegs";
-        private const string TSLegsGuid = "B0EE55AE-26CB-46F2-817F-75A09645C2A1";
-        private const string TSLegsDisplayName = "TSLegs.Name";
-        private const string TSLegsDescription = "TSLegs.Description";
+        internal const string TargetedStrike = "SwashbucklerTargetedStrike";
+        internal const string TargetedStrikeGuid = "414C1B70-9220-4183-A37F-2E86B11B5A2E";
+        internal const string TargetedStrikeDisplayName = "TargetedStrike.Name";
+        internal const string TargetedStrikeDescription = "TargetedStrike.Description";
+        internal const string TSAbility = "SwashbucklerTSAbility";
+        internal const string TSAbilityGuid = "00EF62F8-DBB0-4F62-B2D0-6790198D832E";
 
-        private const string TSTorso = "SwashbucklerTSTorso";
-        private const string TSTorsoGuid = "3A7B14A8-5313-42AC-B356-51F7503C8125";
-        private const string TSTorsoDisplayName = "TSTorso.Name";
-        private const string TSTorsoDescription = "TSTorso.Description";
+        internal const string TSArms = "SwashbucklerTSArms";
+        internal const string TSArmsGuid = "2DC58E1B-8398-4301-9AA9-CE4F514CDB8D";
+        internal const string TSArmsDisplayName = "TSArms.Name";
+        internal const string TSArmsDescription = "TSArms.Description";
 
-        private const string BWoundAbility = "SwashbucklerBWoundAbility";
-        private const string BWoundAbilityGuid = "04657D90-D33D-4729-AC7D-337F7EA0043E";
-        private const string BWound = "SwashbucklerBWound";
-        private const string BWoundGuid = "8FE3F494-BF2B-46CE-A3C0-5B70940C44C4";
-        private const string BWoundDisplayName = "BWound.Name";
-        private const string BWoundDescription = "BWound.Description";
+        internal const string TSHead = "SwashbucklerTSHead";
+        internal const string TSHeadGuid = "6AAD6010-EB69-49EB-B640-0825D9E9D1C7";
+        internal const string TSHeadDisplayName = "TSHead.Name";
+        internal const string TSHeadDescription = "TSHead.Description";
 
-        private const string BleedDebuff = "SwashbucklerBleedDebuff";
-        private const string BleedDebuffGuid = "A069826C-BB6B-4BAE-9EF3-B0D363E9C3ED";
-        private const string BleedBuff = "SwashbucklerBleedBuff";
-        private const string BleedBuffGuid = "44AD22B7-3E6A-4D2B-8B18-C452BC46F593";
-        private const string BleedAbility = "SwashbucklerBleedAbility";
-        private const string BleedAbilityGuid = "0DF7B61B-AFA2-42D7-BC21-42BCA753A887";
-        private const string BleedDebuffDisplayName = "Bleed.Name";
-        private const string BleedDebuffDescription = "BleedDebuff.Description";
-        private const string BleedAbilityDescription = "BleedAbility.Description";
+        internal const string TSLegs = "SwashbucklerTSLegs";
+        internal const string TSLegsGuid = "B0EE55AE-26CB-46F2-817F-75A09645C2A1";
+        internal const string TSLegsDisplayName = "TSLegs.Name";
+        internal const string TSLegsDescription = "TSLegs.Description";
 
-        private const string SBleedDebuff = "SwashbucklerSBleedDebuff";
-        private const string SBleedDebuffGuid = "373CB684-6891-48BA-8001-6F9A557C71D7";
-        private const string SBleedBuff = "SwashbucklerSBleedBuff";
-        private const string SBleedBuffGuid = "85F0EFC5-4B54-47EA-88DA-2ECA840D73BC";
-        private const string SBleedAbility = "SwashbucklerSBleedAbility";
-        private const string SBleedAbilityGuid = "2F2DACC3-E0CB-4EF7-A235-00EA599E8E00";
-        private const string SBleedDebuffDisplayName = "SBleed.Name";
-        private const string SBleedDebuffDescription = "SBleedDebuff.Description";
-        private const string SBleedAbilityDescription = "SBleedAbility.Description";
+        internal const string TSTorso = "SwashbucklerTSTorso";
+        internal const string TSTorsoGuid = "3A7B14A8-5313-42AC-B356-51F7503C8125";
+        internal const string TSTorsoDisplayName = "TSTorso.Name";
+        internal const string TSTorsoDescription = "TSTorso.Description";
 
-        private const string DBleedDebuff = "SwashbucklerDBleedDebuff";
-        private const string DBleedDebuffGuid = "7731C314-CF8C-4302-9A15-FA64DA1B3969";
-        private const string DBleedBuff = "SwashbucklerDBleedBuff";
-        private const string DBleedBuffGuid = "9D972DC9-FD2E-4785-8156-80C8BF06BC51";
-        private const string DBleedAbility = "SwashbucklerDBleedAbility";
-        private const string DBleedAbilityGuid = "35AE9A18-EF1C-46B7-86CF-3C8E20776BD2";
-        private const string DBleedDebuffDisplayName = "DBleed.Name";
-        private const string DBleedDebuffDescription = "DBleedDebuff.Description";
-        private const string DBleedAbilityDescription = "DBleedAbility.Description";
+        internal const string BWoundAbility = "SwashbucklerBWoundAbility";
+        internal const string BWoundAbilityGuid = "04657D90-D33D-4729-AC7D-337F7EA0043E";
+        internal const string BWound = "SwashbucklerBWound";
+        internal const string BWoundGuid = "8FE3F494-BF2B-46CE-A3C0-5B70940C44C4";
+        internal const string BWoundDisplayName = "BWound.Name";
+        internal const string BWoundDescription = "BWound.Description";
 
-        private const string CBleedDebuff = "SwashbucklerCBleedDebuff";
-        private const string CBleedDebuffGuid = "854A00F0-E00B-4090-B2E2-12697760DA3F";
-        private const string CBleedBuff = "SwashbucklerCBleedBuff";
-        private const string CBleedBuffGuid = "3FA1691D-6694-4224-AE38-C2F112B56040";
-        private const string CBleedAbility = "SwashbucklerCBleedAbility";
-        private const string CBleedAbilityGuid = "B835B48B-1760-419C-9F6F-40173D786C03";
-        private const string CBleedDebuffDisplayName = "CBleed.Name";
-        private const string CBleedDebuffDescription = "CBleedDebuff.Description";
-        private const string CBleedAbilityDescription = "CBleedAbility.Description";
+        internal const string BleedDebuff = "SwashbucklerBleedDebuff";
+        internal const string BleedDebuffGuid = "A069826C-BB6B-4BAE-9EF3-B0D363E9C3ED";
+        internal const string BleedBuff = "SwashbucklerBleedBuff";
+        internal const string BleedBuffGuid = "44AD22B7-3E6A-4D2B-8B18-C452BC46F593";
+        internal const string BleedAbility = "SwashbucklerBleedAbility";
+        internal const string BleedAbilityGuid = "0DF7B61B-AFA2-42D7-BC21-42BCA753A887";
+        internal const string BleedDebuffDisplayName = "Bleed.Name";
+        internal const string BleedDebuffDescription = "BleedDebuff.Description";
+        internal const string BleedAbilityDescription = "BleedAbility.Description";
 
-        private const string Evasive = "SwashbucklerEvasive";
-        private const string EvasiveGuid = "18EC5CF1-8008-4206-86C5-78060903AD45";
-        private const string EvasiveDisplayName = "Evasive.Name";
-        private const string EvasiveDescription = "Evasive.Description";
+        internal const string SBleedDebuff = "SwashbucklerSBleedDebuff";
+        internal const string SBleedDebuffGuid = "373CB684-6891-48BA-8001-6F9A557C71D7";
+        internal const string SBleedBuff = "SwashbucklerSBleedBuff";
+        internal const string SBleedBuffGuid = "85F0EFC5-4B54-47EA-88DA-2ECA840D73BC";
+        internal const string SBleedAbility = "SwashbucklerSBleedAbility";
+        internal const string SBleedAbilityGuid = "2F2DACC3-E0CB-4EF7-A235-00EA599E8E00";
+        internal const string SBleedDebuffDisplayName = "SBleed.Name";
+        internal const string SBleedDebuffDescription = "SBleedDebuff.Description";
+        internal const string SBleedAbilityDescription = "SBleedAbility.Description";
 
-        private const string Subtle = "SwashbucklerSubtle";
-        private const string SubtleGuid = "E170A4DF-F533-4A4A-BB2C-9864C25AE99F";
-        private const string SubtleDisplayName = "Subtle.Name";
-        private const string SubtleDescription = "Subtle.Description";
+        internal const string DBleedDebuff = "SwashbucklerDBleedDebuff";
+        internal const string DBleedDebuffGuid = "7731C314-CF8C-4302-9A15-FA64DA1B3969";
+        internal const string DBleedBuff = "SwashbucklerDBleedBuff";
+        internal const string DBleedBuffGuid = "9D972DC9-FD2E-4785-8156-80C8BF06BC51";
+        internal const string DBleedAbility = "SwashbucklerDBleedAbility";
+        internal const string DBleedAbilityGuid = "35AE9A18-EF1C-46B7-86CF-3C8E20776BD2";
+        internal const string DBleedDebuffDisplayName = "DBleed.Name";
+        internal const string DBleedDebuffDescription = "DBleedDebuff.Description";
+        internal const string DBleedAbilityDescription = "DBleedAbility.Description";
 
-        private const string DizzyingFeature = "SwashbucklerDizzying";
-        private const string DizzyingFeatureGuid = "5E2EC03C-3EC3-4046-A9D2-FD3D1C195594";
-        private const string DizzyingAbility = "DizzyingAbility";
-        private const string DizzyingAbilityGuid = "2E30DC1D-778F-4DEE-B9F8-6157947BE725";
-        private const string DizzyingBuff = "DizzyingBuff";
-        private const string DizzyingBuffGuid = "3187B37D-C2F4-45DD-8BB8-D7B0E406734A";
-        private const string DizzyingDisplayName = "Dizzying.Name";
-        private const string DizzyingDescription = "Dizzying.Description";
+        internal const string CBleedDebuff = "SwashbucklerCBleedDebuff";
+        internal const string CBleedDebuffGuid = "854A00F0-E00B-4090-B2E2-12697760DA3F";
+        internal const string CBleedBuff = "SwashbucklerCBleedBuff";
+        internal const string CBleedBuffGuid = "3FA1691D-6694-4224-AE38-C2F112B56040";
+        internal const string CBleedAbility = "SwashbucklerCBleedAbility";
+        internal const string CBleedAbilityGuid = "B835B48B-1760-419C-9F6F-40173D786C03";
+        internal const string CBleedDebuffDisplayName = "CBleed.Name";
+        internal const string CBleedDebuffDescription = "CBleedDebuff.Description";
+        internal const string CBleedAbilityDescription = "CBleedAbility.Description";
 
-        private const string PerfectThrustFeature = "SwashbucklerPerfectThrust";
-        private const string PerfectThrustFeatureGuid = "B59AF802-7958-44EA-BC13-6F2BFF5D8516";
-        private const string PerfectThrustAbility = "PerfectThrustAbility";
-        private const string PerfectThrustAbilityGuid = "5015B851-7CB9-4B25-98CA-C38DF739B44F";
-        private const string PerfectThrustBuff = "PerfectThrustBuff";
-        private const string PerfectThrustBuffGuid = "4F75B433-FC90-469F-A910-F2D5BED2F6BA";
-        private const string PerfectThrustDisplayName = "PerfectThrust.Name";
-        private const string PerfectThrustDescription = "PerfectThrust.Description";
+        internal const string Evasive = "SwashbucklerEvasive";
+        internal const string EvasiveGuid = "18EC5CF1-8008-4206-86C5-78060903AD45";
+        internal const string EvasiveDisplayName = "Evasive.Name";
+        internal const string EvasiveDescription = "Evasive.Description";
 
-        private const string EdgeFeature = "SwashbucklerEdge";
-        private const string EdgeFeatureGuid = "570DD103-7342-439B-B5FB-2C84A1FCA98A";
-        private const string EdgeAbility = "EdgeAbility";
-        private const string EdgeAbilityGuid = "2B6081EC-8EE9-48DD-9EF3-70B50796B194";
-        private const string EdgeBuff = "EdgeBuff";
-        private const string EdgeBuffGuid = "30E218AC-CDC1-4737-B090-5C7A2F354BDF";
-        private const string EdgeDisplayName = "Edge.Name";
-        private const string EdgeDescription = "Edge.Description";
+        internal const string Subtle = "SwashbucklerSubtle";
+        internal const string SubtleGuid = "E170A4DF-F533-4A4A-BB2C-9864C25AE99F";
+        internal const string SubtleDisplayName = "Subtle.Name";
+        internal const string SubtleDescription = "Subtle.Description";
 
-        private const string CheatDeathFeature = "SwashbucklerCheatDeath";
-        private const string CheatDeathFeatureGuid = "25BE53F3-5BB5-45AE-844E-058E93335988";
-        private const string CheatDeathAbility = "CheatDeathAbility";
-        private const string CheatDeathAbilityGuid = "23431F92-BC1C-4896-89F9-0E4DE9FE713D";
-        private const string CheatDeathBuff = "CheatDeathBuff";
-        private const string CheatDeathBuffGuid = "D9D00D57-3483-49D9-B232-A0AC67FD49FF";
-        private const string CheatDeathDisplayName = "CheatDeath.Name";
-        private const string CheatDeathDescription = "CheatDeath.Description";
+        internal const string DizzyingFeature = "SwashbucklerDizzying";
+        internal const string DizzyingFeatureGuid = "5E2EC03C-3EC3-4046-A9D2-FD3D1C195594";
+        internal const string DizzyingAbility = "DizzyingAbility";
+        internal const string DizzyingAbilityGuid = "2E30DC1D-778F-4DEE-B9F8-6157947BE725";
+        internal const string DizzyingBuff = "DizzyingBuff";
+        internal const string DizzyingBuffGuid = "3187B37D-C2F4-45DD-8BB8-D7B0E406734A";
+        internal const string DizzyingDisplayName = "Dizzying.Name";
+        internal const string DizzyingDescription = "Dizzying.Description";
 
-        private const string DeadlyFeature = "SwashbucklerDeadly";
-        private const string DeadlyFeatureGuid = "2CEF8A28-F7CF-4098-9008-4369142A9F02";
-        private const string DeadlyAbility = "DeadlyAbility";
-        private const string DeadlyAbilityGuid = "42D0242B-C734-47AF-A047-667C39B0EF18";
-        private const string DeadlyBuff = "DeadlyBuff";
-        private const string DeadlyBuffGuid = "EFA3DE15-9686-40E1-BA79-D59B0E776EF9";
-        private const string DeadlyDisplayName = "Deadly.Name";
-        private const string DeadlyDescription = "Deadly.Description";
+        internal const string PerfectThrustFeature = "SwashbucklerPerfectThrust";
+        internal const string PerfectThrustFeatureGuid = "B59AF802-7958-44EA-BC13-6F2BFF5D8516";
+        internal const string PerfectThrustAbility = "PerfectThrustAbility";
+        internal const string PerfectThrustAbilityGuid = "5015B851-7CB9-4B25-98CA-C38DF739B44F";
+        internal const string PerfectThrustBuff = "PerfectThrustBuff";
+        internal const string PerfectThrustBuffGuid = "4F75B433-FC90-469F-A910-F2D5BED2F6BA";
+        internal const string PerfectThrustDisplayName = "PerfectThrust.Name";
+        internal const string PerfectThrustDescription = "PerfectThrust.Description";
 
-        private const string StunningFeature = "SwashbucklerStunning";
-        private const string StunningFeatureGuid = "7D81A096-FF2F-450D-AED1-4BE04B8466CC";
-        private const string StunningAbility = "StunningAbility";
-        private const string StunningAbilityGuid = "A63B3F78-B2E0-4FCD-9E1F-07D38772D7F7";
-        private const string StunningBuff = "StunningBuff";
-        private const string StunningBuffGuid = "71B88823-FC91-4618-B6EC-5BAA345E922E";
-        private const string StunningDisplayName = "Stunning.Name";
-        private const string StunningDescription = "Stunning.Description";
+        internal const string EdgeFeature = "SwashbucklerEdge";
+        internal const string EdgeFeatureGuid = "570DD103-7342-439B-B5FB-2C84A1FCA98A";
+        internal const string EdgeAbility = "EdgeAbility";
+        internal const string EdgeAbilityGuid = "2B6081EC-8EE9-48DD-9EF3-70B50796B194";
+        internal const string EdgeBuff = "EdgeBuff";
+        internal const string EdgeBuffGuid = "30E218AC-CDC1-4737-B090-5C7A2F354BDF";
+        internal const string EdgeDisplayName = "Edge.Name";
+        internal const string EdgeDescription = "Edge.Description";
 
-        private const string Deeds1 = "Deeds1";
-        private const string Deeds1Guid = "90DDA101-134D-4F44-8E3A-A429A7777E91";
-        private const string Deeds3 = "Deeds3";
-        private const string Deeds3Guid = "EE95ED61-1F39-49C9-BADE-23ECC3CD2CBB";
-        private const string Deeds7 = "Deeds7";
-        private const string Deeds7Guid = "B7A8612D-FF55-4416-BEE3-97CCAF787278";
-        private const string Deeds11 = "Deeds11";
-        private const string Deeds11Guid = "8631E60C-28A6-4441-A963-861EE5D5B398";
-        private const string Deeds15 = "Deeds15";
-        private const string Deeds15Guid = "B569948F-AE1A-4F97-B694-E8AAD786E910";
-        private const string Deeds19 = "Deeds19";
-        private const string Deeds19Guid = "C4997A33-FBD1-46AC-BC00-03FA8F7943A1";
-        private const string DeedsDisplayName = "Deeds.Name";
-        private const string DeedsDescription = "Deeds.Description";
+        internal const string CheatDeathFeature = "SwashbucklerCheatDeath";
+        internal const string CheatDeathFeatureGuid = "25BE53F3-5BB5-45AE-844E-058E93335988";
+        internal const string CheatDeathAbility = "CheatDeathAbility";
+        internal const string CheatDeathAbilityGuid = "23431F92-BC1C-4896-89F9-0E4DE9FE713D";
+        internal const string CheatDeathBuff = "CheatDeathBuff";
+        internal const string CheatDeathBuffGuid = "D9D00D57-3483-49D9-B232-A0AC67FD49FF";
+        internal const string CheatDeathDisplayName = "CheatDeath.Name";
+        internal const string CheatDeathDescription = "CheatDeath.Description";
+
+        internal const string DeadlyFeature = "SwashbucklerDeadly";
+        internal const string DeadlyFeatureGuid = "2CEF8A28-F7CF-4098-9008-4369142A9F02";
+        internal const string DeadlyAbility = "DeadlyAbility";
+        internal const string DeadlyAbilityGuid = "42D0242B-C734-47AF-A047-667C39B0EF18";
+        internal const string DeadlyBuff = "DeadlyBuff";
+        internal const string DeadlyBuffGuid = "EFA3DE15-9686-40E1-BA79-D59B0E776EF9";
+        internal const string DeadlyDisplayName = "Deadly.Name";
+        internal const string DeadlyDescription = "Deadly.Description";
+
+        internal const string StunningFeature = "SwashbucklerStunning";
+        internal const string StunningFeatureGuid = "7D81A096-FF2F-450D-AED1-4BE04B8466CC";
+        internal const string StunningAbility = "StunningAbility";
+        internal const string StunningAbilityGuid = "A63B3F78-B2E0-4FCD-9E1F-07D38772D7F7";
+        internal const string StunningBuff = "StunningBuff";
+        internal const string StunningBuffGuid = "71B88823-FC91-4618-B6EC-5BAA345E922E";
+        internal const string StunningDisplayName = "Stunning.Name";
+        internal const string StunningDescription = "Stunning.Description";
+
+        internal const string Deeds1 = "Deeds1";
+        internal const string Deeds1Guid = "90DDA101-134D-4F44-8E3A-A429A7777E91";
+        internal const string Deeds3 = "Deeds3";
+        internal const string Deeds3Guid = "EE95ED61-1F39-49C9-BADE-23ECC3CD2CBB";
+        internal const string Deeds7 = "Deeds7";
+        internal const string Deeds7Guid = "B7A8612D-FF55-4416-BEE3-97CCAF787278";
+        internal const string Deeds11 = "Deeds11";
+        internal const string Deeds11Guid = "8631E60C-28A6-4441-A963-861EE5D5B398";
+        internal const string Deeds15 = "Deeds15";
+        internal const string Deeds15Guid = "B569948F-AE1A-4F97-B694-E8AAD786E910";
+        internal const string Deeds19 = "Deeds19";
+        internal const string Deeds19Guid = "C4997A33-FBD1-46AC-BC00-03FA8F7943A1";
+        internal const string DeedsDisplayName = "Deeds.Name";
+        internal const string DeedsDescription = "Deeds.Description";
 
         internal static void Configure()
         {
@@ -380,23 +389,23 @@ namespace Swashbuckler
             swash_class.PrimaryColor = CharacterClassRefs.MagusClass.Reference.Get().PrimaryColor;
             swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;   
 
-            var panache_feature = CreatePanache();
-            var finesse = CreateFinesse();
+            panache_feature = CreatePanache();
+            swash_finesse = CreateFinesse();
             var profs = CreateProficiencies();
             var swash_bonus_feats = CreateBonusFeat();
             swash_weapon_training = CreateWeaponTraining();
-            var swash_weapon_mastery = CreateWeaponMastery();
+            swash_weapon_mastery = CreateWeaponMastery();
             var nimble = CreateNimble();
             var ftraining = CreateFighterTraining();
             var deeds1 = CreateDeeds1();
             var deeds3 = CreateDeeds3();
             var deeds7 = CreateDeeds7();
-            var deeds11 = CreateDeeds11();
+            deeds11 = CreateDeeds11();
             var deeds15 = CreateDeeds15();
             var deeds19 = CreateDeeds19();
 
             var lb = new LevelEntryBuilder();
-            lb.AddEntry(1, deeds1, panache_feature, finesse, profs);
+            lb.AddEntry(1, deeds1, panache_feature, swash_finesse, profs);
             lb.AddEntry(2, CreateCharmed());
             lb.AddEntry(3, nimble, deeds3);
             lb.AddEntry(4, ftraining, swash_bonus_feats);
@@ -413,11 +422,14 @@ namespace Swashbuckler
             lb.AddEntry(19, deeds19);
             lb.AddEntry(20, swash_bonus_feats, swash_weapon_mastery);
 
+            Archetypes.InspiredBlade.Configure();
+
             var ui = new UIGroupBuilder();
             ui.AddGroup(swash_bonus_feats);
             ui.AddGroup(swash_weapon_training, swash_weapon_mastery);
-            ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19);
-            ui.SetGroupDeterminators(panache_feature, finesse, profs);
+            ui.AddGroup(Archetypes.InspiredBlade.rapier_training, Archetypes.InspiredBlade.rapier_mastery);
+            ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19, Archetypes.InspiredBlade.inspired_deeds11);
+            ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse);
 
             var prog = ProgressionConfigurator.New(Progression, ProgressionGuid)
                 .AddToLevelEntries(lb.GetEntries())
@@ -435,7 +447,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateProficiencies()
+        internal static BlueprintFeature CreateProficiencies()
         {
             return FeatureConfigurator.New(Proficiencies, ProficienciesGuid)
               .SetDisplayName(ProficienciesDisplayName)
@@ -451,7 +463,7 @@ namespace Swashbuckler
               .Configure();
         }
 
-        private static BlueprintFeature CreatePanache()
+        internal static BlueprintFeature CreatePanache()
         {
             panache_resource = AbilityResourceConfigurator.New(PanacheResource, PanacheResourceGuid)
                 .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByStat(StatType.Charisma))
@@ -470,7 +482,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateFinesse()
+        internal static BlueprintFeature CreateFinesse()
         {
             var swash_finesse = FeatureConfigurator.New(Finesse, FinesseGuid)
                 .SetDisplayName(FinesseDisplayName)
@@ -489,7 +501,7 @@ namespace Swashbuckler
             return swash_finesse;
         }
 
-        private static BlueprintFeature CreateCharmed()
+        internal static BlueprintFeature CreateCharmed()
         {
             var charmed_resource = AbilityResourceConfigurator.New(CharmedResource, CharmedResourceGuid)
                 .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByLevelStartPlusDivStep(classes: new string[] { SwashName }, startingLevel: 2, startingBonus: 3, levelsPerStep: 4, bonusPerStep: 1, minBonus: 0))
@@ -527,7 +539,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateNimble()
+        internal static BlueprintFeature CreateNimble()
         {
             var nimble_buff = BuffConfigurator.New(NimbleBuff, NimbleBuffGuid)
                 .SetDisplayName(NimbleDisplayName)
@@ -547,7 +559,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateFighterTraining()
+        internal static BlueprintFeature CreateFighterTraining()
         {
             return FeatureConfigurator.New(FTraining, FTrainingGuid)
                 .SetDisplayName(FTrainingDisplayName)
@@ -558,7 +570,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateBonusFeat()
+        internal static BlueprintFeature CreateBonusFeat()
         {
             return FeatureSelectionConfigurator.New(BFeat, BFeatGuid)
                 .CopyFrom(FeatureSelectionRefs.FighterFeatSelection)
@@ -568,7 +580,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateWeaponTraining()
+        internal static BlueprintFeature CreateWeaponTraining()
         {
             var swash_training = FeatureConfigurator.New(WTraining, WTrainingGuid)
                 .SetDisplayName(WTrainingDisplayName)
@@ -578,10 +590,11 @@ namespace Swashbuckler
                 .AddWeaponTraining()
                 .AddWeaponTrainingBonuses(stat: StatType.AdditionalAttackBonus, descriptor: ModifierDescriptor.UntypedStackable)
                 .AddWeaponTrainingBonuses(stat: StatType.AdditionalDamage, descriptor: ModifierDescriptor.UntypedStackable)
-                .AddContextRankConfig(ContextRankConfigs.FeatureRank(WTraining))
-                .SetRanks(4)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
                 .AddToGroups(FeatureGroup.WeaponTraining)
+                .AddContextRankConfig(ContextRankConfigs.FeatureRank(WTraining))
+                .SetReapplyOnLevelUp()
+                .SetRanks(4)
                 .SkipAddToSelections()
                 .SetIsClassFeature()
                 .Configure();
@@ -593,7 +606,7 @@ namespace Swashbuckler
             return swash_training;
         }
 
-        private static BlueprintFeature CreateWeaponMastery()
+        internal static BlueprintFeature CreateWeaponMastery()
         {
             return FeatureConfigurator.New(WMastery, WMasteryGuid)
                 .SetDisplayName(WMasteryDisplayName)
@@ -605,7 +618,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDerringDo()
+        internal static BlueprintFeature CreateDerringDo()
         {
             var derring_buff = BuffConfigurator.New(DerringBuff, DerringBuffGuid)
                 .SetDisplayName(DerringDisplayName)
@@ -634,7 +647,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDodgingPanache()
+        internal static BlueprintFeature CreateDodgingPanache()
         {
             var dodging_buff = BuffConfigurator.New(DodgingBuff, DodgingBuffGuid)
                 .SetDisplayName(DodgingDisplayName)
@@ -663,7 +676,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateParry()
+        internal static BlueprintFeature CreateParry()
         {
             var parry_buff = BuffConfigurator.New(SwashParryBuff, SwashParryBuffGuid)
                 .SetDisplayName(SwashParryDisplayName)
@@ -692,7 +705,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeeds1()
+        internal static BlueprintFeature CreateDeeds1()
         {
             return FeatureConfigurator.New(Deeds1, Deeds1Guid)
                 .SetDisplayName(DeedsDisplayName)
@@ -702,7 +715,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateKipUp()
+        internal static BlueprintFeature CreateKipUp()
         {
             kip_buff = BuffConfigurator.New(KipBuff, KipBuffGuid)
                 .SetDisplayName(KipDisplayName)
@@ -731,7 +744,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateMenacing()
+        internal static BlueprintFeature CreateMenacing()
         {
             var menacing_buff = BuffConfigurator.New(MenacingBuff, MenacingBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
@@ -756,7 +769,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreatePrecise()
+        internal static BlueprintFeature CreatePrecise()
         {
             precise_strike_buff = BuffConfigurator.New(PreciseBuff, PreciseBuffGuid)
                 .SetDisplayName(PreciseDisplayName)
@@ -790,7 +803,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateInitiative()
+        internal static BlueprintFeature CreateInitiative()
         {
             return FeatureConfigurator.New(Initiative, InitiativeGuid)
                 .SetDisplayName(InitiativeDisplayName)
@@ -801,7 +814,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeeds3()
+        internal static BlueprintFeature CreateDeeds3()
         {
             return FeatureConfigurator.New(Deeds3, Deeds3Guid)
                 .SetDisplayName(DeedsDisplayName)
@@ -811,7 +824,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateGrace()
+        internal static BlueprintFeature CreateGrace()
         {
             var grace_buff = BuffConfigurator.New(GraceBuff, GraceBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
@@ -836,7 +849,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateSupFeint()
+        internal static BlueprintFeature CreateSupFeint()
         {
             var feint_debuff = BuffConfigurator.New(FeintDebuff, FeintDebuffGuid)
                 .SetDisplayName(FeintDebuffDisplayName)
@@ -868,7 +881,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateTargetedStrike()
+        internal static BlueprintFeature CreateTargetedStrike()
         {
             var arms_ability = AbilityConfigurator.New(TSArms, TSArmsGuid)
                 .SetDisplayName(TSArmsDisplayName)
@@ -954,7 +967,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeeds7()
+        internal static BlueprintFeature CreateDeeds7()
         {
             return FeatureConfigurator.New(Deeds7, Deeds7Guid)
                 .SetDisplayName(DeedsDisplayName)
@@ -964,7 +977,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateBleedingWound()
+        internal static BlueprintFeature CreateBleedingWound()
         {
             var bleeding_wound_group = ExpandedActivatableAbilityGroup.BleedingWound;
 
@@ -1105,29 +1118,33 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateEvasive()
+        internal static BlueprintFeature CreateEvasive()
         {
-            return FeatureConfigurator.New(Evasive, EvasiveGuid)
+            evasive_feature = FeatureConfigurator.New(Evasive, EvasiveGuid)
                 .SetDisplayName(EvasiveDisplayName)
                 .SetDescription(EvasiveDescription)
                 .SetIcon(FeatureRefs.Evasion.Reference.Get().Icon)
                 .AddComponent<Evasive>()
                 .SetIsClassFeature()
                 .Configure();
+
+            return evasive_feature;
         }
 
-        private static BlueprintFeature CreateSubtle()
+        internal static BlueprintFeature CreateSubtle()
         {
-            return FeatureConfigurator.New(Subtle, SubtleGuid)
+            subtle_feature = FeatureConfigurator.New(Subtle, SubtleGuid)
                 .SetDisplayName(SubtleDisplayName)
                 .SetDescription(SubtleDescription)
                 .SetIcon(FeatureRefs.TwoHandedFighterStrongGrip.Reference.Get().Icon)
                 .AddComponent<SubtleBlade>()
                 .SetIsClassFeature()
                 .Configure();
+
+            return subtle_feature;
         }
 
-        private static BlueprintFeature CreateDeeds11()
+        internal static BlueprintFeature CreateDeeds11()
         {
             return FeatureConfigurator.New(Deeds11, Deeds11Guid)
                 .SetDisplayName(DeedsDisplayName)
@@ -1137,7 +1154,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDizzying()
+        internal static BlueprintFeature CreateDizzying()
         {
             dizzying_defense_buff = BuffConfigurator.New(DizzyingBuff, DizzyingBuffGuid)
                 .AddNotDispelable()
@@ -1166,7 +1183,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreatePerfectThrust()
+        internal static BlueprintFeature CreatePerfectThrust()
         {
             var perfect_thrust_buff = BuffConfigurator.New(PerfectThrustBuff, PerfectThrustBuffGuid)
                 .AddComponent<IgnoreDamageReductionOnTarget>()
@@ -1177,7 +1194,7 @@ namespace Swashbuckler
             var perfect_thrust_ability = AbilityConfigurator.New(PerfectThrustAbility, PerfectThrustAbilityGuid)
                 .SetDisplayName(PerfectThrustDisplayName)
                 .SetDescription(PerfectThrustDescription)
-                .SetIcon(FeatureRefs.DuelistParryFeature.Reference.Get().Icon)
+                .SetIcon(AbilityRefs.DimensionStrikeAbility.Reference.Get().Icon)
                 .SetType(AbilityType.Extraordinary)
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
@@ -1194,13 +1211,13 @@ namespace Swashbuckler
             return FeatureConfigurator.New(PerfectThrustFeature, PerfectThrustFeatureGuid)
                 .SetDisplayName(PerfectThrustDisplayName)
                 .SetDescription(PerfectThrustDescription)
-                .SetIcon(FeatureRefs.DuelistParryFeature.Reference.Get().Icon)
+                .SetIcon(AbilityRefs.DimensionStrikeAbility.Reference.Get().Icon)
                 .AddFacts(new() { perfect_thrust_ability })
                 .SetIsClassFeature()
                 .Configure();
         }
 
-        private static BlueprintFeature CreateEdge()
+        internal static BlueprintFeature CreateEdge()
         {
             var edge_buff = BuffConfigurator.New(EdgeBuff, EdgeBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
@@ -1226,7 +1243,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeeds15()
+        internal static BlueprintFeature CreateDeeds15()
         {
             return FeatureConfigurator.New(Deeds15, Deeds15Guid)
                 .SetDisplayName(DeedsDisplayName)
@@ -1236,7 +1253,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateCheatDeath()
+        internal static BlueprintFeature CreateCheatDeath()
         {
             var cheat_buff = BuffConfigurator.New(CheatDeathBuff, CheatDeathBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
@@ -1261,7 +1278,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeadly()
+        internal static BlueprintFeature CreateDeadly()
         {
             var deadly_buff = BuffConfigurator.New(DeadlyBuff, DeadlyBuffGuid)
                 .SetDisplayName(DeadlyDisplayName)
@@ -1290,7 +1307,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateStunning()
+        internal static BlueprintFeature CreateStunning()
         {
             var stunning_buff = BuffConfigurator.New(StunningBuff, StunningBuffGuid)
                 .SetDisplayName(StunningDisplayName)
@@ -1318,7 +1335,7 @@ namespace Swashbuckler
                 .Configure();
         }
 
-        private static BlueprintFeature CreateDeeds19()
+        internal static BlueprintFeature CreateDeeds19()
         {
             return FeatureConfigurator.New(Deeds19, Deeds19Guid)
                 .SetDisplayName(DeedsDisplayName)
