@@ -15,6 +15,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
 using Swashbuckler.Components;
 using System;
 using System.Collections.Generic;
@@ -101,12 +102,12 @@ namespace Swashbuckler.Archetypes
               .AddToRemoveFeatures(17, Swashbuckler.swash_weapon_training)
               .AddToRemoveFeatures(20, Swashbuckler.swash_weapon_mastery);
 
+            inspired_deeds11 = CreateDeeds11();
             inspired_panache = CreatePanache();
             inspired_finesse = CreateFinesse();
             var training = CreateWeaponTraining();
             rapier_training = training[0];
             rapier_mastery = CreateWeaponMastery();
-            inspired_deeds11 = CreateDeeds11();
 
             archetype
                 .AddToAddFeatures(1, inspired_panache, inspired_finesse)
@@ -142,7 +143,7 @@ namespace Swashbuckler.Archetypes
                 .SetIcon(FeatureRefs.WeaponFinesse.Reference.Get().Icon)
                 .AddComponent<AttackStatReplacementForRapier>()
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
-                .AddFacts(new() { FeatureRefs.WeaponFocusRapier.Reference.Get() })
+                .AddParametrizedFeatures(new AddParametrizedFeatures.FeatureData[] { new AddParametrizedFeatures.FeatureData { m_Feature = ParametrizedFeatureRefs.WeaponFocus.Reference.GetBlueprint().ToReference<BlueprintParametrizedFeatureReference>(), ParamWeaponCategory = WeaponCategory.Rapier } })
                 .SetIsClassFeature()
                 .Configure();
 
