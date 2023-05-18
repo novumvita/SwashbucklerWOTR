@@ -2,13 +2,6 @@
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Kingmaker.UI.CanvasScalerWorkaround;
 
 namespace Swashbuckler.Components
 {

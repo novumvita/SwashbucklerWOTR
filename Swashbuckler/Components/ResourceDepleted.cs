@@ -2,13 +2,8 @@
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using UnityEngine;
 
 namespace Swashbuckler.Components

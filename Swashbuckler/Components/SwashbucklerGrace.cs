@@ -1,16 +1,8 @@
 ﻿using BlueprintCore.Blueprints.References;
-using Kingmaker;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using Owlcat.Runtime.Core.Logging;
-using Swashbuckler.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {

@@ -4,11 +4,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {
@@ -39,7 +35,7 @@ namespace Swashbuckler.Components
             }
 
             return total;
-            
+
         }
 
         public void OnEventAboutToTrigger(RuleSkillCheck evt)
@@ -49,7 +45,7 @@ namespace Swashbuckler.Components
 
             evt.Bonus.AddModifier(CalculateExplodingDice(evt), base.Fact, ModifierDescriptor.UntypedStackable);
             willSpend = true;
-            
+
         }
 
         public void OnEventDidTrigger(RuleSkillCheck evt)
@@ -57,7 +53,7 @@ namespace Swashbuckler.Components
             if (willSpend)
             {
                 Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
-                willSpend= false;
+                willSpend = false;
             }
         }
     }

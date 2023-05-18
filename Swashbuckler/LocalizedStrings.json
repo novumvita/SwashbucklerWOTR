@@ -225,7 +225,7 @@
     "enGB": "At 3rd level, while she has at least 1 panache point, a swashbuckler gains the ability to strike precisely with a light or one-handed piercing melee weapon (though not natural weapon attacks), adding her swashbuckler level to the damage dealt. To use this deed, a swashbuckler cannot attack with a weapon in her other hand or use a shield other than a buckler. She can even use this ability with thrown light or one-handed piercing melee weapons, so long as the target is within 30 feet of her. Any creature that is immune to sneak attacks is immune to the additional damage granted by precise strike, and any item or ability that protects a creature from critical hits also protects a creature from the additional damage of a precise strike. This additional damage is precision damage, and isn’t multiplied on a critical hit. As a swift action, a swashbuckler can spend 1 panache point to double her precise strike’s damage bonus on the next attack. This benefit must be used before the end of her turn, or it is lost. This deed’s cost cannot be reduced by any ability or effect that reduces the amount of panache points a deed costs (such as the Signature Deed feat).",
     "zhCN": "3级时，只要游荡剑客拥有至少1点时髦值，在使用轻型或单手穿刺类近战武器（不能是天生武器）进行攻击时，游荡剑客将她的游荡剑客等级加到伤害上。使用精确刺击时，游荡剑客不能使用另一只手持用武器攻击或持用小圆盾以外的盾牌。另外，只要敌人在距离游荡剑客30尺以内，她还能将精确刺击能力用于轻型或单手穿刺类投掷武器上。任意免疫重击的生物都不受精确刺击影响，并且任意可以防止重击的物品或能力也可以保护生物不受影响。精确刺击造成的额外伤害是精准伤害，因此不能因为重击而翻倍。使用1个迅捷动作，一名游荡剑客可以花费1点时髦值使她的下一次精确刺击伤害翻倍。这次攻击必须在她的回合结束前进行，否则就会失去这个效果。此壮举消耗的时髦值点数，无法通过任何降低时髦值消耗的能力或效果（如标志动作专长）所降低。"
   },
-  
+
   {
     "Key": "PreciseAbility.Description",
     "enGB": "As a swift action, a swashbuckler can spend 1 panache point to double her precise strike’s damage bonus on the next attack. This benefit must be used before the end of her turn, or it is lost. This deed’s cost cannot be reduced by any ability or effect that reduces the amount of panache points a deed costs (such as the Signature Deed feat).",
@@ -265,15 +265,15 @@
   },
 
   {
-    "Key": "Feint.Name",
+    "Key": "FeintDebuff.Name",
     "ProcessTemplates": false,
     "enGB": "Feinted",
     "zhCN": "佯攻"
   },
 
   {
-    "Key": "Feint.Description",
-    "enGB": "Denied Dexterity Bonus to AC.",
+    "Key": "FeintDebuff.Description",
+    "enGB": "Denied Dexterity Bonus to AC against melee attacks.",
     "zhCN": "失去AC上的敏捷加值。"
   },
 
@@ -629,5 +629,49 @@
     "Key": "RMastery.Description",
     "enGB": "At 20th level, when an inspired blade threatens a critical hit with a rapier, that critical hit is automatically confirmed. Furthermore, the critical threat range increases by 1 (this increase to the critical threat range stacks with the increase from rapier training, to a total threat range of 14–20), and the critical modifier of the weapon increases by 1 (×2 becomes ×3, for example).",
     "zhCN": "在20级时，一名灵感之刃在使用刺剑造成重击威胁时，重击确认自动成功。额外地，灵感之刃使用细剑时重击范围增加1（这个增加会与刺剑训练能力叠加，因此最终的重击范围为14-20），并且重击时的伤害倍数将会额外加1（如X2会变为X3）。"
+  },
+
+  {
+    "Key": "Feint.Name",
+    "ProcessTemplates": false,
+    "enGB": "Feint"
+  },
+
+  {
+    "Key": "Feint.Description",
+    "enGB": "You can attempt to feint against an enemy in melee as a move action. To feint, make a Bluff skill check. The DC of this check is equal to 10 + your opponent’s base attack bonus + your opponent’s Wisdom modifier.\n If successful, the enemy is denied its Dexterity bonus to AC against your next attack on or before its next turn.\n If you have Greater Feint, the enemy is denied its Dexterity bonus to AC until its next turn."
+  },
+
+  {
+    "Key": "GFeint.Name",
+    "ProcessTemplates": false,
+    "enGB": "Greater Feint"
+  },
+
+  {
+    "Key": "GFeint.Description",
+    "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus for one turn."
+  },
+
+  {
+    "Key": "Swordplay.Name",
+    "ProcessTemplates": false,
+    "enGB": "Swordplay Style"
+  },
+
+  {
+    "Key": "Swordplay.Description",
+    "enGB": "While using this style and wielding a weapon from the heavy blades or light blades fighter weapon groups and fighting defensively or using the Combat Expertise feat, you gain a +1 shield bonus to your Armor Class. In addition, you do not take the penalty on melee attacks from Combat Expertise on the first attack roll you make each turn. You still take the penalty on additional attacks, including attacks of opportunity."
+  },
+
+  {
+    "Key": "SwordplayUpset.Name",
+    "ProcessTemplates": false,
+    "enGB": "Swordplay Upset"
+  },
+
+  {
+    "Key": "SwordplayUpset.Description",
+    "enGB": "While using Swordplay Style, you can attempt a feint against an opponent that makes a melee attack against you and misses."
   }
 ]

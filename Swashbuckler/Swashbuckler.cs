@@ -1,39 +1,39 @@
-﻿using BlueprintCore.Blueprints.Configurators.Classes;
+﻿using BlueprintCore.Actions.Builder;
+using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.Configurators.Classes;
+using BlueprintCore.Blueprints.Configurators.Classes.Selection;
+using BlueprintCore.Blueprints.Configurators.Root;
+using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Blueprints.CustomConfigurators;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
+using BlueprintCore.Conditions.Builder;
+using BlueprintCore.Conditions.Builder.ContextEx;
+using BlueprintCore.Utils;
 using BlueprintCore.Utils.Types;
-using Kingmaker.Blueprints.Classes;
+using HarmonyLib;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.FactLogic;
-using BlueprintCore.Utils;
-using BlueprintCore.Blueprints.CustomConfigurators;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using BlueprintCore.Actions.Builder;
-using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Swashbuckler.Components;
-using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using BlueprintCore.Conditions.Builder;
-using BlueprintCore.Conditions.Builder.ContextEx;
-using HarmonyLib;
-using BlueprintCore.Blueprints.Configurators.Root;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using Swashbuckler.Components;
 using Swashbuckler.Patches;
-using BlueprintCore.Actions.Builder.ContextEx;
-using BlueprintCore.Blueprints.Configurators.Classes.Selection;
+using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace Swashbuckler
 {
@@ -197,8 +197,8 @@ namespace Swashbuckler
 
         internal const string FeintDebuff = "FeintDebuff";
         internal const string FeintDebuffGuid = "B9291969-6985-402B-A84B-9FC71B803226";
-        internal const string FeintDebuffDisplayName = "Feint.Name";
-        internal const string FeintDebuffDescription = "Feint.Description";
+        internal const string FeintDebuffDisplayName = "FeintDebuff.Name";
+        internal const string FeintDebuffDescription = "FeintDebuff.Description";
 
         internal const string SupFeint = "SwashbucklerSuperiorFeint";
         internal const string SupFeintGuid = "590C3E64-BE67-4098-98C2-3652B6E16841";
@@ -387,7 +387,7 @@ namespace Swashbuckler
             swash_class.MaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().MaleEquipmentEntities;
             swash_class.FemaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().FemaleEquipmentEntities;
             swash_class.PrimaryColor = CharacterClassRefs.MagusClass.Reference.Get().PrimaryColor;
-            swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;   
+            swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;
 
             panache_feature = CreatePanache();
             swash_finesse = CreateFinesse();
@@ -440,11 +440,11 @@ namespace Swashbuckler
             swash_class = CharacterClassConfigurator.For(swash_class)
                 .SetProgression(prog)
                 .SetSignatureAbilities(new Blueprint<BlueprintFeatureReference>[] { panache_feature, deeds1, swash_weapon_training })
-                .Configure();
+                .Configure(delayed: true);
 
             RootConfigurator.For(RootRefs.BlueprintRoot)
                 .ModifyProgression(c => c.m_CharacterClasses = c.m_CharacterClasses.AddToArray(swash_class.ToReference<BlueprintCharacterClassReference>()))
-                .Configure();
+                .Configure(delayed: true);
         }
 
         internal static BlueprintFeature CreateProficiencies()
@@ -851,14 +851,6 @@ namespace Swashbuckler
 
         internal static BlueprintFeature CreateSupFeint()
         {
-            var feint_debuff = BuffConfigurator.New(FeintDebuff, FeintDebuffGuid)
-                .SetDisplayName(FeintDebuffDisplayName)
-                .SetDescription(FeintDebuffDescription)
-                .SetIcon(FeatureRefs.SwordlordDefensiveParryFeature.Reference.Get().Icon)
-                .AddNotDispelable()
-                .AddCondition(UnitCondition.LoseDexterityToAC)
-                .Configure();
-
             var superior_feint_ability = AbilityConfigurator.New(SupFeintAbility, SupFeintAbilityGuid)
                 .SetDisplayName(SupFeintDisplayName)
                 .SetDescription(SupFeintDescription)
@@ -867,9 +859,10 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetActionType(UnitCommand.CommandType.Standard)
                 .SetRange(AbilityRange.Weapon)
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(feint_debuff, ContextDuration.Fixed(1)).Build())
+                .AddAbilityEffectRunAction(Feats.FeintFeats.feint_action)
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
+                .AddComponent<AbilityCasterHasAtLeastOnePanache>()
                 .Configure();
 
             return FeatureConfigurator.New(SupFeint, SupFeintGuid)
@@ -891,6 +884,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Special)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<Disarm>().Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -907,6 +901,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Special)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(BuffRefs.Confusion.Reference.Get(), ContextDuration.Fixed(1)).Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -925,7 +920,8 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(BuffRefs.ProneBuff.Reference.Get(), ContextDuration.Fixed(1)).Build())
+                .SetAnimation(CastAnimationStyle.Special)
+                .AddAbilityEffectRunAction(ActionsBuilder.New().KnockdownTarget().Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
                 .AddComponent<AbilityTargetNotImmuneToPrecision>()
@@ -942,6 +938,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Special)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(BuffRefs.Staggered.Reference.Get(), ContextDuration.Fixed(1)).Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -1171,7 +1168,7 @@ namespace Swashbuckler
                 .SetRange(AbilityRange.Weapon)
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(buff:dizzying_defense_buff, durationValue: ContextDuration.Fixed(1), toCaster: true).ApplyBuff(buff: BuffRefs.FightDefensivelyBuff.Reference.Get(), durationValue: ContextDuration.Fixed(1), toCaster: true).MeleeAttack().Build())
+                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(buff: dizzying_defense_buff, durationValue: ContextDuration.Fixed(1), toCaster: true).ApplyBuff(buff: BuffRefs.FightDefensivelyBuff.Reference.Get(), durationValue: ContextDuration.Fixed(1), toCaster: true).MeleeAttack().Build())
                 .Configure();
 
             return FeatureConfigurator.New(DizzyingFeature, DizzyingFeatureGuid)

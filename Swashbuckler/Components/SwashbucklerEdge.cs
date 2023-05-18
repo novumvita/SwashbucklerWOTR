@@ -1,14 +1,9 @@
-﻿using Kingmaker.Enums;
+﻿using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kingmaker.EntitySystem.Stats;
 
 namespace Swashbuckler.Components
 {

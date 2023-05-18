@@ -7,12 +7,8 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Commands;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker;
-using Owlcat.Runtime.Core.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {

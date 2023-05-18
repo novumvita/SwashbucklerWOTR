@@ -1,16 +1,7 @@
-﻿using BlueprintCore.Blueprints.References;
-using Kingmaker.Controllers.Projectiles;
-using Kingmaker.Enums;
+﻿using Kingmaker;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using Kingmaker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mono.Cecil;
 
 namespace Swashbuckler.Components
 {

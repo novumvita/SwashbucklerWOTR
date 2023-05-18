@@ -1,20 +1,10 @@
-﻿using JetBrains.Annotations;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.EntitySystem.Entities;
+﻿using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Abilities.Components.Base;
-using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Parts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {
