@@ -1,11 +1,19 @@
 # Swashbuckler for Pathfinder: Wrath of the Righteous 
 
-Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/) class.
+Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/) class and some feats that fit the theme.
 * Archetypes
   * [Inspired Blade](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/inspired-blade) 
 
+* Feats
+  * [Improved Feint](https://www.d20pfsrd.com/feats/combat-feats/improved-feint-combat)
+  * [Greater Feint](https://www.d20pfsrd.com/feats/combat-feats/greater-feint-combat)
+  * [Swordplay Style](https://www.d20pfsrd.com/feats/combat-feats/swordplay-style-combat-style)
+  * [Swordplay Upset](https://www.d20pfsrd.com/feats/combat-feats/swordplay-upset-combat)
+
 ## Deviations from TableTop
-Some abilities which required immediate action now only use free action.
+* Some abilities which required immediate action now only use free action.
+* Improved Feint is refashioned as Feint and now gives the ability to feint.
+* Swordplay Style does not require choosing one weapon type.
 
 ## Planned Content
 * Archetypes
