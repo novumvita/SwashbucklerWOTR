@@ -631,47 +631,57 @@
     "zhCN": "在20级时，一名灵感之刃在使用刺剑造成重击威胁时，重击确认自动成功。额外地，灵感之刃使用细剑时重击范围增加1（这个增加会与刺剑训练能力叠加，因此最终的重击范围为14-20），并且重击时的伤害倍数将会额外加1（如X2会变为X3）。"
   },
 
+
   {
     "Key": "Feint.Name",
     "ProcessTemplates": false,
-    "enGB": "Feint"
+    "enGB": "Feint",
+    "zhCN": "虚招"
   },
 
   {
     "Key": "Feint.Description",
-    "enGB": "You can attempt to feint against an enemy in melee as a move action. To feint, make a Bluff skill check. The DC of this check is equal to 10 + your opponent’s base attack bonus + your opponent’s Wisdom modifier.\n If successful, the enemy is denied its Dexterity bonus to AC against your next attack on or before its next turn.\n If you have Greater Feint, the enemy is denied its Dexterity bonus to AC until its next turn."
+    "enGB": "You can attempt to feint against an enemy in melee as a move action. To feint, make a Bluff skill check. The DC of this check is equal to 10 + your opponent’s base attack bonus + your opponent’s Wisdom modifier.\n If successful, the enemy is denied its Dexterity bonus to AC against your next attack on or before its next turn.\n If you have Greater Feint, the enemy is denied its Dexterity bonus to AC until its next turn.",
+    "zhCN": "你能够尝试使用移动动作对对手发动虚招。使用虚招时，进行一次唬骗技能检定，虚招的DC为“10+目标BAB+感知修正”。\n如果你成功地使用了虚招，目标将在对抗你的下一次近战攻击时或者直到其下一轮前（取较先发生者），无法在AC上获得自己的敏捷加值。\n如果拥有高等虚招，敌人直到其下一轮前失去其AC上的敏捷加值。"
   },
 
   {
     "Key": "GFeint.Name",
     "ProcessTemplates": false,
-    "enGB": "Greater Feint"
+    "enGB": "Greater Feint",
+    "zhCN": "高等虚招"
   },
 
   {
     "Key": "GFeint.Description",
-    "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus for one turn."
+    "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus for one turn.",
+    "zhCN": "当你使用虚招使得敌人失去其AC上的敏捷加值时，效果持续到其下一轮。"
   },
 
   {
     "Key": "Swordplay.Name",
     "ProcessTemplates": false,
-    "enGB": "Swordplay Style"
+    "enGB": "Swordplay Style",
+    "zhCN": "刺剑流"
   },
 
   {
     "Key": "Swordplay.Description",
-    "enGB": "While using this style and wielding a weapon from the heavy blades or light blades fighter weapon groups and fighting defensively or using the Combat Expertise feat, you gain a +1 shield bonus to your Armor Class. In addition, you do not take the penalty on melee attacks from Combat Expertise on the first attack roll you make each turn. You still take the penalty on additional attacks, including attacks of opportunity."
+    "enGB": "While using this style and wielding a weapon from the heavy blades or light blades fighter weapon groups and fighting defensively or using the Combat Expertise feat, you gain a +1 shield bonus to your Armor Class. In addition, you do not take the penalty on melee attacks from Combat Expertise on the first attack roll you make each turn. You still take the penalty on additional attacks, including attacks of opportunity.",
+    "zhCN": "当你开启此流派架势时，如果你持有重刃或轻刃战士武器组中的武器，进行防御式战斗或使用寓守于攻时，那么你会在防御等级上获得+1盾牌加值。除此之外，你在使用寓守于攻专长时每轮发动的第一次近战攻击不会因为使用寓守于攻而承受减值。你本轮的其他攻击，包括藉机攻击，仍然会承受正常减值。"
   },
 
   {
     "Key": "SwordplayUpset.Name",
     "ProcessTemplates": false,
-    "enGB": "Swordplay Upset"
+    "enGB": "Swordplay Upset",
+    "zhCN": "刺剑闪"
   },
 
   {
     "Key": "SwordplayUpset.Description",
-    "enGB": "While using Swordplay Style, you can attempt a feint against an opponent that makes a melee attack against you and misses."
+    "enGB": "While using Swordplay Style, you can attempt a feint against an opponent that makes a melee attack against you and misses.",
+    "zhCN": "当开启刺剑流架势时，你可以在一个敌人对你近战攻击失手时对他发动一次虚招。"
   }
 ]
+
