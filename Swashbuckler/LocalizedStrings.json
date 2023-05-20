@@ -682,6 +682,94 @@
     "Key": "SwordplayUpset.Description",
     "enGB": "While using Swordplay Style, you can attempt a feint against an opponent that makes a melee attack against you and misses.",
     "zhCN": "当开启刺剑流架势时，你可以在一个敌人对你近战攻击失手时对他发动一次虚招。"
+  },
+
+  {
+    "Key": "Azatariel.Name",
+    "ProcessTemplates": false,
+    "enGB": "Azatariel"
+  },
+
+  {
+    "Key": "Azatariel.Description",
+    "enGB": "Azatariels are the champions of Elysium, dedicated to spreading its unpredictable whimsy and capricious goodness across the planes. Irrepressible and happy-golucky even in the face of the most tyrannical devil, azatariels take their name from the azatas that they emulate. In battle, azatariels exult in darting among their foes, heedless of danger. Mastery of combat’s chaos allows azatariels to turn enemies’ strikes against each other, while supernatural good fortune protects them from dire afflictions. When allies falter with fear or suffer the effects of dark magic, a compassionate gesture from an azatariel cures their ills and spurs them onward."
+  },
+
+  {
+    "Key": "ElysianConviction.Name",
+    "ProcessTemplates": false,
+    "enGB": "Elysian Conviction"
+  },
+
+  {
+    "Key": "ElysianConviction.Description",
+    "enGB": "At 2nd level, while she has at least 1 panache point, an azatariel adds her Charisma bonus to her saving throws against mind-affecting effects."
+  },
+
+  {
+    "Key": "Affection.Name",
+    "ProcessTemplates": false,
+    "enGB": "Affection of Elysium"
+  },
+
+  {
+    "Key": "Affection.Description",
+    "enGB": "An azatariel’s affection relieves harmful afflictions. At 4th level and every 4 levels thereafter, an azatariel selects a mercy from those available to a paladin whose class level is equal to her swashbuckler level. She can show her affection to a willing, adjacent creature as a standard action to apply the effects of these mercies to the targeted creature, treating her swashbuckler level as her paladin level. An azatariel can use this ability a number of times per day equal to half her swashbuckler level plus her Charisma modifier."
+  },
+
+  {
+    "Key": "Bralani.Name",
+    "ProcessTemplates": false,
+    "enGB": "Bralani’s Swiftness"
+  },
+
+  {
+    "Key": "Bralani.Description",
+    "enGB": "At 3rd level, while the azatariel has at least 1 point of panache, she ignores movement penalties from difficult terrain."
+  },
+
+  {
+    "Key": "BattleDance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Battle Dance"
+  },
+
+  {
+    "Key": "BattleDance.Description",
+    "enGB": "At 3rd level and every 4 levels thereafter, an azatariel’s base speed increases by 10 feet. This is an enhancement bonus. An azatariel in medium or heavy armor or carrying a medium or heavy load loses this extra speed."
+  },
+
+  {
+    "Key": "Whimsical.Name",
+    "ProcessTemplates": false,
+    "enGB": "Whimsical Riposte"
+  },
+
+  {
+    "Key": "Whimsical.Description",
+    "enGB": "At 3rd level, the azatariel adds her Charisma modifier to attack and damage rolls made with light or one-handed piercing weapons as part of her opportune parry and riposte deed (including when riposting). In addition, whenever the azatariel successfully parries an opponent’s attack, instead of riposting she can redirect that attack to another target as an immediate action. The new target must be within the attacker’s reach, and the attacker uses the original attack roll to determine the attack’s success."
+  },
+
+  {
+    "Key": "Lillend.Name",
+    "ProcessTemplates": false,
+    "enGB": "Lillend's Misdirection"
+  },
+
+  {
+    "Key": "Lillend.Description",
+    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a reposition combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking)."
+  },
+
+  {
+    "Key": "Ghaele.Name",
+    "ProcessTemplates": false,
+    "enGB": "Ghaele’s Assault"
+  },
+
+  {
+    "Key": "Ghaele.Description",
+    "enGB": "At 11th level, the azatariel can spend 2 panache points when charging. If she does, the AC penalty for charging changes to –4 and she can make a full attack at the end of her charge."
   }
 ]
 

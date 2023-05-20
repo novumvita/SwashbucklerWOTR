@@ -46,13 +46,23 @@ namespace Swashbuckler
 
         static internal BlueprintFeature swash_finesse;
 
+        static internal BlueprintFeature charmed_life;
+
+        static internal BlueprintFeature swash_bonus_feats;
+
+        static internal BlueprintFeature nimble;
+
         static internal BlueprintFeature swash_weapon_training;
         static internal BlueprintFeature swash_weapon_mastery;
 
+        static internal BlueprintFeature deeds3;
+        static internal BlueprintFeature deeds7;
         static internal BlueprintFeature deeds11;
 
         static internal BlueprintBuff kip_buff;
         static internal BlueprintFeature kip_feature;
+        
+        static internal BlueprintFeature swash_init_feature;
 
         static internal BlueprintBuff precise_strike_buff;
 
@@ -60,6 +70,9 @@ namespace Swashbuckler
 
         static internal BlueprintFeature evasive_feature;
         static internal BlueprintFeature subtle_feature;
+
+        static internal BlueprintFeature grace_feat;
+        static internal BlueprintFeature sup_feint_feat;
 
         internal const string SwashName = "Swashbuckler";
         internal const string SwashGuid = "338ABF27-23C1-4C1A-B0F1-7CD7E3020444";
@@ -391,22 +404,23 @@ namespace Swashbuckler
 
             panache_feature = CreatePanache();
             swash_finesse = CreateFinesse();
+            charmed_life = CreateCharmed();
             var profs = CreateProficiencies();
-            var swash_bonus_feats = CreateBonusFeat();
+            swash_bonus_feats = CreateBonusFeat();
             swash_weapon_training = CreateWeaponTraining();
             swash_weapon_mastery = CreateWeaponMastery();
-            var nimble = CreateNimble();
+            nimble = CreateNimble();
             var ftraining = CreateFighterTraining();
             var deeds1 = CreateDeeds1();
-            var deeds3 = CreateDeeds3();
-            var deeds7 = CreateDeeds7();
+            deeds3 = CreateDeeds3();
+            deeds7 = CreateDeeds7();
             deeds11 = CreateDeeds11();
             var deeds15 = CreateDeeds15();
             var deeds19 = CreateDeeds19();
 
             var lb = new LevelEntryBuilder();
             lb.AddEntry(1, deeds1, panache_feature, swash_finesse, profs);
-            lb.AddEntry(2, CreateCharmed());
+            lb.AddEntry(2, charmed_life);
             lb.AddEntry(3, nimble, deeds3);
             lb.AddEntry(4, ftraining, swash_bonus_feats);
             lb.AddEntry(5, swash_weapon_training);
@@ -423,12 +437,14 @@ namespace Swashbuckler
             lb.AddEntry(20, swash_bonus_feats, swash_weapon_mastery);
 
             Archetypes.InspiredBlade.Configure();
+            Archetypes.Azatariel.Configure();
 
             var ui = new UIGroupBuilder();
             ui.AddGroup(swash_bonus_feats);
             ui.AddGroup(swash_weapon_training, swash_weapon_mastery);
             ui.AddGroup(Archetypes.InspiredBlade.rapier_training, Archetypes.InspiredBlade.rapier_mastery);
-            ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19, Archetypes.InspiredBlade.inspired_deeds11);
+            ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19);
+            ui.AddGroup(Archetypes.Azatariel.azata_deeds3, Archetypes.Azatariel.azata_deeds7, Archetypes.Azatariel.azata_deeds11);
             ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse);
 
             var prog = ProgressionConfigurator.New(Progression, ProgressionGuid)
@@ -542,8 +558,6 @@ namespace Swashbuckler
         internal static BlueprintFeature CreateNimble()
         {
             var nimble_buff = BuffConfigurator.New(NimbleBuff, NimbleBuffGuid)
-                .SetDisplayName(NimbleDisplayName)
-                .SetDescription(NimbleDescription)
                 .AddNotDispelable()
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
                 .AddContextRankConfig(ContextRankConfigs.ClassLevel(classes: new string[] { SwashName }).WithStartPlusDivStepProgression(start: 3, divisor: 4, delayStart: true))
@@ -734,7 +748,7 @@ namespace Swashbuckler
                 .SetDeactivateImmediately()
                 .Configure();
 
-            return FeatureConfigurator.New(KipFeature, KipFeatureGuid)
+            kip_feature = FeatureConfigurator.New(KipFeature, KipFeatureGuid)
                 .SetDisplayName(KipDisplayName)
                 .SetDescription(KipDescription)
                 .SetIcon(AbilityRefs.TouchOfGracelessness.Reference.Get().Icon)
@@ -742,6 +756,8 @@ namespace Swashbuckler
                 .AddComponent<KipUp>()
                 .SetIsClassFeature()
                 .Configure();
+
+            return kip_feature;
         }
 
         internal static BlueprintFeature CreateMenacing()
@@ -805,13 +821,15 @@ namespace Swashbuckler
 
         internal static BlueprintFeature CreateInitiative()
         {
-            return FeatureConfigurator.New(Initiative, InitiativeGuid)
+            swash_init_feature = FeatureConfigurator.New(Initiative, InitiativeGuid)
                 .SetDisplayName(InitiativeDisplayName)
                 .SetDescription(InitiativeDescription)
                 .SetIcon(FeatureRefs.Evasion.Reference.Get().Icon)
                 .AddComponent<SwashbucklerInitiative>()
                 .SetIsClassFeature()
                 .Configure();
+
+            return swash_init_feature;
         }
 
         internal static BlueprintFeature CreateDeeds3()
@@ -840,13 +858,15 @@ namespace Swashbuckler
                 .SetDeactivateImmediately()
                 .Configure();
 
-            return FeatureConfigurator.New(Grace, GraceGuid)
+            grace_feat = FeatureConfigurator.New(Grace, GraceGuid)
                 .SetDisplayName(GraceDisplayName)
                 .SetDescription(GraceDescription)
                 .SetIcon(ActivatableAbilityRefs.MobilityUseAbility.Reference.Get().Icon)
                 .AddFacts(new() { grace_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return grace_feat;
         }
 
         internal static BlueprintFeature CreateSupFeint()
@@ -865,13 +885,15 @@ namespace Swashbuckler
                 .AddComponent<AbilityCasterHasAtLeastOnePanache>()
                 .Configure();
 
-            return FeatureConfigurator.New(SupFeint, SupFeintGuid)
+            sup_feint_feat = FeatureConfigurator.New(SupFeint, SupFeintGuid)
                 .SetDisplayName(SupFeintDisplayName)
                 .SetDescription(SupFeintDescription)
                 .SetIcon(FeatureRefs.SwordlordDefensiveParryFeature.Reference.Get().Icon)
                 .AddFacts(new() { superior_feint_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return sup_feint_feat;
         }
 
         internal static BlueprintFeature CreateTargetedStrike()
@@ -884,7 +906,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
-                .SetAnimation(CastAnimationStyle.Special)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<Disarm>().Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -901,7 +923,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
-                .SetAnimation(CastAnimationStyle.Special)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(BuffRefs.Confusion.Reference.Get(), ContextDuration.Fixed(1)).Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -920,7 +942,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
-                .SetAnimation(CastAnimationStyle.Special)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().KnockdownTarget().Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()
@@ -938,7 +960,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetIsFullRoundAction()
                 .SetRange(AbilityRange.Weapon)
-                .SetAnimation(CastAnimationStyle.Special)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(BuffRefs.Staggered.Reference.Get(), ContextDuration.Fixed(1)).Build())
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityTargetNotImmuneToCritical>()

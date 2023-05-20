@@ -38,10 +38,10 @@ namespace Swashbuckler.Components
                 Game.Instance.ProjectileController.Launch(evt.Target, evt.Target, ProjectileRefs.WindProjectile00.Reference.Get(), initialPos, delegate (Projectile p)
                 {
                 });
-
-                Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
-                willSpend = false;
             }
+
+            Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
+            willSpend = false;
         }
     }
 }
