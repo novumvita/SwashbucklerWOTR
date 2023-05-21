@@ -27,7 +27,7 @@ namespace Swashbuckler.Components
 
         public void OnEventDidTrigger(RuleAttackWithWeapon evt)
         {
-            if (evt.AttackRoll.IsHit || !Owner.CombatState.IsFlanked)
+            if (evt.AttackRoll.IsHit || Owner.CombatState.EngagedBy.Count < 2)
                 return;
 
             var rule_cm = new RuleCombatManeuver(evt.Target, evt.Initiator, CombatManeuver.Pull);

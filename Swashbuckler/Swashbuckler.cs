@@ -44,6 +44,8 @@ namespace Swashbuckler
         static internal BlueprintAbilityResource panache_resource;
         static internal BlueprintFeature panache_feature;
 
+        static internal BlueprintFeature ftraining;
+
         static internal BlueprintFeature swash_finesse;
 
         static internal BlueprintFeature charmed_life;
@@ -410,7 +412,7 @@ namespace Swashbuckler
             swash_weapon_training = CreateWeaponTraining();
             swash_weapon_mastery = CreateWeaponMastery();
             nimble = CreateNimble();
-            var ftraining = CreateFighterTraining();
+            ftraining = CreateFighterTraining();
             deeds3 = CreateDeeds3();
             deeds7 = CreateDeeds7();
             deeds11 = CreateDeeds11();

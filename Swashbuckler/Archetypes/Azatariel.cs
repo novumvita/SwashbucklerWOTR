@@ -4,6 +4,7 @@ using BlueprintCore.Actions.Builder.ContextEx;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.CustomConfigurators;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
@@ -143,7 +144,7 @@ namespace Swashbuckler.Archetypes
             archetype
               .AddToRemoveFeatures(2, Swashbuckler.charmed_life)
               .AddToRemoveFeatures(3, Swashbuckler.nimble, Swashbuckler.deeds3)
-              .AddToRemoveFeatures(4, Swashbuckler.swash_bonus_feats)
+              .AddToRemoveFeatures(4, Swashbuckler.swash_bonus_feats, Swashbuckler.ftraining)
               .AddToRemoveFeatures(7, Swashbuckler.deeds7)
               .AddToRemoveFeatures(8, Swashbuckler.swash_bonus_feats)
               .AddToRemoveFeatures(11, Swashbuckler.deeds11)
@@ -379,6 +380,7 @@ namespace Swashbuckler.Archetypes
                 .AddAbilityResources(resource: aff_resource, restoreAmount: true)
                 .AddFacts(new() { aff_ability })
                 .SetIcon(AbilityRefs.MageLight.Reference.Get().Icon)
+                .AddClassLevelsForPrerequisites(actualClass: Swashbuckler.SwashName, fakeClass: CharacterClassRefs.PaladinClass.Reference.Get(), modifier: 1)
                 .SetIsClassFeature()
                 .Configure();
         }

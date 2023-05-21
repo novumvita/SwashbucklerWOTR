@@ -41,7 +41,7 @@ namespace Swashbuckler.Components
 
                 if (evt.Result == AttackResult.Parried && evt.Target.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) >= 1)
                 {
-                    if (!Owner.Descriptor.HasFact(Archetypes.Azatariel.whimsical_buff) || !Owner.CombatState.IsFlanked)
+                    if (!Owner.Descriptor.HasFact(Archetypes.Azatariel.whimsical_buff) || Owner.CombatState.EngagedBy.Count < 2)
                     {
                         Logger.Log("Riposte");
                         Game.Instance.CombatEngagementController.ForceAttackOfOpportunity(Owner, evt.Initiator);
