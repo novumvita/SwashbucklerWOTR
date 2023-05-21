@@ -81,8 +81,6 @@ namespace Swashbuckler.Archetypes
         private const string WhimsicalGuid = "7452617C-966D-4CBA-A0B7-5F98D0248D83";
         private const string WhimsicalBuffName = "WhimsicalBuff";
         private const string WhimsicalBuffGuid = "3385370D-6DB9-42A6-847B-A2B56926B75F";
-        private const string WhimsicalAoOBuffName = "WhimsicalAoOBuff";
-        private const string WhimsicalAoOBuffGuid = "830DE505-5900-4F92-811F-2E9A50C43048";
         private const string WhimsicalAbilityName = "WhimsicalAbility";
         private const string WhimsicalAbilityGuid = "0DA8E9EE-F80D-4424-95B5-1EA8E1FFD61F";
         private const string WhimsicalDisplayName = "Whimsical.Name";

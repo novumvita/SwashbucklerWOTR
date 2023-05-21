@@ -76,6 +76,7 @@ namespace Swashbuckler
         static internal BlueprintFeature grace_feat;
         static internal BlueprintFeature sup_feint_feat;
 
+        #region const strings
         internal const string SwashName = "Swashbuckler";
         internal const string SwashGuid = "338ABF27-23C1-4C1A-B0F1-7CD7E3020444";
         internal const string SwashDisplayName = "Swashbuckler.Name";
@@ -374,6 +375,7 @@ namespace Swashbuckler
         internal const string Deeds19Guid = "C4997A33-FBD1-46AC-BC00-03FA8F7943A1";
         internal const string DeedsDisplayName = "Deeds.Name";
         internal const string DeedsDescription = "Deeds.Description";
+        #endregion
 
         internal static void Configure()
         {
