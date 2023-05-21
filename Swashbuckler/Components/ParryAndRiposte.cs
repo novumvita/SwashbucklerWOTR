@@ -20,9 +20,8 @@ namespace Swashbuckler.Components
             if (!evt.Weapon.Blueprint.IsMelee || evt.Parry != null || !Owner.IsReach(evt.Target, Owner.Body.PrimaryHand))
                 return;
 
-            if (Owner.HasFact(Archetypes.Azatariel.whimsical_feat))
+            if (Owner.Descriptor.HasFact(Archetypes.Azatariel.whimsical_feat))
             {
-                Owner.AddFact(Archetypes.Azatariel.whimsical_aoo_buff);
                 evt.AddTemporaryModifier(Owner.Stats.AdditionalAttackBonus.AddModifier(Owner.Stats.Charisma.Bonus, Fact));
             }
 
@@ -61,11 +60,6 @@ namespace Swashbuckler.Components
                         Logger.Log("Damage rule triggered");
 
                     }
-                }
-
-                if (Owner.HasFact(Archetypes.Azatariel.whimsical_feat))
-                {
-                    Owner.RemoveFact(Archetypes.Azatariel.whimsical_aoo_buff);
                 }
                 Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
             }

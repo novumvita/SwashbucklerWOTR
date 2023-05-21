@@ -55,7 +55,6 @@ namespace Swashbuckler.Archetypes
 
         static internal BlueprintFeature whimsical_feat;
         static internal BlueprintBuff whimsical_buff;
-        static internal BlueprintFeature whimsical_aoo_buff;
 
         static internal BlueprintFeature lillend_feat;
         static internal BlueprintBuff lillend_buff;
@@ -186,14 +185,6 @@ namespace Swashbuckler.Archetypes
 
         internal static BlueprintFeature CreateRiposte()
         {
-            whimsical_aoo_buff = FeatureConfigurator.New(WhimsicalAoOBuffName, WhimsicalAoOBuffGuid)
-                .SetHideInUI()
-                .SetHideInCharacterSheetAndLevelUp()
-                .AddAttackOfOpportunityAttackBonus(bonus: ContextValues.Rank())
-                .AddAttackOfOpportunityDamageBonus(damageBonus: ContextValues.Rank())
-                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
-                .Configure();
-
             whimsical_buff = BuffConfigurator.New(WhimsicalBuffName, WhimsicalBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
                 .AddNotDispelable()
@@ -212,6 +203,9 @@ namespace Swashbuckler.Archetypes
                 .SetDescription(WhimsicalDescription)
                 .AddFacts(new() { whimsical_ability })
                 .SetIcon(AbilityRefs.HideousLaughter.Reference.Get().Icon)
+                .AddAttackOfOpportunityAttackBonus(bonus: ContextValues.Rank())
+                .AddAttackOfOpportunityDamageBonus(damageBonus: ContextValues.Rank())
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
                 .Configure();
 
             return whimsical_feat;
@@ -354,7 +348,6 @@ namespace Swashbuckler.Archetypes
             var aff_ability = AbilityConfigurator.New(AffectionAbility, AffectionAbilityGuid)
                 .SetDisplayName(AffectionDisplayName)
                 .SetDescription(AffectionDescription)
-                .SetType(AbilityType.Supernatural)
                 .AllowTargeting(friends: true)
                 .SetRange(AbilityRange.Touch)
                 .SetAnimation(CastAnimationStyle.Touch)
@@ -383,7 +376,8 @@ namespace Swashbuckler.Archetypes
             return FeatureConfigurator.New(Affection, AffectionGuid)
                 .SetDisplayName(AffectionDisplayName)
                 .SetDescription(AffectionDescription)
-                .AddFacts(new() { aff_resource, aff_ability })
+                .AddAbilityResources(resource: aff_resource, restoreAmount: true)
+                .AddFacts(new() { aff_ability })
                 .SetIcon(AbilityRefs.MageLight.Reference.Get().Icon)
                 .SetIsClassFeature()
                 .Configure();
