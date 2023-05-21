@@ -136,6 +136,7 @@ namespace Swashbuckler.Archetypes
                 .AddComponent<AttackStatReplacementForRapier>()
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
                 .AddParametrizedFeatures(new AddParametrizedFeatures.FeatureData[] { new AddParametrizedFeatures.FeatureData { m_Feature = ParametrizedFeatureRefs.WeaponFocus.Reference.GetBlueprint().ToReference<BlueprintParametrizedFeatureReference>(), ParamWeaponCategory = WeaponCategory.Rapier } })
+                .AddRecommendationNoFeatFromGroup(new() { FeatureRefs.WeaponFinesse.Reference.Get(), ParametrizedFeatureRefs.WeaponFocus.Reference.Get() })
                 .SetIsClassFeature()
                 .Configure();
 

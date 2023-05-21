@@ -411,12 +411,17 @@ namespace Swashbuckler
             swash_weapon_mastery = CreateWeaponMastery();
             nimble = CreateNimble();
             var ftraining = CreateFighterTraining();
-            var deeds1 = CreateDeeds1();
             deeds3 = CreateDeeds3();
             deeds7 = CreateDeeds7();
             deeds11 = CreateDeeds11();
             var deeds15 = CreateDeeds15();
             var deeds19 = CreateDeeds19();
+
+
+            Archetypes.InspiredBlade.Configure();
+            Archetypes.Azatariel.Configure();
+
+            var deeds1 = CreateDeeds1();
 
             var lb = new LevelEntryBuilder();
             lb.AddEntry(1, deeds1, panache_feature, swash_finesse, profs);
@@ -435,9 +440,6 @@ namespace Swashbuckler
             lb.AddEntry(17, swash_weapon_training);
             lb.AddEntry(19, deeds19);
             lb.AddEntry(20, swash_bonus_feats, swash_weapon_mastery);
-
-            Archetypes.InspiredBlade.Configure();
-            Archetypes.Azatariel.Configure();
 
             var ui = new UIGroupBuilder();
             ui.AddGroup(swash_bonus_feats);
@@ -507,6 +509,7 @@ namespace Swashbuckler
                 .AddComponent<AttackStatReplacementForSwashbucklerWeapon>()
                 .AddReplaceStatForPrerequisites(StatType.Charisma, StatType.Intelligence)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
+                .AddRecommendationNoFeatFromGroup(new() { FeatureRefs.WeaponFinesse.Reference.Get() })
                 .SetIsClassFeature()
                 .Configure();
 
