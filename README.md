@@ -16,6 +16,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
 * Improved Feint is refashioned as Feint and now gives the ability to feint.
 * Swordplay Style does not require choosing one weapon type.
 * Lillend's Misdirection attempts a pull combat maneuver.
+* Whimsical Riposte provides Charisma bonus to attack and damage rolls for all attacks of opportunity.
 
 ## Planned Content
 * Archetypes
