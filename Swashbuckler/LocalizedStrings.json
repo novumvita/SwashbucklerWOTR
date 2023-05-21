@@ -770,9 +770,8 @@
 
   {
     "Key": "Lillend.Description",
-    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a reposition combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking).",
-    "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作尝试一次复位战技对抗这名敌人。如果她在战技检定中成功，她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
-
+    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a pull combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking)."
+    "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作尝试一次拖拽战技对抗这名敌人。如果她在战技检定中成功，她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
   },
 
   {
