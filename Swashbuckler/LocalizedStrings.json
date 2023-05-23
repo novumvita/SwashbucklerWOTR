@@ -770,7 +770,7 @@
 
   {
     "Key": "Lillend.Description",
-    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a pull combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking)."
+    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a pull combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking).",
     "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作尝试一次拖拽战技对抗这名敌人。如果她在战技检定中成功，她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
   },
 
@@ -790,54 +790,64 @@
   {
     "Key": "SpringAttackFeat.Name",
     "ProcessTemplates": false,
-    "enGB": "Spring Attack"
+    "enGB": "Spring Attack",
+    "zhCN": "跳跃攻击"
   },
 
   {
     "Key": "SpringAttackFeat.Description",
-    "enGB": "As a full-round action, you can move up to your speed and make a single melee attack without provoking any attacks of opportunity from the target of your attack. You can move both before and after the attack, but you must move at least 10 feet before the attack and the total distance that you move cannot be greater than your speed. You cannot use this ability to attack a foe that is adjacent to you at the start of your turn."
+    "enGB": "As a full-round action, you can move up to your speed and make a single melee attack without provoking any attacks of opportunity from the target of your attack. You can move both before and after the attack, but you must move at least 10 feet before the attack and the total distance that you move cannot be greater than your speed. You cannot use this ability to attack a foe that is adjacent to you at the start of your turn.",
+    "zhCN": "以一个全回合动作，你能够移动至多等同于你速度的距离并做一次单次的近战攻击，这不会引发你所攻击目标的借机攻击。你在攻击之前和之后都可以移动，但你在攻击前必须至少移动10尺，并且你移动的总距离不可以超过你的速度。你不可以使用此能力攻击在你回合开始时就和你相邻的敌人。"
   },
 
   {
     "Key": "SpringAttackImproved.Name",
     "ProcessTemplates": false,
-    "enGB": "Improved Spring Attack"
+    "enGB": "Improved Spring Attack",
+    "zhCN": "精通跳跃攻击"
   },
 
   {
     "Key": "SpringAttackImproved.Description",
-    "enGB": "When you use Spring Attack, you can select two targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5. All restrictions of Spring Attack apply to both targets, and your movement does not provoke attacks of opportunity from either target. You can’t target the same creature twice."
+    "enGB": "When you use Spring Attack, you can select two targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5. All restrictions of Spring Attack apply to both targets, and your movement does not provoke attacks of opportunity from either target. You can’t target the same creature twice.",
+    "zhCN": "使用跳跃攻击时，你可以选择在移动中攻击两个目标而不是一个。使用这个方式进行的第二次攻击使用你的全部基础攻击加值-5。所有跳跃攻击的限制对两个都目标有效，且你的移动不会引发这两个目标的借机攻击。你不能选择同一个目标两次。"
   },
 
   {
     "Key": "SpringAttackGreater.Name",
     "ProcessTemplates": false,
-    "enGB": "Greater Spring Attack"
+    "enGB": "Greater Spring Attack",
+    "zhCN": "高等跳跃攻击"
   },
 
   {
     "Key": "SpringAttackGreater.Description",
-    "enGB": "When you use Spring Attack, you can select three targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5, and the third attack made this way is made at your full base attack bonus – 10. All restrictions of Spring Attack apply to each target, and your movement does not provoke attacks of opportunity from any of your targets. You can’t target the same creature more than once."
+    "enGB": "When you use Spring Attack, you can select three targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5, and the third attack made this way is made at your full base attack bonus – 10. All restrictions of Spring Attack apply to each target, and your movement does not provoke attacks of opportunity from any of your targets. You can’t target the same creature more than once.",
+    "zhCN": "使用跳跃攻击时，你可以选择在移动中攻击三个目标而不是一个。使用这个方式进行的第二次攻击使用你的全部基础攻击加值-5，第三次攻击使用你的全部基础攻击加值-10。所有跳跃攻击的限制对每个目标都有效，且你的移动不会引发这些目标的借机攻击。你不能选择同一个目标多于一次。"
   },
 
   {
     "Key": "SpringAttackBuff.Name",
     "ProcessTemplates": false,
-    "enGB": "Spring Attack!"
+    "enGB": "Spring Attack!",
+    "zhCN": "跳跃攻击！"
   },
 
   {
     "Key": "SpringAttackBuff.Description",
-    "enGB": "Made 1 attack using spring attack."
+    "enGB": "Made 1 attack using spring attack.",
+    "zhCN": "使用跳跃攻击进行1次攻击。"
   },
 
   {
     "Key": "SpringAttackBuff2.Description",
-    "enGB": "Made 2 attacks using spring attack."
+    "enGB": "Made 2 attacks using spring attack.",
+    "zhCN": "使用跳跃攻击进行2次攻击。"
   },
 
   {
     "Key": "SpringAttackBuff3.Description",
-    "enGB": "Made 3 attacks using spring attack."
+    "enGB": "Made 3 attacks using spring attack.",
+    "zhCN": "使用跳跃攻击进行3次攻击。"
   }
 ]
