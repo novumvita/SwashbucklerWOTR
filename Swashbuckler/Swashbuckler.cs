@@ -399,6 +399,7 @@ namespace Swashbuckler
                 .SetDifficulty(4)
                 .AddToStartingItems(ItemWeaponRefs.ColdIronRapier.Reference.Get(), ItemArmorRefs.LeatherStandard.Reference.Get(), ItemShieldRefs.Buckler.Reference.Get(), ItemEquipmentUsableRefs.PotionOfCureLightWounds.Reference.Get())
                 .SetStartingGold(411)
+                .AddPrerequisiteNoClassLevel(CharacterClassRefs.AnimalClass.Reference.Get())
                 .Configure();
 
             swash_class.MaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().MaleEquipmentEntities;
