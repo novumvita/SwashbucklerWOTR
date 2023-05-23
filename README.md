@@ -6,6 +6,9 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Azatariel](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/azatariel-swashbuckler-archetype/)
 
 * Feats
+  * [Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/spring-attack-combat)
+  * [Improved Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/improved-spring-attack-combat)
+  * [Greater Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/greater-spring-attack-combat)
   * [Improved Feint](https://www.d20pfsrd.com/feats/combat-feats/improved-feint-combat)
   * [Greater Feint](https://www.d20pfsrd.com/feats/combat-feats/greater-feint-combat)
   * [Swordplay Style](https://www.d20pfsrd.com/feats/combat-feats/swordplay-style-combat-style)

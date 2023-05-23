@@ -785,5 +785,59 @@
     "Key": "Ghaele.Description",
     "enGB": "At 11th level, the azatariel can spend 2 panache points when charging. If she does, the AC penalty for charging changes to –4 and she can make a full attack at the end of her charge.",
     "zhCN": "11级时，灵使剑客在冲锋时可以消耗2点时髦值，以冲锋AC减值提高到-4为代价，在冲锋结束后进行全力攻击。"
+  },
+
+  {
+    "Key": "SpringAttackFeat.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spring Attack"
+  },
+
+  {
+    "Key": "SpringAttackFeat.Description",
+    "enGB": "As a full-round action, you can move up to your speed and make a single melee attack without provoking any attacks of opportunity from the target of your attack. You can move both before and after the attack, but you must move at least 10 feet before the attack and the total distance that you move cannot be greater than your speed. You cannot use this ability to attack a foe that is adjacent to you at the start of your turn."
+  },
+
+  {
+    "Key": "SpringAttackImproved.Name",
+    "ProcessTemplates": false,
+    "enGB": "Improved Spring Attack"
+  },
+
+  {
+    "Key": "SpringAttackImproved.Description",
+    "enGB": "When you use Spring Attack, you can select two targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5. All restrictions of Spring Attack apply to both targets, and your movement does not provoke attacks of opportunity from either target. You can’t target the same creature twice."
+  },
+
+  {
+    "Key": "SpringAttackGreater.Name",
+    "ProcessTemplates": false,
+    "enGB": "Greater Spring Attack"
+  },
+
+  {
+    "Key": "SpringAttackGreater.Description",
+    "enGB": "When you use Spring Attack, you can select three targets to attack during your movement instead of one. The second attack made this way is made at your full base attack bonus – 5, and the third attack made this way is made at your full base attack bonus – 10. All restrictions of Spring Attack apply to each target, and your movement does not provoke attacks of opportunity from any of your targets. You can’t target the same creature more than once."
+  },
+
+  {
+    "Key": "SpringAttackBuff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spring Attack!"
+  },
+
+  {
+    "Key": "SpringAttackBuff.Description",
+    "enGB": "Made 1 attack using spring attack."
+  },
+
+  {
+    "Key": "SpringAttackBuff2.Description",
+    "enGB": "Made 2 attacks using spring attack."
+  },
+
+  {
+    "Key": "SpringAttackBuff3.Description",
+    "enGB": "Made 3 attacks using spring attack."
   }
 ]

@@ -1,5 +1,4 @@
 ﻿using BlueprintCore.Actions.Builder;
-using BlueprintCore.Actions.Builder.BasicEx;
 using BlueprintCore.Actions.Builder.ContextEx;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.CustomConfigurators;
@@ -10,27 +9,17 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
-using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Swashbuckler.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Kingmaker.RuleSystem.Rules.RuleDispelMagic;
 using static Kingmaker.UnitLogic.FactLogic.AddMechanicsFeature;
 using static Kingmaker.UnitLogic.Mechanics.Actions.ContextActionDispelMagic;
@@ -80,8 +69,6 @@ namespace Swashbuckler.Archetypes
         private const string WhimsicalGuid = "7452617C-966D-4CBA-A0B7-5F98D0248D83";
         private const string WhimsicalBuffName = "WhimsicalBuff";
         private const string WhimsicalBuffGuid = "3385370D-6DB9-42A6-847B-A2B56926B75F";
-        private const string WhimsicalAoOBuffName = "WhimsicalAoOBuff";
-        private const string WhimsicalAoOBuffGuid = "830DE505-5900-4F92-811F-2E9A50C43048";
         private const string WhimsicalAbilityName = "WhimsicalAbility";
         private const string WhimsicalAbilityGuid = "0DA8E9EE-F80D-4424-95B5-1EA8E1FFD61F";
         private const string WhimsicalDisplayName = "Whimsical.Name";
@@ -143,7 +130,7 @@ namespace Swashbuckler.Archetypes
             archetype
               .AddToRemoveFeatures(2, Swashbuckler.charmed_life)
               .AddToRemoveFeatures(3, Swashbuckler.nimble, Swashbuckler.deeds3)
-              .AddToRemoveFeatures(4, Swashbuckler.swash_bonus_feats)
+              .AddToRemoveFeatures(4, Swashbuckler.swash_bonus_feats, Swashbuckler.ftraining)
               .AddToRemoveFeatures(7, Swashbuckler.deeds7)
               .AddToRemoveFeatures(8, Swashbuckler.swash_bonus_feats)
               .AddToRemoveFeatures(11, Swashbuckler.deeds11)
@@ -379,6 +366,7 @@ namespace Swashbuckler.Archetypes
                 .AddAbilityResources(resource: aff_resource, restoreAmount: true)
                 .AddFacts(new() { aff_ability })
                 .SetIcon(AbilityRefs.MageLight.Reference.Get().Icon)
+                .AddClassLevelsForPrerequisites(actualClass: Swashbuckler.SwashName, fakeClass: CharacterClassRefs.PaladinClass.Reference.Get(), modifier: 1)
                 .SetIsClassFeature()
                 .Configure();
         }

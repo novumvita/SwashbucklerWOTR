@@ -44,6 +44,8 @@ namespace Swashbuckler
         static internal BlueprintAbilityResource panache_resource;
         static internal BlueprintFeature panache_feature;
 
+        static internal BlueprintFeature ftraining;
+
         static internal BlueprintFeature swash_finesse;
 
         static internal BlueprintFeature charmed_life;
@@ -74,6 +76,7 @@ namespace Swashbuckler
         static internal BlueprintFeature grace_feat;
         static internal BlueprintFeature sup_feint_feat;
 
+        #region const strings
         internal const string SwashName = "Swashbuckler";
         internal const string SwashGuid = "338ABF27-23C1-4C1A-B0F1-7CD7E3020444";
         internal const string SwashDisplayName = "Swashbuckler.Name";
@@ -372,6 +375,7 @@ namespace Swashbuckler
         internal const string Deeds19Guid = "C4997A33-FBD1-46AC-BC00-03FA8F7943A1";
         internal const string DeedsDisplayName = "Deeds.Name";
         internal const string DeedsDescription = "Deeds.Description";
+        #endregion
 
         internal static void Configure()
         {
@@ -395,6 +399,7 @@ namespace Swashbuckler
                 .SetDifficulty(4)
                 .AddToStartingItems(ItemWeaponRefs.ColdIronRapier.Reference.Get(), ItemArmorRefs.LeatherStandard.Reference.Get(), ItemShieldRefs.Buckler.Reference.Get(), ItemEquipmentUsableRefs.PotionOfCureLightWounds.Reference.Get())
                 .SetStartingGold(411)
+                .AddPrerequisiteNoClassLevel(CharacterClassRefs.AnimalClass.Reference.Get())
                 .Configure();
 
             swash_class.MaleEquipmentEntities = CharacterClassRefs.SlayerClass.Reference.Get().MaleEquipmentEntities;
@@ -410,7 +415,7 @@ namespace Swashbuckler
             swash_weapon_training = CreateWeaponTraining();
             swash_weapon_mastery = CreateWeaponMastery();
             nimble = CreateNimble();
-            var ftraining = CreateFighterTraining();
+            ftraining = CreateFighterTraining();
             deeds3 = CreateDeeds3();
             deeds7 = CreateDeeds7();
             deeds11 = CreateDeeds11();
