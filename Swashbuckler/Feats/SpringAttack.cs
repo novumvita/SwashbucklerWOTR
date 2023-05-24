@@ -18,10 +18,14 @@ using TurnBased.Controllers;
 using BlueprintCore.Blueprints.References;
 using System;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.Blueprints;
+using BlueprintCore.Utils;
 
 namespace Swashbuckler.Feats
 {
-    internal class SpringAttack
+    internal class SpringAttack : AbilityCustomVitalStrike
     {
         #region const strings
         private const string SpringAttackFeat = "SpringAttackFeat";
@@ -38,6 +42,11 @@ namespace Swashbuckler.Feats
         private const string SpringAttack2FeatGuid = "3B81B854-07AC-4085-8ACA-C15854911832";
         private const string SpringAttack2FeatDisplayName = "SpringAttackGreater.Name";
         private const string SpringAttack2FeatDescription = "SpringAttackGreater.Description";
+
+        private const string SpringAttackReapFeat = "SpringAttackReaping";
+        private const string SpringAttackReapFeatGuid = "2AC1C633-0EC2-413F-AF5C-3F3F4C3F7A8A";
+        private const string SpringAttackReapFeatDisplayName = "SpringAttackReaping.Name";
+        private const string SpringAttackReapFeatDescription = "SpringAttackReaping.Description";
 
         private const string SpringAttackBuffDisplayName = "SpringAttackBuff.Name";
 
@@ -69,6 +78,7 @@ namespace Swashbuckler.Feats
 
         internal static BlueprintFeature springAttack1;
         internal static BlueprintFeature springAttack2;
+        internal static BlueprintFeature springAttackReaping;
         internal static BlueprintBuff CreateSpringAttackBuff1()
         {
             return BuffConfigurator.New(SpringAttackBuff, SpringAttackBuffGuid)
@@ -149,6 +159,18 @@ namespace Swashbuckler.Feats
                 .AddPrerequisiteFeature(FeatureRefs.Mobility.Reference.Get())
                 .AddPrerequisiteStatValue(StatType.BaseAttackBonus, 16)
                 .Configure();
+
+            springAttackReaping = FeatureConfigurator.New(SpringAttackReapFeat, SpringAttackReapFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+                .SetDisplayName(SpringAttackReapFeatDisplayName)
+                .SetDescription(SpringAttackReapFeatDescription)
+                .SetIcon(FeatureRefs.Improved_Initiative.Reference.Get().Icon)
+                .AddPrerequisiteStatValue(StatType.Dexterity, 15)
+                .AddPrerequisiteFeature(FeatureRefs.Dodge.Reference.Get())
+                .AddPrerequisiteFeature(springAttackFeat)
+                .AddPrerequisiteFeature(FeatureRefs.VitalStrikeFeature.Reference.Get())
+                .AddPrerequisiteFeature(FeatureRefs.Mobility.Reference.Get())
+                .AddPrerequisiteStatValue(StatType.BaseAttackBonus, 11)
+                .Configure();
         }
     }
     internal class SpringAttackController : UnitFactComponentDelegate, IUnitCommandStartHandler, IUnitCommandEndHandler, IUnitRunCommandHandler, IUnitSubscriber
@@ -197,11 +219,20 @@ namespace Swashbuckler.Feats
                 return;
             }
 
+            UnitUseAbility unitUseAbility = command as UnitUseAbility;
+            AbilityCustomVitalStrike vitalStrikeAbility = unitUseAbility.Ability.Blueprint.GetComponent<AbilityCustomVitalStrike>();
+
             UnitAttack unitAttack = command as UnitAttack;
-            if (unitAttack == null)
+
+            if (!(unitAttack != null || (command.Executor.GetFact(SpringAttack.springAttackReaping) != null && vitalStrikeAbility != null)))
             {
-                Logger.Log("unitAttack == null");
+                Logger.Log("Not attack and not vital strike + reaping");
                 return;
+            }
+
+            if (vitalStrikeAbility != null && vitalStrikeAbility.VitalStrikeMod > 2)
+            {
+                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod -= 1; });
             }
 
             Path path = PathVisualizer.Instance.m_CurrentPath;
@@ -211,7 +242,7 @@ namespace Swashbuckler.Feats
                 return;
             }
 
-            if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && unitAttack != null && path.GetTotalLength() > 2f)
+            if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
             {
                 Logger.Log("First attack command");
                 target1 = command.Target.Unit;

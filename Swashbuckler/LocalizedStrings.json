@@ -849,5 +849,16 @@
     "Key": "SpringAttackBuff3.Description",
     "enGB": "Made 3 attacks using spring attack.",
     "zhCN": "使用跳跃攻击进行3次攻击。"
+  },
+
+  {
+    "Key": "SpringAttackReaping.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spring-Heeled Reaping"
+  },
+
+  {
+    "Key": "SpringAttackReaping.Description",
+    "enGB": "You can apply the benefits of Vital Strike when using Spring Attack. If you have Greater Vital Strike, instead apply the benefits of Improved Vital Strike when using Spring Attack"
   }
 ]
