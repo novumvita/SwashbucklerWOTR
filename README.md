@@ -14,6 +14,9 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Swordplay Style](https://www.d20pfsrd.com/feats/combat-feats/swordplay-style-combat-style)
   * [Swordplay Upset](https://www.d20pfsrd.com/feats/combat-feats/swordplay-upset-combat)
 
+* Homebrew Feats
+  * Spring-Heeled Reaping : You can apply the benefits of Vital Strike when using Spring Attack. If you have Greater Vital Strike, instead apply the benefits of Improved Vital Strike when using Spring Attack. (Inspired by [Chrysanthemum’s Blooming](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
+
 ## Deviations from TableTop
 * Some abilities which required immediate action now only use free action.
 * Improved Feint is refashioned as Feint and now gives the ability to feint.
