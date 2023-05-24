@@ -22,6 +22,8 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Blueprints;
 using BlueprintCore.Utils;
+using Kingmaker.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 
 namespace Swashbuckler.Feats
 {
@@ -45,6 +47,10 @@ namespace Swashbuckler.Feats
 
         private const string SpringAttackReapFeat = "SpringAttackReaping";
         private const string SpringAttackReapFeatGuid = "2AC1C633-0EC2-413F-AF5C-3F3F4C3F7A8A";
+        private const string SpringAttackReapAbility = "SpringAttackReapingAbility";
+        private const string SpringAttackReapAbilityGuid = "56F712F6-8353-48A7-BC68-3B9CFD2E4170";
+        private const string SpringAttackReapBuff = "SpringAttackReapingBuff";
+        private const string SpringAttackReapBuffGuid = "B0CD2014-A55C-4FBB-9BFB-FE9CEC897C86";
         private const string SpringAttackReapFeatDisplayName = "SpringAttackReaping.Name";
         private const string SpringAttackReapFeatDescription = "SpringAttackReaping.Description";
 
@@ -72,13 +78,13 @@ namespace Swashbuckler.Feats
         internal static BlueprintBuff springAttackBuff1;
         internal static BlueprintBuff springAttackBuff2;
         internal static BlueprintBuff springAttackBuff3;
+        internal static BlueprintBuff springAttackReapingBuff;
 
         internal static BlueprintBuff springAttackDebuff2;
         internal static BlueprintBuff springAttackDebuff3;
 
         internal static BlueprintFeature springAttack1;
         internal static BlueprintFeature springAttack2;
-        internal static BlueprintFeature springAttackReaping;
         internal static BlueprintBuff CreateSpringAttackBuff1()
         {
             return BuffConfigurator.New(SpringAttackBuff, SpringAttackBuffGuid)
@@ -160,10 +166,24 @@ namespace Swashbuckler.Feats
                 .AddPrerequisiteStatValue(StatType.BaseAttackBonus, 16)
                 .Configure();
 
-            springAttackReaping = FeatureConfigurator.New(SpringAttackReapFeat, SpringAttackReapFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+            springAttackReapingBuff = BuffConfigurator.New(SpringAttackReapBuff, SpringAttackReapBuffGuid)
+                .SetFlags(BlueprintBuff.Flags.HiddenInUi)
+                .AddNotDispelable()
+                .Configure();
+
+            var reapingAbility = ActivatableAbilityConfigurator.New(SpringAttackReapAbility, SpringAttackReapAbilityGuid)
                 .SetDisplayName(SpringAttackReapFeatDisplayName)
                 .SetDescription(SpringAttackReapFeatDescription)
                 .SetIcon(FeatureRefs.Improved_Initiative.Reference.Get().Icon)
+                .SetBuff(springAttackReapingBuff)
+                .SetDeactivateImmediately()
+                .Configure();
+
+            FeatureConfigurator.New(SpringAttackReapFeat, SpringAttackReapFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+                .SetDisplayName(SpringAttackReapFeatDisplayName)
+                .SetDescription(SpringAttackReapFeatDescription)
+                .SetIcon(FeatureRefs.Improved_Initiative.Reference.Get().Icon)
+                .AddFacts(new() { reapingAbility })
                 .AddPrerequisiteStatValue(StatType.Dexterity, 15)
                 .AddPrerequisiteFeature(FeatureRefs.Dodge.Reference.Get())
                 .AddPrerequisiteFeature(springAttackFeat)
@@ -181,14 +201,27 @@ namespace Swashbuckler.Feats
         private static UnitEntityData target2;
         private static UnitEntityData target3;
 
+        private bool didVitalStrike;
+
         public void HandleUnitCommandDidEnd(UnitCommand command)
         {
             UnitAttack unitAttack = command as UnitAttack;
-            if (unitAttack == null)
+
+            UnitUseAbility unitUseAbility = command as UnitUseAbility;
+            AbilityCustomVitalStrike vitalStrikeAbility = unitUseAbility?.Ability.Blueprint.GetComponent<AbilityCustomVitalStrike>();
+
+            if (!(unitAttack != null || (command.Executor.GetFact(SpringAttack.springAttackReapingBuff) != null && vitalStrikeAbility != null)))
             {
                 Logger.Log("No disengagement");
                 return;
             }
+
+            if (didVitalStrike)
+            {
+                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod += 1; });
+                didVitalStrike = false;
+            }
+
             if (command.Executor.HasFact(SpringAttack.springAttackBuff1) && target1 != null)
             {
                 Logger.Log("Disengaged from first target");
@@ -207,7 +240,7 @@ namespace Swashbuckler.Feats
             {
                 Logger.Log("Disengaged from third target");
                 target3.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                target3.CombatState.Disengage(command.Executor);
+                target3.CombatState.ShouldAttackOnDisengage(command.Executor, false);
                 return;
             }
         }
@@ -220,19 +253,14 @@ namespace Swashbuckler.Feats
             }
 
             UnitUseAbility unitUseAbility = command as UnitUseAbility;
-            AbilityCustomVitalStrike vitalStrikeAbility = unitUseAbility.Ability.Blueprint.GetComponent<AbilityCustomVitalStrike>();
+            AbilityCustomVitalStrike vitalStrikeAbility = unitUseAbility?.Ability.Blueprint.GetComponent<AbilityCustomVitalStrike>();
 
             UnitAttack unitAttack = command as UnitAttack;
 
-            if (!(unitAttack != null || (command.Executor.GetFact(SpringAttack.springAttackReaping) != null && vitalStrikeAbility != null)))
+            if (!(unitAttack != null || (command.Executor.GetFact(SpringAttack.springAttackReapingBuff) != null && vitalStrikeAbility != null)))
             {
                 Logger.Log("Not attack and not vital strike + reaping");
                 return;
-            }
-
-            if (vitalStrikeAbility != null && vitalStrikeAbility.VitalStrikeMod > 2)
-            {
-                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod -= 1; });
             }
 
             Path path = PathVisualizer.Instance.m_CurrentPath;
@@ -240,6 +268,20 @@ namespace Swashbuckler.Feats
             {
                 Logger.Log("path == null");
                 return;
+            }
+
+            if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() < 2f)
+            {
+                Logger.Log("Initial path too short");
+                return;
+            }
+
+            didVitalStrike = false;
+
+            if (vitalStrikeAbility != null && vitalStrikeAbility.VitalStrikeMod > 2)
+            {
+                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod -= 1; });
+                didVitalStrike = true;
             }
 
             if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
