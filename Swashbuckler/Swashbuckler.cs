@@ -17,6 +17,7 @@ using BlueprintCore.Utils.Types;
 using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
@@ -613,6 +614,7 @@ namespace Swashbuckler
                 .AddWeaponTrainingBonuses(stat: StatType.AdditionalAttackBonus, descriptor: ModifierDescriptor.UntypedStackable)
                 .AddWeaponTrainingBonuses(stat: StatType.AdditionalDamage, descriptor: ModifierDescriptor.UntypedStackable)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
+                .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = ParametrizedFeatureRefs.ImprovedCritical.Reference.deserializedGuid } })
                 .AddToGroups(FeatureGroup.WeaponTraining)
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(WTraining))
                 .SetReapplyOnLevelUp()
@@ -620,6 +622,7 @@ namespace Swashbuckler
                 .SkipAddToSelections()
                 .SetIsClassFeature()
                 .Configure();
+
 
             ParametrizedFeatureConfigurator.For(ParametrizedFeatureRefs.ImprovedCritical)
                 .AddRecommendationNoFeatFromGroup(new() { swash_training })

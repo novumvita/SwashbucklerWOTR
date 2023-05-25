@@ -1,10 +1,14 @@
-﻿using Kingmaker.Blueprints.Items.Weapons;
+﻿using BlueprintCore.Blueprints.References;
+using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Parts;
+using Kingmaker.Utility;
 
 namespace Swashbuckler.Components
 {
@@ -14,6 +18,16 @@ namespace Swashbuckler.Components
         {
             // Identical check for Duelist weapons
             if (weapon.IsMelee && (weapon.Category.HasSubCategory(WeaponSubCategory.Light) || weapon.Category.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon.Category == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon.Category)))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsSwashbucklerWeapon(WeaponCategory weapon, UnitDescriptor wielder)
+        {
+            // Identical check for Duelist weapons
+            if (weapon.GetSubCategories().Any(WeaponSubCategory.Melee) && (weapon.HasSubCategory(WeaponSubCategory.Light) || weapon.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon)))
             {
                 return true;
             }

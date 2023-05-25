@@ -1,8 +1,11 @@
-﻿using HarmonyLib;
+﻿using BlueprintCore.Blueprints.References;
+using HarmonyLib;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Enums;
 using Kingmaker.Items;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Class.LevelUp;
 using Kingmaker.UnitLogic.Parts;
 using Swashbuckler.Components;
 using System;
@@ -46,6 +49,39 @@ namespace Swashbuckler.Patches
                 {
                     __result = rank;
                 }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(BlueprintParametrizedFeature))]
+    [HarmonyPatch(nameof(BlueprintParametrizedFeature.CanSelect))]
+    class Patch_ParametrizedFeature_CanSelect
+    {
+        static BlueprintFeature swashbuckler_weapon_training = Swashbuckler.swash_weapon_training;
+        static BlueprintFeature rapier_training = Archetypes.InspiredBlade.rapier_training;
+
+        static public void Postfix(UnitDescriptor unit, LevelUpState state, FeatureSelectionState selectionState, IFeatureSelectionItem item, BlueprintParametrizedFeature __instance, ref bool __result)
+        {
+            if (__result)
+                return;
+
+            if (__instance != ParametrizedFeatureRefs.ImprovedCriticalMythicFeat.Reference.Get())
+                return;
+
+            var fact = unit.GetFact(swashbuckler_weapon_training);
+
+            if (fact != null && SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(item.Param.WeaponCategory.Value, unit))
+            {
+                __result = true;
+                return;
+            }
+
+            fact = unit.GetFact(rapier_training);
+
+            if (fact != null && item.Param.WeaponCategory.Value == WeaponCategory.Rapier)
+            {
+                __result = true;
+                return;
             }
         }
     }

@@ -10,6 +10,7 @@ using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
@@ -165,6 +166,7 @@ namespace Swashbuckler.Archetypes
                 .SetReapplyOnLevelUp()
                 .SetRanks(4)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
+                .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = ParametrizedFeatureRefs.ImprovedCritical.Reference.deserializedGuid } })
                 .AddToGroups(FeatureGroup.WeaponTraining)
                 .SkipAddToSelections()
                 .SetIsClassFeature()
