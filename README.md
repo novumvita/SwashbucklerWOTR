@@ -1,5 +1,7 @@
 # Swashbuckler for Pathfinder: Wrath of the Righteous 
 
+[TabletopTweaks-Core](https://github.com/Vek17/TabletopTweaks-Core) is required for this mod to work. [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base) is recommended as all testing happens with it and there may be bugs if you don't use it.
+
 Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/) class and some feats that fit the theme.
 * Archetypes
   * [Inspired Blade](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/inspired-blade) 
