@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BlueprintCore.Blueprints.References;
+using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Commands.Base;
@@ -18,6 +19,9 @@ namespace Swashbuckler.Patches
         static void Postfix(UnitEntityData unit, ClassLevelGetter __instance, ref int __result)
         {
             if (!unit.HasFact(Swashbuckler.swash_weapon_training))
+                return;
+
+            if (__instance.Class != CharacterClassRefs.FighterClass.Reference.Get())
                 return;
 
             ClassData swashData = unit.Progression.GetClassData(Swashbuckler.swash_class);
