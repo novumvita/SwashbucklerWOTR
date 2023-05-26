@@ -4,7 +4,7 @@
   "Author": "Zedel",
   "Version": "1.0.9c",
   "ManagerVersion": "0.21.3",
-  "Requirements": [],
+  "Requirements": [ "TabletopTweaks-Core-0.5.5" ],
   "AssemblyName": "Swashbuckler.dll",
   "EntryMethod": "Swashbuckler.Main.Load"
 }

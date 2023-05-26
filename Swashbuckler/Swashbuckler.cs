@@ -34,6 +34,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Swashbuckler.Components;
 using Swashbuckler.Patches;
+using TabletopTweaks.Core.NewUnitParts;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace Swashbuckler

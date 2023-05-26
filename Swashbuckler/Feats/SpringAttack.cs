@@ -27,7 +27,7 @@ using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 
 namespace Swashbuckler.Feats
 {
-    internal class SpringAttack : AbilityCustomVitalStrike
+    internal class SpringAttack
     {
         #region const strings
         private const string SpringAttackFeat = "SpringAttackFeat";
@@ -201,8 +201,6 @@ namespace Swashbuckler.Feats
         private static UnitEntityData target2;
         private static UnitEntityData target3;
 
-        private bool didVitalStrike;
-
         public void HandleUnitCommandDidEnd(UnitCommand command)
         {
             UnitAttack unitAttack = command as UnitAttack;
@@ -216,31 +214,25 @@ namespace Swashbuckler.Feats
                 return;
             }
 
-            if (didVitalStrike)
-            {
-                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod += 1; });
-                didVitalStrike = false;
-            }
-
             if (command.Executor.HasFact(SpringAttack.springAttackBuff1) && target1 != null)
             {
                 Logger.Log("Disengaged from first target");
-                target1.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                target1.CombatState.Disengage(command.Executor);
+                target1.CombatState.m_EngagedBy.Remove(command.Executor);
+                target1.CombatState.m_EngagedUnits.Remove(command.Executor);
                 return;
             }
             if (command.Executor.HasFact(SpringAttack.springAttackBuff2) && target2 != null)
             {
                 Logger.Log("Disengaged from second target");
-                target2.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                target2.CombatState.Disengage(command.Executor);
+                target2.CombatState.m_EngagedBy.Remove(command.Executor);
+                target2.CombatState.m_EngagedUnits.Remove(command.Executor);
                 return;
             }
             if (command.Executor.HasFact(SpringAttack.springAttackBuff3) && target3 != null)
             {
                 Logger.Log("Disengaged from third target");
-                target3.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                target3.CombatState.ShouldAttackOnDisengage(command.Executor, false);
+                target3.CombatState.m_EngagedBy.Remove(command.Executor);
+                target3.CombatState.m_EngagedUnits.Remove(command.Executor);
                 return;
             }
         }
@@ -274,14 +266,6 @@ namespace Swashbuckler.Feats
             {
                 Logger.Log("Initial path too short");
                 return;
-            }
-
-            didVitalStrike = false;
-
-            if (vitalStrikeAbility != null && vitalStrikeAbility.VitalStrikeMod > 2)
-            {
-                unitUseAbility.Ability.Blueprint.CallComponents<AbilityCustomVitalStrike>(c => { c.VitalStrikeMod -= 1; });
-                didVitalStrike = true;
             }
 
             if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
