@@ -4,6 +4,7 @@ using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
 using CharacterOptionsPlus.MechanicsChanges;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
@@ -51,6 +52,9 @@ namespace Swashbuckler.Feats
                 .SetDescription(StOFeatDescription)
                 .SetIcon(FeatureRefs.VitalStrikeFeature.Reference.Get().Icon)
                 .AddFacts(new() { StOAbility })
+                .AddPrerequisiteFeature(FeatureRefs.CombatReflexes.Reference.Get())
+                .AddPrerequisiteFeature(FeatureRefs.VitalStrikeFeature.Reference.Get())
+                .AddPrerequisiteStatValue(StatType.BaseAttackBonus, 8)
                 .Configure();
         }
     }
