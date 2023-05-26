@@ -861,17 +861,19 @@
   {
     "Key": "SpringAttackReaping.Description",
     "enGB": "You can apply the benefits of Vital Strike when using Spring Attack. If you have Improved or Greater Vital Strike, instead apply their benefits when using Spring Attack.",
-    "zhCN": "你可以在跳跃攻击中应用要害打击打击效果。如果你拥有高等要害打击，则改为应用精通要害打击的效果"
+    "zhCN": "你可以在跳跃攻击中应用要害打击效果。如果你拥有精通要害打击或高等要害打击，则改为应用对应效果。"
   },
 
   {
     "Key": "SeizeTheOpportunity.Name",
     "ProcessTemplates": false,
-    "enGB": "Seize the Opportunity"
+    "enGB": "Seize the Opportunity",
+    "zhCN": "把握良机"
   },
 
   {
     "Key": "SeizeTheOpportunity.Description",
-    "enGB": "When you make an attack of opportunity, you can use Vital Strike."
+    "enGB": "When you make an attack of opportunity, you can use Vital Strike.",
+    "zhCN": "当你做出借机攻击时，你可以应用要害打击。"
   }
 ]
