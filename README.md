@@ -22,7 +22,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Seize the Opportunity](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/feats/seize-the-opportunity-combat/) : Changed to only allow vital strike.
 
 * Homebrew Feats
-  * Spring-Heeled Reaping : You can apply the benefits of Vital Strike when using Spring Attack. If you have Greater Vital Strike, instead apply the benefits of Improved Vital Strike when using Spring Attack. (Inspired by [Chrysanthemum’s Blooming](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
+  * Spring-Heeled Reaping : You can apply the benefits of Vital Strike when using Spring Attack. If you have Improved or Greater Vital Strike, instead apply their benefits when using Spring Attack. (Inspired by [Chrysanthemum’s Blooming](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
 
 ## Deviations from TableTop
 * Some abilities which required immediate action now only use free action.
