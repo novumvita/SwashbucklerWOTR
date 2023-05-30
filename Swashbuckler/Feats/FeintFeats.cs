@@ -93,8 +93,8 @@ namespace Swashbuckler.Feats
 
             feint_action = ActionsBuilder.New()
                 .Conditional(ConditionsBuilder.New().CasterHasFact(greater_feint_feat).Build(),
-                ifFalse: ActionsBuilder.New().ApplyBuff(feint_buff, durationValue: ContextDuration.Fixed(1)),
-                ifTrue: ActionsBuilder.New().ApplyBuff(greater_feint_buff, durationValue: ContextDuration.Fixed(1)))
+                ifFalse: ActionsBuilder.New().ApplyBuff(feint_buff, durationValue: ContextDuration.Fixed(2)),
+                ifTrue: ActionsBuilder.New().ApplyBuff(greater_feint_buff, durationValue: ContextDuration.Fixed(2)))
                 .Build();
 
             AbilityConfigurator.For(feint_ability)
