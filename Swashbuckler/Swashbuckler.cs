@@ -891,7 +891,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetActionType(UnitCommand.CommandType.Standard)
                 .SetRange(AbilityRange.Weapon)
-                .AddAbilityEffectRunAction(Feats.FeintFeats.feint_action)
+                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(Feats.FeintFeats.greater_feint_buff, durationValue: ContextDuration.Fixed(2)))
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityCasterHasAtLeastOnePanache>()
