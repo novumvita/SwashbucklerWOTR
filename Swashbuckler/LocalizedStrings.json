@@ -640,7 +640,7 @@
 
   {
     "Key": "Feint.Description",
-    "enGB": "You can attempt to feint against an enemy in melee as a move action. To feint, make a Bluff skill check. The DC of this check is equal to 10 + your opponent’s base attack bonus + your opponent’s Wisdom modifier.\n If successful, the enemy is denied its Dexterity bonus to AC against your next attack on or before your next turn.\n If you have Greater Feint, the enemy is denied its Dexterity bonus to AC for two turns.",
+    "enGB": "You can attempt to feint against an enemy in melee as a move action. To feint, make a Bluff skill check. The DC of this check is equal to 10 + your opponent’s base attack bonus + your opponent’s Wisdom modifier.\n If successful, the enemy is denied its Dexterity bonus to AC against your next attack on or before its next turn.\n If you have Greater Feint, the enemy is denied its Dexterity bonus to AC for one turn.",
     "zhCN": "你能够尝试使用移动动作对对手发动虚招。使用虚招时，进行一次唬骗技能检定，虚招的DC为“10+目标BAB+感知修正”。\n如果你成功地使用了虚招，目标将在对抗你的下一次近战攻击时或者直到其下一轮前（取较先发生者），无法在AC上获得自己的敏捷加值。\n如果拥有高等虚招，敌人直到其下一轮前失去其AC上的敏捷加值。"
   },
 
@@ -653,7 +653,7 @@
 
   {
     "Key": "GFeint.Description",
-    "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus for two turns.",
+    "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus against all melee attacks for one turn.",
     "zhCN": "当你使用虚招使得敌人失去其AC上的敏捷加值时，效果持续到其下一轮。"
   },
 
