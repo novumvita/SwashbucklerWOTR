@@ -286,7 +286,7 @@
 
   {
     "Key": "SupFeint.Description",
-    "enGB": "At 7th level, a swashbuckler with at least 1 panache point can, as a standard action, purposefully miss a creature she could make a melee attack against with a wielded light or one-handed piercing weapon. When she does, the creature is denied its Dexterity bonus to AC until the start of the swashbuckler’s next turn.",
+    "enGB": "At 7th level, a swashbuckler with at least 1 panache point can, as a standard action, purposefully miss a creature she could make a melee attack against with a wielded light or one-handed piercing weapon. When she does, the creature is denied its Dexterity bonus to AC until for two turns.",
     "zhCN": "7级时，只要游荡剑客拥有至少1点时髦值，就可以使用轻型或单手穿刺类武器用一个标准动作进行一次近战攻击，并主动放弃该次攻击的命中。如果游荡剑客这么做，她的这次近战攻击的目标会在游荡剑客下一轮开始前失去自己AC上的敏捷加值。"
   },
 
