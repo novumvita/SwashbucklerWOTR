@@ -29,32 +29,24 @@ namespace Swashbuckler.Components
         {
             if (evt.AttackRoll.IsHit || Owner.CombatState.EngagedBy.Count < 2)
                 return;
+                
+            var target = Owner.CombatState.EngagedBy.Where(c => c != evt.Initiator).First();
 
-            var rule_cm = new RuleCombatManeuver(evt.Target, evt.Initiator, CombatManeuver.Pull);
-            rule_cm = Context.TriggerRule(rule_cm);
-
-            if (rule_cm.Success)
+            if (evt.AttackRoll.Roll >= target.Stats.AC)
             {
-                Logger.Log("CM Success");
-                var target = Owner.CombatState.EngagedBy.Where(c => c != evt.Initiator).First();
-
-                if (evt.AttackRoll.Roll >= target.Stats.AC)
-                {
-                    var rule = new RuleDealDamage(evt.Initiator, target, evt.CreateDamage(true));
-                    Context.TriggerRule(rule);
-                }
-
-
-                var attackerPos = evt.Initiator.Position;
-                var casterPos = evt.Target.Position;
-
-                evt.Initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                evt.Target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-
-                evt.Initiator.Position = casterPos;
-                evt.Target.Position = attackerPos;
+                var rule = new RuleDealDamage(evt.Initiator, target, evt.CreateDamage(true));
+                Context.TriggerRule(rule);
             }
+
+            var attackerPos = evt.Initiator.Position;
+            var casterPos = evt.Target.Position;
+
+            evt.Initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+            evt.Target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+            target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+
+            evt.Initiator.Position = casterPos;
+            evt.Target.Position = attackerPos;
 
             Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 2);
         }
