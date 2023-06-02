@@ -158,7 +158,7 @@
   {
     "Key": "Derring.Description",
     "enGB": "At 1st level, a swashbuckler can spend 1 panache point when she makes an Athletics or Mobility check to roll 1d6 and add the result to the check. She can do this after she makes the check but before the result is revealed. If the result of the d6 roll is a natural 6, she rolls another 1d6 and adds it to the check. She can continue to do this as long as she rolls natural 6s, up to a number of times equal to her Dexterity modifier (minimum 1).",
-    "zhCN": "1级时，一名游荡剑客可以在她进行特技动作、攀爬、逃脱术、飞行、骑术和游泳检定时花费1点时髦值来投一个D6并将结果加到检定结果上。她必须在进行检定之前使用这个能力。如果这次D6投出了自然“6”，她能再投掷一个D6并将结果也加入检定结果。一个游荡剑客最多能通过投出自然“6”继续投骰的次数等于她的敏捷调整值（至少1次）。"
+    "zhCN": "1级时，一名游荡剑客可以在她进行运动或灵巧检定时花费1点时髦值来投一个D6并将结果加到检定结果上。她必须在进行检定之前使用这个能力。如果这次D6投出了自然“6”，她能再投掷一个D6并将结果也加入检定结果。一个游荡剑客最多能通过投出自然“6”继续投骰的次数等于她的敏捷调整值（至少1次）。"
   },
 
   {
@@ -287,7 +287,7 @@
   {
     "Key": "SupFeint.Description",
     "enGB": "At 7th level, a swashbuckler with at least 1 panache point can, as a standard action, purposefully miss a creature she could make a melee attack against with a wielded light or one-handed piercing weapon. When she does, the creature is denied its Dexterity bonus to AC until for two turns.",
-    "zhCN": "7级时，只要游荡剑客拥有至少1点时髦值，就可以使用轻型或单手穿刺类武器用一个标准动作进行一次近战攻击，并主动放弃该次攻击的命中。如果游荡剑客这么做，她的这次近战攻击的目标会在游荡剑客下一轮开始前失去自己AC上的敏捷加值。"
+    "zhCN": "7级时，只要游荡剑客拥有至少1点时髦值，就可以使用轻型或单手穿刺类武器用一个标准动作进行一次近战攻击，并主动放弃该次攻击的命中。如果游荡剑客这么做，她的这次近战攻击的目标会在2轮内失去自己AC上的敏捷加值。"
   },
 
   {
@@ -476,7 +476,7 @@
   {
     "Key": "Edge.Description",
     "enGB": "At 15th level, while the swashbuckler has at least 1 panache point, she can take 10 on any Athletics or Mobility check, even while distracted or in immediate danger. She can use this ability in conjunction with the derring-do deed.",
-    "zhCN": "15级时，只要游荡剑客拥有至少1点时髦值，，就能在进行运动和灵巧检定时取10，即使处于遭受威胁或分心的情况下。这个能力可以同“大胆特技”能力一起使用。"
+    "zhCN": "15级时，只要游荡剑客拥有至少1点时髦值，就能在进行运动和灵巧检定时取10，即使处于遭受威胁或分心的情况下。这个能力可以同“大胆特技”能力一起使用。"
   },
 
   {
@@ -654,7 +654,7 @@
   {
     "Key": "GFeint.Description",
     "enGB": "Whenever you use feint to cause an opponent to lose their Dexterity bonus, they lose that bonus against all melee attacks for one turn.",
-    "zhCN": "当你使用虚招使得敌人失去其AC上的敏捷加值时，效果持续到其下一轮。"
+    "zhCN": "当你使用虚招使得敌人失去其AC上的敏捷加值时，该效果会对所有近战攻击生效，持续到其下一轮。"
   },
 
   {
@@ -771,7 +771,7 @@
   {
     "Key": "Lillend.Description",
     "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to redirect the attack to a flanking opponent. She and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking).",
-    "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作尝试一次拖拽战技对抗这名敌人。如果她在战技检定中成功，她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
+    "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作将这次攻击导向另外一个敌人。她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
   },
 
   {
@@ -880,121 +880,143 @@
   {
     "Key": "WarriorPoet.Name",
     "ProcessTemplates": false,
-    "enGB": "Warrior Poet"
+    "enGB": "Warrior Poet",
+    "zhCN": "花间诗剑"
   },
 
   {
     "Key": "WarriorPoet.Description",
-    "enGB": "Warrior poets often study calligraphy, flower arrangement, poetry, and other courtly arts, but when called to battle, they treat combat as its own art form, fighting with beauty and grace."
+    "enGB": "Warrior poets often study calligraphy, flower arrangement, poetry, and other courtly arts, but when called to battle, they treat combat as its own art form, fighting with beauty and grace.",
+    "zhCN": "花间诗剑经常学习书法，插花，诗歌和其他宫廷艺术，但当他们被召唤去战斗时，他们把战斗当作自己的艺术形式，美丽而优雅的战斗。"
   },
 
   {
     "Key": "DancersFinesse.Name",
     "ProcessTemplates": false,
-    "enGB": "Graceful Warrior"
+    "enGB": "Graceful Warrior",
+    "zhCN": "雅致武者"
   },
 
   {
     "Key": "DancersFinesse.Description",
-    "enGB": "The warrior poet gains the benefits of Weapon Finesse  with glaives as if they were light weapons. When wielding a glaive, she can treat it as a one-handed piercing or slashing melee weapon for the purposes of swashbuckler abilities that require such a weapon. This ability counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites."
+    "enGB": "The warrior poet gains the benefits of Weapon Finesse  with glaives as if they were light weapons. When wielding a glaive, she can treat it as a one-handed piercing or slashing melee weapon for the purposes of swashbuckler abilities that require such a weapon. This ability counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites.",
+    "zhCN": "花间诗剑获得武器娴熟作为奖励专长，并且可以将其应用于大砍刀，即使它不是轻武器。当持用大砍刀时，在判断是否满足游荡剑客能力时，她将大砍刀视为单手穿刺或挥砍武器。这个能力在满足其他专长前置时，视为拥有武器娴熟。"
   },
 
   {
     "Key": "DancersGrace.Name",
     "ProcessTemplates": false,
-    "enGB": "Dancer's Grace"
+    "enGB": "Dancer's Grace",
+    "zhCN": "曼妙舞姿"
   },
 
   {
     "Key": "DancersGrace.Description",
-    "enGB": "When wearing no armor and not using a shield, the warrior poet gains a bonus to Armor Class equal to her Charisma bonus(to a maximum of her swashbuckler level). A warrior poet loses this bonus while flatfooted or otherwise denied her Dexterity bonus."
+    "enGB": "When wearing no armor and not using a shield, the warrior poet gains a bonus to Armor Class equal to her Charisma bonus(to a maximum of her swashbuckler level). A warrior poet loses this bonus while flatfooted or otherwise denied her Dexterity bonus.",
+    "zhCN": "当不穿着盔甲并且不持用盾牌时，花间诗剑在AC上获得等于她魅力调整值（最大等于其游荡剑客等级）的加值。花间诗剑在措手不及或者失去其敏捷调整值时失去该加值。"
   },
 
   {
     "Key": "DancersStrike.Name",
     "ProcessTemplates": false,
-    "enGB": "Graceful Strike"
+    "enGB": "Graceful Strike",
+    "zhCN": "优雅技击"
   },
 
   {
     "Key": "DancersStrike.Description",
-    "enGB": "While the warrior poet has at least 1 panache point, when she uses Weapon Finesse to make a melee attack that adds her Dexterity bonus to attack rolls and her Strength bonus to damage rolls, she also adds half her swashbuckler level to damage rolls. On her first successful attack each round, she instead adds her swashbuckler level to damage rolls."
+    "enGB": "While the warrior poet has at least 1 panache point, when she uses Weapon Finesse to make a melee attack that adds her Dexterity bonus to attack rolls and her Strength bonus to damage rolls, she also adds half her swashbuckler level to damage rolls. On her first successful attack each round, she instead adds her swashbuckler level to damage rolls.",
+    "zhCN": "当花间诗剑拥有至少1点时髦值时，如果她使用武器娴熟在近战攻击时将敏捷调整值加在攻击骰上，但是将力量调整值加在伤害骰上时，她同时将其将其游荡剑客等级的一半加在伤害骰上。对于每一轮第一次成功的攻击，改为将游荡剑客等级加在伤害骰上。"
   },
 
   {
     "Key": "DancersParry.Name",
     "ProcessTemplates": false,
-    "enGB": "Petals on the Wind"
+    "enGB": "Petals on the Wind",
+    "zhCN": "落英乱舞"
   },
 
   {
     "Key": "DancersParry.Description",
-    "enGB": "When an opponent makes a melee attack against the warrior poet, she can spend 1 panache point and expend a use of an attack of opportunity to attempt to parry that attack. The warrior poet makes an attack roll as if she were making an attack of opportunity; for each size category the attacking creature is larger than the swashbuckler, the warrior poet takes a –2 penalty on this roll. If her result is greater than the attacking creature’s result, the creature’s attack automatically misses. The warrior poet must declare the use of this ability after the creature’s attack is announced, but before its attack roll is made. Upon performing a successful parry and if she has at least 1 panache point, the swashbuckler can as an immediate action move 5 feet. This movement is not a 5-foot step; it provokes attacks of opportunity from creatures other than the one who triggered this deed."
+    "enGB": "When an opponent makes a melee attack against the warrior poet, she can spend 1 panache point and expend a use of an attack of opportunity to attempt to parry that attack. The warrior poet makes an attack roll as if she were making an attack of opportunity; for each size category the attacking creature is larger than the swashbuckler, the warrior poet takes a –2 penalty on this roll. If her result is greater than the attacking creature’s result, the creature’s attack automatically misses. The warrior poet must declare the use of this ability after the creature’s attack is announced, but before its attack roll is made. Upon performing a successful parry and if she has at least 1 panache point, the swashbuckler can as an immediate action move 5 feet. This movement is not a 5-foot step; it provokes attacks of opportunity from creatures other than the one who triggered this deed.",
+    "zhCN": "当一个敌人对花间诗剑进行攻击时，她可以花费1点时髦值和一次借机攻击次数，格挡该次攻击。花间诗剑就如同进行一次借机攻击一般做一次攻击检定。如果她的攻击高于对方的攻击，则这次攻击自动失手。发动攻击的生物每比花间诗剑大一个体形，花间诗剑在这次攻击中都会承受-2的罚值。花间诗剑必须在敌人宣告发动攻击而尚未投掷攻击骰时使用这个能力。在一名花间诗剑进行了一次成功的格挡后，只要她还有至少1点时髦值，她可以用一个直接动作移动5尺。该移动并不被视为5尺快步，会引发其他生物的借机攻击，但是触发了该炫技的生物除外。"
   },
 
   {
     "Key": "DancersBloom.Name",
     "ProcessTemplates": false,
-    "enGB": "Chrysanthemum’s Blooming"
+    "enGB": "Chrysanthemum’s Blooming",
+    "zhCN": "雏菊初放"
   },
 
   {
     "Key": "DancersBloom.Description",
-    "enGB": "The warrior poet gains Vital Strike as a bonus feat. She gains the benefits of Spring-Heeled Reaping while she has more than 1 panache."
+    "enGB": "The warrior poet gains Vital Strike as a bonus feat. She gains the benefits of Spring-Heeled Reaping while she has more than 1 panache.",
+    "zhCN": "花间诗剑获得要害打击作为奖励专长，并在至少拥有1点时髦值的时候自动获得跃击收割的效果。"
   },
 
   {
     "Key": "DancersKitsune.Name",
     "ProcessTemplates": false,
-    "enGB": "Kitsune’s Mystique"
+    "enGB": "Kitsune’s Mystique",
+    "zhCN": "灵狐秘技"
   },
 
   {
     "Key": "DancersKitsune.Description",
-    "enGB": "When the warrior poet uses Spring Attack, she can spend 1 panache to attempt to feint against her first target as part of her movement."
+    "enGB": "When the warrior poet uses Spring Attack, she can spend 1 panache to attempt to feint against her first target as part of her movement.",
+    "zhCN": "当花间诗剑使用跳跃攻击时，她可以花费1点时髦值，作为移动动作的一部分对第一个目标尝试使用虚招。"
   },
 
   {
     "Key": "DancersBattleDance.Name",
     "ProcessTemplates": false,
-    "enGB": "Exodus of Speed"
+    "enGB": "Exodus of Speed",
+    "zhCN": "凌波微步"
   },
 
   {
     "Key": "DancersBattleDance.Description",
-    "enGB": "At 3rd level and every 4 levels thereafter, a warrior poet’s base speed increases by 10 feet. This is an enhancement bonus. A warrior poet loses this extra speed when in medium or heavy armor."
+    "enGB": "At 3rd level and every 4 levels thereafter, a warrior poet’s base speed increases by 10 feet. This is an enhancement bonus. A warrior poet loses this extra speed when in medium or heavy armor.",
+    "zhCN": "3级时和之后每4级，花间诗剑的基础速度增加10尺。该加值为增强加值。花间诗剑穿着中型或重型盔甲时会失去该加值。"
   },
 
   {
     "Key": "DancersEdge.Name",
     "ProcessTemplates": false,
-    "enGB": "Dancer's Edge"
+    "enGB": "Dancer's Edge",
+    "zhCN": "舞刃之锋"
   },
 
   {
     "Key": "DancersEdge.Description",
-    "enGB": "While the warrior poet has at least 1 panache point, she can take 10 on any Athletics, Mobility, or Persuasion check, even while distracted or in immediate danger. She can use this ability in conjunction with the derring-do deed."
+    "enGB": "While the warrior poet has at least 1 panache point, she can take 10 on any Athletics, Mobility, or Persuasion check, even while distracted or in immediate danger. She can use this ability in conjunction with the derring-do deed.",
+    "zhCN": "花间诗剑拥有至少1点时髦值时，就能在进行运动、灵巧和沟通检定时取10，即使处于遭受威胁或分心的情况下。这个能力可以同“大胆特技”能力一起使用。"
   },
 
   {
     "Key": "DancersHarmony.Name",
     "ProcessTemplates": false,
-    "enGB": "Harmony of the Tranquil Garden"
+    "enGB": "Harmony of the Tranquil Garden",
+    "zhCN": "静园之谐"
   },
 
   {
     "Key": "DancersHarmony.Description",
-    "enGB": "While the warrior poet has at least 1 panache point, she gains the benefits of the Greater Blind-Fight feature."
+    "enGB": "While the warrior poet has at least 1 panache point, she gains the benefits of the Greater Blind-Fight feature.",
+    "zhCN": "当花间诗剑拥有至少1点时髦值时，获得高等盲斗的效果。"
   },
 
   {
     "Key": "DancersHasted.Name",
     "ProcessTemplates": false,
-    "enGB": "Hasted Dance"
+    "enGB": "Hasted Dance",
+    "zhCN": "迅风之舞"
   },
 
   {
     "Key": "DancersHasted.Description",
-    "enGB": "The warrior poet can spend 2 panache to gain the benefits of the haste spell for the duration of this combat. If in any round she does not move at least 10 feet, this effect ends."
+    "enGB": "The warrior poet can spend 2 panache to gain the benefits of the haste spell for the duration of this combat. If in any round she does not move at least 10 feet, this effect ends.",
+    "zhCN": "花间诗剑可以花费2点时髦值在本次战斗中获得加速术的效果。如果在任意一轮中她没有移动至少10尺，这个效果结束。"
   }
 ]
