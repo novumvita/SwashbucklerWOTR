@@ -18,7 +18,7 @@ namespace Swashbuckler.Patches
     {
         static void Postfix(UnitEntityData unit, ClassLevelGetter __instance, ref int __result)
         {
-            if (!unit.HasFact(Swashbuckler.swash_weapon_training))
+            if (!unit.HasFact(Swashbuckler.swash_weapon_training) && !unit.HasFact(Archetypes.InspiredBlade.rapier_training))
                 return;
 
             if (__instance.Class != CharacterClassRefs.FighterClass.Reference.Get())
