@@ -17,7 +17,7 @@ namespace Swashbuckler.Components
         public static bool IsSwashbucklerWeapon(BlueprintItemWeapon weapon, UnitDescriptor wielder)
         {
             // Identical check for Duelist weapons
-            if (weapon.IsMelee && (weapon.Category.HasSubCategory(WeaponSubCategory.Light) || weapon.Category.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon.Category == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon.Category)))
+            if (weapon.IsMelee && (weapon.Category.HasSubCategory(WeaponSubCategory.Light) || weapon.Category.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon.Category == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon.Category)) || (weapon.Category == WeaponCategory.Glaive && wielder.HasFact(Swashbuckler.dancers_finesse)))
             {
                 return true;
             }
@@ -27,7 +27,7 @@ namespace Swashbuckler.Components
         public static bool IsSwashbucklerWeapon(WeaponCategory weapon, UnitDescriptor wielder)
         {
             // Identical check for Duelist weapons
-            if (weapon.GetSubCategories().Any(WeaponSubCategory.Melee) && (weapon.HasSubCategory(WeaponSubCategory.Light) || weapon.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon)))
+            if (weapon.GetSubCategories().Any(WeaponSubCategory.Melee) && (weapon.HasSubCategory(WeaponSubCategory.Light) || weapon.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon)) || (weapon == WeaponCategory.Glaive && wielder.HasFact(Swashbuckler.dancers_finesse)))
             {
                 return true;
             }
@@ -177,6 +177,27 @@ namespace Swashbuckler.Components
         }
 
         public void OnEventDidTrigger(RuleCalculateWeaponStats evt)
+        {
+        }
+    }
+
+    public class AttackStatReplacementForGlaive : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleCalculateAttackBonusWithoutTarget>, IInitiatorRulebookSubscriber
+    {
+        private StatType ReplacementStat = StatType.Dexterity;
+
+        public void OnEventAboutToTrigger(RuleCalculateAttackBonusWithoutTarget evt)
+        {
+            ModifiableValueAttributeStat stat1 = this.Owner.Stats.GetStat(evt.AttackBonusStat) as ModifiableValueAttributeStat;
+            ModifiableValueAttributeStat stat2 = this.Owner.Stats.GetStat(this.ReplacementStat) as ModifiableValueAttributeStat;
+            bool flag = stat2 != null && stat1 != null && stat2.Bonus >= stat1.Bonus;
+
+            if (evt.Weapon.Blueprint.Category == WeaponCategory.Glaive && flag)
+            {
+                evt.AttackBonusStat = this.ReplacementStat;
+            }
+        }
+
+        public void OnEventDidTrigger(RuleCalculateAttackBonusWithoutTarget evt)
         {
         }
     }

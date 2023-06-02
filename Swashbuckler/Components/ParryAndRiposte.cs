@@ -1,4 +1,6 @@
-﻿using Kingmaker;
+﻿using BlueprintCore.Blueprints.References;
+using Kingmaker;
+using Kingmaker.Controllers.Projectiles;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
@@ -60,6 +62,48 @@ namespace Swashbuckler.Components
                         Logger.Log("Damage rule triggered");
 
                     }
+                }
+                Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
+            }
+        }
+    }
+
+    internal class DodgingParry : UnitFactComponentDelegate, ITargetRulebookHandler<RuleAttackRoll>, ITargetRulebookSubscriber
+    {
+        private static readonly Logging.Logger Logger = Logging.GetLogger("DParry");
+
+        private bool willSpend = false;
+        public void OnEventAboutToTrigger(RuleAttackRoll evt)
+        {
+            if (!evt.Weapon.Blueprint.IsMelee || evt.Parry != null || !Owner.IsReach(evt.Target, Owner.Body.PrimaryHand))
+                return;
+
+            evt.TryParry(Owner, Owner.Body.PrimaryHand.Weapon, 2 * (evt.Initiator.Descriptor.State.Size - Owner.State.Size));
+
+            willSpend = true;
+        }
+
+        public void OnEventDidTrigger(RuleAttackRoll evt)
+        {
+            if (willSpend)
+            {
+                willSpend = false;
+
+                if (!evt.Parry.IsTriggered)
+                    return;
+
+                if (evt.Result == AttackResult.Parried && evt.Target.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) >= 1)
+                {
+                    evt.Initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+                    evt.Target.CombatState.PreventAttacksOfOpporunityNextFrame = true;
+
+                    var displacement = (evt.Target.Position - evt.Initiator.Position).normalized;
+                    var initialPos = evt.Target.Position;
+                    evt.Target.Position = initialPos + displacement;
+
+                    Game.Instance.ProjectileController.Launch(evt.Target, evt.Target, ProjectileRefs.WindProjectile00.Reference.Get(), initialPos, delegate (Projectile p)
+                    {
+                    });
                 }
                 Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
             }

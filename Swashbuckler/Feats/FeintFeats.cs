@@ -20,6 +20,7 @@ namespace Swashbuckler.Feats
     internal class FeintFeats
     {
         static internal BlueprintFeature feint_feat;
+        static internal BlueprintFeature greater_feint_feat;
 
         static internal BlueprintBuff feint_buff;
         static internal BlueprintBuff greater_feint_buff;
@@ -67,7 +68,7 @@ namespace Swashbuckler.Feats
                 .AddPrerequisiteFeature(FeatureRefs.CombatExpertiseFeature.Reference.Get())
                 .Configure();
 
-            var greater_feint_feat = FeatureConfigurator.New(GFeintGuid, GFeintGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+            greater_feint_feat = FeatureConfigurator.New(GFeintGuid, GFeintGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
                 .SetDisplayName(GFeintDisplayName)
                 .SetDescription(GFeintDescription)
                 .SetIcon(ActivatableAbilityRefs.LungeToggleAbility.Reference.Get().Icon)

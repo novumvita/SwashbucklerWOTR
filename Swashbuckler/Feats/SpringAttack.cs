@@ -24,6 +24,9 @@ using Kingmaker.Blueprints;
 using BlueprintCore.Utils;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Actions.Builder;
+using Swashbuckler.Components;
+using BlueprintCore.Actions.Builder.ContextEx;
 
 namespace Swashbuckler.Feats
 {
@@ -83,8 +86,15 @@ namespace Swashbuckler.Feats
         internal static BlueprintBuff springAttackDebuff2;
         internal static BlueprintBuff springAttackDebuff3;
 
+        internal static BlueprintFeature springAttackFeat;
+        internal static BlueprintFeature springAttackReaping;
         internal static BlueprintFeature springAttack1;
         internal static BlueprintFeature springAttack2;
+
+        internal const string KitsuneName = "DancersKitsuneBuff";
+        internal const string KitsuneGuid = "C3D3E659-EC64-4CBF-9790-E7FAE49C851C";
+
+        static internal BlueprintBuff kitsune;
         internal static BlueprintBuff CreateSpringAttackBuff1()
         {
             return BuffConfigurator.New(SpringAttackBuff, SpringAttackBuffGuid)
@@ -112,6 +122,15 @@ namespace Swashbuckler.Feats
                 .AddNotDispelable()
                 .Configure();
         }
+
+        internal static BlueprintBuff CreateKitsune()
+        {
+            return BuffConfigurator.New(SpringAttack.KitsuneName, SpringAttack.KitsuneGuid)
+                .SetFlags(BlueprintBuff.Flags.HiddenInUi)
+                .AddNotDispelable()
+                .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.m_Resource = Swashbuckler.panache_resource.ToReference<BlueprintAbilityResourceReference>(); c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
+                .Configure();
+        }
         internal static void CreateSpringAttackFeat()
         {
             springAttackDebuff2 = BuffConfigurator.New(SpringAttackDebuff2, SpringAttackDebuff2Guid)
@@ -132,7 +151,9 @@ namespace Swashbuckler.Feats
             springAttackBuff2 = CreateSpringAttackBuff2();
             springAttackBuff3 = CreateSpringAttackBuff3();
 
-            var springAttackFeat = FeatureConfigurator.New(SpringAttackFeat, SpringAttackFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+            kitsune = CreateKitsune();
+
+            springAttackFeat = FeatureConfigurator.New(SpringAttackFeat, SpringAttackFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
                 .SetDisplayName(SpringAttackFeatDisplayName)
                 .SetDescription(SpringAttackFeatDescription)
                 .SetIcon(FeatureRefs.Improved_Initiative.Reference.Get().Icon)
@@ -179,7 +200,7 @@ namespace Swashbuckler.Feats
                 .SetDeactivateImmediately()
                 .Configure();
 
-            FeatureConfigurator.New(SpringAttackReapFeat, SpringAttackReapFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
+            springAttackReaping = FeatureConfigurator.New(SpringAttackReapFeat, SpringAttackReapFeatGuid, FeatureGroup.Feat, FeatureGroup.CombatFeat)
                 .SetDisplayName(SpringAttackReapFeatDisplayName)
                 .SetDescription(SpringAttackReapFeatDescription)
                 .SetIcon(FeatureRefs.Improved_Initiative.Reference.Get().Icon)
@@ -270,6 +291,14 @@ namespace Swashbuckler.Feats
 
             if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
             {
+                if (command.Executor.HasFact(SpringAttack.kitsune))
+                Logger.Log("First attack command");
+                {;
+                    Logger.Log("Attempting to feint");
+                    Fact.RunActionInContext(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = FeintFeats.feint_action).Build(), command.Target);
+                    command.Executor.Resources.Spend(Swashbuckler.panache_resource, 1);
+                }
+
                 Logger.Log("First attack command");
                 target1 = command.Target.Unit;
                 command.Executor.AddBuff(SpringAttack.springAttackBuff1, command.Executor, 1.Rounds().Seconds);

@@ -770,7 +770,7 @@
 
   {
     "Key": "Lillend.Description",
-    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a pull combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking).",
+    "enGB": "At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to redirect the attack to a flanking opponent. She and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking).",
     "zhCN": "7级时，当一个敌人夹击灵使剑客近战攻击失手，灵使剑客可以用2点时髦值以一个直觉动作尝试一次拖拽战技对抗这名敌人。如果她在战技检定中成功，她和攻击对手交换位置，同时该敌人的攻击将会指向提供夹击的另一名敌人，以相同的攻击骰(包括夹击加值)来决定命中。"
   },
 
@@ -875,5 +875,126 @@
     "Key": "SeizeTheOpportunity.Description",
     "enGB": "When you make an attack of opportunity, you can use Vital Strike.",
     "zhCN": "当你做出借机攻击时，你可以应用要害打击。"
+  },
+
+  {
+    "Key": "WarriorPoet.Name",
+    "ProcessTemplates": false,
+    "enGB": "Warrior Poet"
+  },
+
+  {
+    "Key": "WarriorPoet.Description",
+    "enGB": "Warrior poets often study calligraphy, flower arrangement, poetry, and other courtly arts, but when called to battle, they treat combat as its own art form, fighting with beauty and grace."
+  },
+
+  {
+    "Key": "DancersFinesse.Name",
+    "ProcessTemplates": false,
+    "enGB": "Graceful Warrior"
+  },
+
+  {
+    "Key": "DancersFinesse.Description",
+    "enGB": "The warrior poet gains the benefits of Weapon Finesse  with glaives as if they were light weapons. When wielding a glaive, she can treat it as a one-handed piercing or slashing melee weapon for the purposes of swashbuckler abilities that require such a weapon. This ability counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites."
+  },
+
+  {
+    "Key": "DancersGrace.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dancer's Grace"
+  },
+
+  {
+    "Key": "DancersGrace.Description",
+    "enGB": "When wearing no armor and not using a shield, the warrior poet gains a bonus to Armor Class equal to her Charisma bonus(to a maximum of her swashbuckler level). A warrior poet loses this bonus while flatfooted or otherwise denied her Dexterity bonus."
+  },
+
+  {
+    "Key": "DancersStrike.Name",
+    "ProcessTemplates": false,
+    "enGB": "Graceful Strike"
+  },
+
+  {
+    "Key": "DancersStrike.Description",
+    "enGB": "While the warrior poet has at least 1 panache point, when she uses Weapon Finesse to make a melee attack that adds her Dexterity bonus to attack rolls and her Strength bonus to damage rolls, she also adds half her swashbuckler level to damage rolls. On her first successful attack each round, she instead adds her swashbuckler level to damage rolls."
+  },
+
+  {
+    "Key": "DancersParry.Name",
+    "ProcessTemplates": false,
+    "enGB": "Petals on the Wind"
+  },
+
+  {
+    "Key": "DancersParry.Description",
+    "enGB": "When an opponent makes a melee attack against the warrior poet, she can spend 1 panache point and expend a use of an attack of opportunity to attempt to parry that attack. The warrior poet makes an attack roll as if she were making an attack of opportunity; for each size category the attacking creature is larger than the swashbuckler, the warrior poet takes a –2 penalty on this roll. If her result is greater than the attacking creature’s result, the creature’s attack automatically misses. The warrior poet must declare the use of this ability after the creature’s attack is announced, but before its attack roll is made. Upon performing a successful parry and if she has at least 1 panache point, the swashbuckler can as an immediate action move 5 feet. This movement is not a 5-foot step; it provokes attacks of opportunity from creatures other than the one who triggered this deed."
+  },
+
+  {
+    "Key": "DancersBloom.Name",
+    "ProcessTemplates": false,
+    "enGB": "Chrysanthemum’s Blooming"
+  },
+
+  {
+    "Key": "DancersBloom.Description",
+    "enGB": "The warrior poet gains Vital Strike as a bonus feat. She gains the benefits of Spring-Heeled Reaping while she has more than 1 panache."
+  },
+
+  {
+    "Key": "DancersKitsune.Name",
+    "ProcessTemplates": false,
+    "enGB": "Kitsune’s Mystique"
+  },
+
+  {
+    "Key": "DancersKitsune.Description",
+    "enGB": "When the warrior poet uses Spring Attack, she can spend 1 panache to attempt to feint against her first target as part of her movement."
+  },
+
+  {
+    "Key": "DancersBattleDance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Exodus of Speed"
+  },
+
+  {
+    "Key": "DancersBattleDance.Description",
+    "enGB": "At 3rd level and every 4 levels thereafter, a warrior poet’s base speed increases by 10 feet. This is an enhancement bonus. A warrior poet loses this extra speed when in medium or heavy armor."
+  },
+
+  {
+    "Key": "DancersEdge.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dancer's Edge"
+  },
+
+  {
+    "Key": "DancersEdge.Description",
+    "enGB": "While the warrior poet has at least 1 panache point, she can take 10 on any Athletics, Mobility, or Persuasion check, even while distracted or in immediate danger. She can use this ability in conjunction with the derring-do deed."
+  },
+
+  {
+    "Key": "DancersHarmony.Name",
+    "ProcessTemplates": false,
+    "enGB": "Harmony of the Tranquil Garden"
+  },
+
+  {
+    "Key": "DancersHarmony.Description",
+    "enGB": "While the warrior poet has at least 1 panache point, she gains the benefits of the Greater Blind-Fight feature."
+  },
+
+  {
+    "Key": "DancersHasted.Name",
+    "ProcessTemplates": false,
+    "enGB": "Hasted Dance"
+  },
+
+  {
+    "Key": "DancersHasted.Description",
+    "enGB": "The warrior poet can spend 2 panache to gain the benefits of the haste spell for the duration of this combat. If in any round she does not move at least 10 feet, this effect ends."
   }
 ]

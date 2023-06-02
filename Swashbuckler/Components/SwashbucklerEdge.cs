@@ -22,4 +22,19 @@ namespace Swashbuckler.Components
         {
         }
     }
+    internal class WarriorPoetEdge : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleSkillCheck>, IInitiatorRulebookSubscriber
+    {
+        private StatType[] stats = { StatType.SkillAthletics, StatType.SkillMobility, StatType.SkillPersuasion };
+
+        public void OnEventAboutToTrigger(RuleSkillCheck evt)
+        {
+            if (!stats.Contains(evt.StatType))
+                return;
+            evt.Take10ForSuccess = true;
+        }
+
+        public void OnEventDidTrigger(RuleSkillCheck evt)
+        {
+        }
+    }
 }

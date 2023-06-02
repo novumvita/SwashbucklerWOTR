@@ -59,13 +59,18 @@ namespace Swashbuckler
         static internal BlueprintFeature swash_weapon_training;
         static internal BlueprintFeature swash_weapon_mastery;
 
+        static internal BlueprintFeature deeds1;
         static internal BlueprintFeature deeds3;
         static internal BlueprintFeature deeds7;
         static internal BlueprintFeature deeds11;
+        static internal BlueprintFeature deeds15;
+        static internal BlueprintFeature deeds19;
 
         static internal BlueprintBuff kip_buff;
         static internal BlueprintFeature kip_feature;
-        
+
+        static internal BlueprintFeature derring_feat;
+
         static internal BlueprintFeature swash_init_feature;
 
         static internal BlueprintBuff precise_strike_buff;
@@ -77,6 +82,8 @@ namespace Swashbuckler
 
         static internal BlueprintFeature grace_feat;
         static internal BlueprintFeature sup_feint_feat;
+
+        static internal BlueprintFeature dancers_finesse;
 
         #region const strings
         internal const string SwashName = "Swashbuckler";
@@ -409,6 +416,8 @@ namespace Swashbuckler
             swash_class.PrimaryColor = CharacterClassRefs.MagusClass.Reference.Get().PrimaryColor;
             swash_class.SecondaryColor = CharacterClassRefs.MagusClass.Reference.Get().SecondaryColor;
 
+            dancers_finesse = Archetypes.WarriorPoet.CreateFinesse();
+
             panache_feature = CreatePanache();
             swash_finesse = CreateFinesse();
             charmed_life = CreateCharmed();
@@ -421,14 +430,16 @@ namespace Swashbuckler
             deeds3 = CreateDeeds3();
             deeds7 = CreateDeeds7();
             deeds11 = CreateDeeds11();
-            var deeds15 = CreateDeeds15();
-            var deeds19 = CreateDeeds19();
+            deeds15 = CreateDeeds15();
+            deeds19 = CreateDeeds19();
 
 
             Archetypes.InspiredBlade.Configure();
             Archetypes.Azatariel.Configure();
 
-            var deeds1 = CreateDeeds1();
+            deeds1 = CreateDeeds1();
+
+            Archetypes.WarriorPoet.Configure();
 
             var lb = new LevelEntryBuilder();
             lb.AddEntry(1, deeds1, panache_feature, swash_finesse, profs);
@@ -454,7 +465,9 @@ namespace Swashbuckler
             ui.AddGroup(Archetypes.InspiredBlade.rapier_training, Archetypes.InspiredBlade.rapier_mastery);
             ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19);
             ui.AddGroup(Archetypes.Azatariel.azata_deeds3, Archetypes.Azatariel.azata_deeds7, Archetypes.Azatariel.azata_deeds11);
-            ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse);
+            ui.AddGroup(Archetypes.WarriorPoet.dancer_deeds1,  Archetypes.WarriorPoet.dancer_deeds3, Archetypes.WarriorPoet.dancer_deeds7, Archetypes.WarriorPoet.dancer_deeds11, Archetypes.WarriorPoet.dancer_deeds15);
+            ui.AddGroup(Feats.SpringAttack.springAttackFeat, Feats.SpringAttack.springAttack1, Feats.SpringAttack.springAttack2, Feats.FeintFeats.feint_feat, Feats.FeintFeats.greater_feint_feat);
+            ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse, dancers_finesse);
 
             var prog = ProgressionConfigurator.New(Progression, ProgressionGuid)
                 .AddToLevelEntries(lb.GetEntries())
@@ -503,6 +516,8 @@ namespace Swashbuckler
                 .AddAbilityResources(resource: panache_resource, restoreAmount: true)
                 .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, criticalHit: true)
                 .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, reduceHPToZero: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, reduceHPToZero: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, criticalHit: true)
                 .SetIsClassFeature()
                 .Configure();
         }
@@ -664,13 +679,15 @@ namespace Swashbuckler
                 .SetDeactivateImmediately()
                 .Configure();
 
-            return FeatureConfigurator.New(DerringFeature, DerringFeatureGuid)
+            derring_feat = FeatureConfigurator.New(DerringFeature, DerringFeatureGuid)
                 .SetDisplayName(DerringDisplayName)
                 .SetDescription(DerringDescription)
                 .SetIcon(FeatureRefs.BloodlineFeyWoodlandStride.Reference.Get().Icon)
                 .AddFacts(new() { derring_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return derring_feat;
         }
 
         internal static BlueprintFeature CreateDodgingPanache()
