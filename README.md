@@ -34,10 +34,6 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
 * Lillend's Misdirection does not require a combat maneuver check.
 * Whimsical Riposte provides Charisma bonus to attack and damage rolls for all attacks of opportunity.
 * Swashbuckler Weapon Training allows Advanced Weapon Training feats to be selected.
-
-## Planned Content
-* Archetypes
-  * [Bravo](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/bravo-swashbuckler-archetype/)
  
 ## Problems or Suggestions
 
