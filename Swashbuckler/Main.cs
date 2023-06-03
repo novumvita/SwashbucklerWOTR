@@ -60,6 +60,7 @@ namespace Swashbuckler
                     SwordplayStyle.Configure();
                     SpringAttack.CreateSpringAttackFeat();
                     SeizeTheOpportunity.CreateStO();
+                    WindLightning.Configure();
 
                     Logger.Info("Configuring Swashbuckler.");
                     Swashbuckler.Configure();

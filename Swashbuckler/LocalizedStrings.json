@@ -1096,5 +1096,27 @@
     "Key": "RostlandBravoTerror.Description",
     "enGB": "At 15th level, the Rostland bravo can use her inevitable victory deed as part of a full attack or dragon’s rage. A creature demoralized in this way is shaken for one additional round. If such a creature would be shaken for 4 or more rounds, the target is frightened for 1 round before becoming shaken for the appropriate duration. This deed replaces swashbuckler’s edge.",
     "zhCN": "15级时，雷斯兰暴徒可以将胜利宣告作为全力攻击或无尽龙怒的一部分来施展，如果一个生物因此将战栗4轮或以上，则他会先惊恐1轮，然后在其余的轮数战栗。该炫技取代游荡剑客之骄傲。"
+  },
+
+  {
+    "Key": "WindStance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Wind Stance"
+  },
+
+  {
+    "Key": "WindStance.Description",
+    "enGB": "If you move atleast 10 feet in a turn, you gain 20% concealment for 1 round against ranged attacks."
+  },
+
+  {
+    "Key": "LightningStance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Lightning Stance"
+  },
+
+  {
+    "Key": "LightningStance.Description",
+    "enGB": "If you move atleast 60 feet in a turn, you gain 50% concealment for 1 round."
   }
 ]

@@ -161,12 +161,17 @@ namespace Swashbuckler.Archetypes
                 .AddComponent<RapierDamageBonus>()
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(RTraining))
                 .SetReapplyOnLevelUp()
-                .SetRanks(4)
+                .SetRanks(10)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = ParametrizedFeatureRefs.ImprovedCritical.Reference.deserializedGuid } })
                 .AddToGroups(FeatureGroup.WeaponTraining)
                 .SkipAddToSelections()
                 .SetIsClassFeature()
+                .Configure();
+
+            FeatureConfigurator.New(RTraining2, RTraining2Guid)
+                .SetHideInUI()
+                .SetHideInCharacterSheetAndLevelUp()
                 .Configure();
 
             ParametrizedFeatureConfigurator.For(ParametrizedFeatureRefs.ImprovedCritical)

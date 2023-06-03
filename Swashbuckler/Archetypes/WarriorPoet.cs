@@ -319,7 +319,7 @@ namespace Swashbuckler.Archetypes
                 .SetDescription(HastedDescription)
                 .SetIcon(AbilityRefs.Haste.Reference.Get().Icon)
                 .AddCombatStateTrigger(combatEndActions: ActionsBuilder.New().RemoveSelf().Build())
-                .AddMovementDistanceTrigger(action: ActionsBuilder.New().IncreaseBuffDuration(ContextDuration.Fixed(1), BuffRefs.HasteBuff.Reference.Get()).Build(), distanceInFeet: 10, limitTiggerCountInOneRound: true)
+                .AddMovementDistanceTrigger(action: ActionsBuilder.New().IncreaseBuffDuration(ContextDuration.Fixed(1), BuffRefs.HasteBuff.Reference.Get()).Build(), distanceInFeet: 10, limitTiggerCountInOneRound: true, tiggerCountMaximumInOneRound: 1)
                 .AddNotDispelable()
                 .Configure();
 

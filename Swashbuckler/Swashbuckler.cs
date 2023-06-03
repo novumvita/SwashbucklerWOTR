@@ -640,7 +640,7 @@ namespace Swashbuckler
                 .AddToGroups(FeatureGroup.WeaponTraining)
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(WTraining))
                 .SetReapplyOnLevelUp()
-                .SetRanks(4)
+                .SetRanks(10)
                 .SkipAddToSelections()
                 .SetIsClassFeature()
                 .Configure();
@@ -842,6 +842,7 @@ namespace Swashbuckler
                 .AddAbilityEffectRunAction(ActionsBuilder.New()
                     .ApplyBuff(precise_strike_buff, ContextDuration.Fixed(1)))
                 .AddAbilityResourceLogic(requiredResource: panache_resource, amount: 1, isSpendResource: true)
+                .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .Configure();
 
             return FeatureConfigurator.New(PreciseFeature, PreciseFeatureGuid)
