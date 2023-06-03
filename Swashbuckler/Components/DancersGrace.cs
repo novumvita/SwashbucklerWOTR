@@ -1,23 +1,9 @@
-﻿using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Items.Armors;
-using Kingmaker.Designers.Mechanics.Buffs;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.Enums;
-using Kingmaker.Items.Slots;
+﻿using Kingmaker.Enums;
 using Kingmaker.Items;
+using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using Kingmaker.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.Serialization;
-using UnityEngine;
 
 namespace Swashbuckler.Components
 {

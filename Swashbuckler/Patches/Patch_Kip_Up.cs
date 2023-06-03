@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-using Kingmaker;
 using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.View;
-using Swashbuckler.Utilities;
-using static SmartConsole;
 
 namespace Swashbuckler.Patches
 {

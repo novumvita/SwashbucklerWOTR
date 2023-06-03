@@ -10,7 +10,6 @@ using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
@@ -98,13 +97,12 @@ namespace Swashbuckler.Archetypes
             inspired_deeds11 = CreateDeeds11();
             inspired_panache = CreatePanache();
             inspired_finesse = CreateFinesse();
-            var training = CreateWeaponTraining();
-            rapier_training = training[0];
+            rapier_training = CreateWeaponTraining();
             rapier_mastery = CreateWeaponMastery();
 
             archetype
                 .AddToAddFeatures(1, inspired_panache, inspired_finesse)
-                .AddToAddFeatures(5, rapier_training, training[1])
+                .AddToAddFeatures(5, rapier_training)
                 .AddToAddFeatures(9, rapier_training)
                 .AddToAddFeatures(11, inspired_deeds11)
                 .AddToAddFeatures(13, rapier_training)
@@ -137,7 +135,6 @@ namespace Swashbuckler.Archetypes
                 .AddComponent<AttackStatReplacementForRapier>()
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
                 .AddParametrizedFeatures(new AddParametrizedFeatures.FeatureData[] { new AddParametrizedFeatures.FeatureData { m_Feature = ParametrizedFeatureRefs.WeaponFocus.Reference.GetBlueprint().ToReference<BlueprintParametrizedFeatureReference>(), ParamWeaponCategory = WeaponCategory.Rapier } })
-                .AddRecommendationNoFeatFromGroup(new() { FeatureRefs.WeaponFinesse.Reference.Get(), ParametrizedFeatureRefs.WeaponFocus.Reference.Get() })
                 .SetIsClassFeature()
                 .Configure();
 
@@ -152,7 +149,7 @@ namespace Swashbuckler.Archetypes
             return swash_finesse;
         }
 
-        internal static BlueprintFeature[] CreateWeaponTraining()
+        internal static BlueprintFeature CreateWeaponTraining()
         {
             var rapier_training = FeatureConfigurator.New(RTraining, RTrainingGuid)
                 .SetDisplayName(RTrainingDisplayName)
@@ -160,8 +157,8 @@ namespace Swashbuckler.Archetypes
                 .SetIcon(ActivatableAbilityRefs.ArcaneWeaponFrostChoice.Reference.Get().Icon)
                 .AddComponent<ImprovedCriticalOnWieldingRapier>()
                 .AddWeaponTraining()
-                .AddWeaponTrainingBonuses(stat: StatType.AdditionalAttackBonus, descriptor: ModifierDescriptor.UntypedStackable)
-                .AddWeaponTrainingBonuses(stat: StatType.AdditionalDamage, descriptor: ModifierDescriptor.UntypedStackable)
+                .AddWeaponCategoryAttackBonus(1, WeaponCategory.Rapier, ModifierDescriptor.WeaponTraining)
+                .AddComponent<RapierDamageBonus>()
                 .AddContextRankConfig(ContextRankConfigs.FeatureRank(RTraining))
                 .SetReapplyOnLevelUp()
                 .SetRanks(4)
@@ -172,18 +169,11 @@ namespace Swashbuckler.Archetypes
                 .SetIsClassFeature()
                 .Configure();
 
-            var rapier2_training = FeatureConfigurator.New(RTraining2, RTraining2Guid)
-                .SetDisplayName(RTrainingDisplayName)
-                .SetHideInCharacterSheetAndLevelUp()
-                .SetHideInUI()
-                .AddWeaponTypeDamageBonus(1, WeaponTypeRefs.Rapier.Reference.Get())
-                .Configure();
-
             ParametrizedFeatureConfigurator.For(ParametrizedFeatureRefs.ImprovedCritical)
                 .AddRecommendationNoFeatFromGroup(new() { rapier_training })
                 .Configure();
 
-            return new BlueprintFeature[] { rapier_training, rapier2_training };
+            return rapier_training;
         }
 
         internal static BlueprintFeature CreateWeaponMastery()

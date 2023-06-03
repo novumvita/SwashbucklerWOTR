@@ -314,7 +314,7 @@ namespace Swashbuckler.Archetypes
                 .AddNotDispelable()
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
                 .AddContextRankConfig(ContextRankConfigs.ClassLevel(classes: new string[] { Swashbuckler.SwashName }).WithStartPlusDivStepProgression(start: 3, divisor: 4, delayStart: true))
-                .AddContextStatBonus(stat: StatType.Speed, descriptor: ModifierDescriptor.Enhancement, value: ContextValues.Rank(),multiplier: 10)
+                .AddContextStatBonus(stat: StatType.Speed, descriptor: ModifierDescriptor.Enhancement, value: ContextValues.Rank(), multiplier: 10)
                 .Configure();
 
             return FeatureConfigurator.New(BattleDance, BattleDanceGuid)

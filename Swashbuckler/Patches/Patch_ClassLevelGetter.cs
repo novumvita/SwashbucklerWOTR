@@ -2,13 +2,7 @@
 using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Patches
 {

@@ -1,9 +1,8 @@
 ﻿using HarmonyLib;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Swashbuckler.Feats;
-using Swashbuckler.Utilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 
 namespace Swashbuckler.Patches
 {

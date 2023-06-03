@@ -1,32 +1,26 @@
-﻿using Kingmaker.Controllers;
-using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Commands;
-using Kingmaker.TurnBasedMode;
-using Pathfinding;
-using Kingmaker;
-using UnityEngine;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.Utility;
-using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
-using Kingmaker.Blueprints.Classes;
-using BlueprintCore.Blueprints.CustomConfigurators.Classes;
-using Swashbuckler.Utilities;
-using Kingmaker.EntitySystem.Entities;
-using TurnBased.Controllers;
-using BlueprintCore.Blueprints.References;
-using System;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.Blueprints;
-using BlueprintCore.Utils;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
-using BlueprintCore.Actions.Builder;
-using Swashbuckler.Components;
+﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
+using BlueprintCore.Blueprints.References;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.EntitySystem.Stats;
+using Kingmaker.PubSubSystem;
+using Kingmaker.TurnBasedMode;
+using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Commands;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.Utility;
+using Pathfinding;
+using Swashbuckler.Components;
+using Swashbuckler.Utilities;
+using TurnBased.Controllers;
+using UnityEngine;
 
 namespace Swashbuckler.Feats
 {
@@ -292,8 +286,9 @@ namespace Swashbuckler.Feats
             if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
             {
                 if (command.Executor.HasFact(SpringAttack.kitsune))
-                Logger.Log("First attack command");
-                {;
+                    Logger.Log("First attack command");
+                {
+                    ;
                     Logger.Log("Attempting to feint");
                     Fact.RunActionInContext(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = FeintFeats.feint_action).Build(), command.Target);
                     command.Executor.Resources.Spend(Swashbuckler.panache_resource, 1);

@@ -17,9 +17,9 @@ using BlueprintCore.Utils.Types;
 using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Designers.Mechanics.WeaponEnchants;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
@@ -34,7 +34,6 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Swashbuckler.Components;
 using Swashbuckler.Patches;
-using TabletopTweaks.Core.NewUnitParts;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace Swashbuckler
@@ -45,6 +44,8 @@ namespace Swashbuckler
 
         static internal BlueprintAbilityResource panache_resource;
         static internal BlueprintFeature panache_feature;
+
+        static internal BlueprintFeature profs;
 
         static internal BlueprintFeature ftraining;
 
@@ -82,6 +83,10 @@ namespace Swashbuckler
 
         static internal BlueprintFeature grace_feat;
         static internal BlueprintFeature sup_feint_feat;
+
+        static internal BlueprintFeature targeted_strike_feat;
+        static internal BlueprintFeature dizzying_feat;
+        static internal BlueprintFeature perfect_feat;
 
         static internal BlueprintFeature dancers_finesse;
 
@@ -421,7 +426,7 @@ namespace Swashbuckler
             panache_feature = CreatePanache();
             swash_finesse = CreateFinesse();
             charmed_life = CreateCharmed();
-            var profs = CreateProficiencies();
+            profs = CreateProficiencies();
             swash_bonus_feats = CreateBonusFeat();
             swash_weapon_training = CreateWeaponTraining();
             swash_weapon_mastery = CreateWeaponMastery();
@@ -436,6 +441,7 @@ namespace Swashbuckler
 
             Archetypes.InspiredBlade.Configure();
             Archetypes.Azatariel.Configure();
+            Archetypes.RostlandBravo.Configure();
 
             deeds1 = CreateDeeds1();
 
@@ -465,9 +471,10 @@ namespace Swashbuckler
             ui.AddGroup(Archetypes.InspiredBlade.rapier_training, Archetypes.InspiredBlade.rapier_mastery);
             ui.AddGroup(deeds1, deeds3, deeds7, deeds11, deeds15, deeds19);
             ui.AddGroup(Archetypes.Azatariel.azata_deeds3, Archetypes.Azatariel.azata_deeds7, Archetypes.Azatariel.azata_deeds11);
-            ui.AddGroup(Archetypes.WarriorPoet.dancer_deeds1,  Archetypes.WarriorPoet.dancer_deeds3, Archetypes.WarriorPoet.dancer_deeds7, Archetypes.WarriorPoet.dancer_deeds11, Archetypes.WarriorPoet.dancer_deeds15);
+            ui.AddGroup(Archetypes.WarriorPoet.dancer_deeds1, Archetypes.WarriorPoet.dancer_deeds3, Archetypes.WarriorPoet.dancer_deeds7, Archetypes.WarriorPoet.dancer_deeds11, Archetypes.WarriorPoet.dancer_deeds15);
+            ui.AddGroup(Archetypes.RostlandBravo.bravo_deeds3, Archetypes.RostlandBravo.bravo_deeds7, Archetypes.RostlandBravo.bravo_deeds11, Archetypes.RostlandBravo.bravo_deeds15);
             ui.AddGroup(Feats.SpringAttack.springAttackFeat, Feats.SpringAttack.springAttack1, Feats.SpringAttack.springAttack2, Feats.FeintFeats.feint_feat, Feats.FeintFeats.greater_feint_feat);
-            ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse, dancers_finesse);
+            ui.SetGroupDeterminators(panache_feature, swash_finesse, profs, Archetypes.InspiredBlade.inspired_panache, Archetypes.InspiredBlade.inspired_finesse, dancers_finesse, Archetypes.RostlandBravo.bravo_profs);
 
             var prog = ProgressionConfigurator.New(Progression, ProgressionGuid)
                 .AddToLevelEntries(lb.GetEntries())
@@ -531,7 +538,6 @@ namespace Swashbuckler
                 .AddComponent<AttackStatReplacementForSwashbucklerWeapon>()
                 .AddReplaceStatForPrerequisites(StatType.Charisma, StatType.Intelligence)
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
-                .AddRecommendationNoFeatFromGroup(new() { FeatureRefs.WeaponFinesse.Reference.Get() })
                 .SetIsClassFeature()
                 .Configure();
 
@@ -627,8 +633,8 @@ namespace Swashbuckler
                 .SetIcon(FeatureRefs.WeaponMastery.Reference.Get().Icon)
                 .AddComponent<ImprovedCriticalOnWieldingSwashbucklerWeapon>()
                 .AddWeaponTraining()
-                .AddWeaponTrainingBonuses(stat: StatType.AdditionalAttackBonus, descriptor: ModifierDescriptor.UntypedStackable)
-                .AddWeaponTrainingBonuses(stat: StatType.AdditionalDamage, descriptor: ModifierDescriptor.UntypedStackable)
+                .AddComponent<SwashbucklerWeaponAttackBonus>()
+                .AddComponent<SwashbucklerWeaponDamageBonus>()
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureSelectionRefs.WeaponTrainingSelection.Reference.deserializedGuid } })
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = ParametrizedFeatureRefs.ImprovedCritical.Reference.deserializedGuid } })
                 .AddToGroups(FeatureGroup.WeaponTraining)
@@ -1006,13 +1012,15 @@ namespace Swashbuckler
                 .SetIsFullRoundAction()
                 .Configure();
 
-            return FeatureConfigurator.New(TargetedStrike, TargetedStrikeGuid)
+            targeted_strike_feat = FeatureConfigurator.New(TargetedStrike, TargetedStrikeGuid)
                 .SetDisplayName(TargetedStrikeDisplayName)
                 .SetDescription(TargetedStrikeDescription)
                 .SetIcon(FeatureRefs.TwoHandedFighterBackswing.Reference.Get().Icon)
                 .AddFacts(new() { targeted_strike_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return targeted_strike_feat;
         }
 
         internal static BlueprintFeature CreateDeeds7()
@@ -1220,15 +1228,18 @@ namespace Swashbuckler
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(buff: dizzying_defense_buff, durationValue: ContextDuration.Fixed(1), toCaster: true).ApplyBuff(buff: BuffRefs.FightDefensivelyBuff.Reference.Get(), durationValue: ContextDuration.Fixed(1), toCaster: true).MeleeAttack().Build())
+                .AddAbilityResourceLogic(1, requiredResource: panache_resource)
                 .Configure();
 
-            return FeatureConfigurator.New(DizzyingFeature, DizzyingFeatureGuid)
+            dizzying_feat = FeatureConfigurator.New(DizzyingFeature, DizzyingFeatureGuid)
                 .SetDisplayName(DizzyingDisplayName)
                 .SetDescription(DizzyingDescription)
                 .SetIcon(AbilityRefs.MageShield.Reference.Get().Icon)
                 .AddFacts(new() { dizzying_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return dizzying_feat;
         }
 
         internal static BlueprintFeature CreatePerfectThrust()
@@ -1256,13 +1267,15 @@ namespace Swashbuckler
                 .AddComponent<AbilityCasterHasAtLeastOnePanache>()
                 .Configure();
 
-            return FeatureConfigurator.New(PerfectThrustFeature, PerfectThrustFeatureGuid)
+            perfect_feat = FeatureConfigurator.New(PerfectThrustFeature, PerfectThrustFeatureGuid)
                 .SetDisplayName(PerfectThrustDisplayName)
                 .SetDescription(PerfectThrustDescription)
                 .SetIcon(AbilityRefs.DimensionStrikeAbility.Reference.Get().Icon)
                 .AddFacts(new() { perfect_thrust_ability })
                 .SetIsClassFeature()
                 .Configure();
+
+            return perfect_feat;
         }
 
         internal static BlueprintFeature CreateEdge()

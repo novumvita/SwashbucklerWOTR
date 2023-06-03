@@ -2,21 +2,12 @@
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
-using BlueprintCore.Utils;
-using BlueprintCore.Utils.Types;
-using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
-using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Swashbuckler.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Feats
 {

@@ -17,6 +17,18 @@ namespace Swashbuckler.Components
             return (SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(caster.Body.PrimaryHand.Weapon.Blueprint, caster.Descriptor) || SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(caster.Body.SecondaryHand.Weapon.Blueprint, caster.Descriptor));
         }
     }
+    public class AbilityCasterDuelingSwordCheck : BlueprintComponent, IAbilityCasterRestriction
+    {
+        public string GetAbilityCasterRestrictionUIText()
+        {
+            return "Requires dueling sword";
+        }
+
+        public bool IsCasterRestrictionPassed(UnitEntityData caster)
+        {
+            return (caster.Body.PrimaryHand.Weapon.Blueprint.Category == WeaponCategory.DuelingSword);
+        }
+    }
     public class AbilityCasterHasAtLeastOnePanache : BlueprintComponent, IAbilityCasterRestriction
     {
         public string GetAbilityCasterRestrictionUIText()

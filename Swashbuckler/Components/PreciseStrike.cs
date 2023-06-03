@@ -1,13 +1,8 @@
-﻿using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.EntitySystem.Entities;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums;
+﻿using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.UnitLogic.Parts;
 
 namespace Swashbuckler.Components
 {
@@ -45,7 +40,7 @@ namespace Swashbuckler.Components
             int bonus = Owner.Progression.GetClassLevel(Swashbuckler.swash_class);
 
             if (IsSuitable(evt) && triggered)
-                evt.AddDamageModifier(bonus/2, Fact);
+                evt.AddDamageModifier(bonus / 2, Fact);
             else
                 evt.AddDamageModifier(bonus, Fact);
         }

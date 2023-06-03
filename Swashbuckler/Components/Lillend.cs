@@ -1,19 +1,9 @@
-﻿using BlueprintCore.Blueprints.References;
-using Kingmaker;
-using Kingmaker.Blueprints;
-using Kingmaker.Controllers.Projectiles;
-using Kingmaker.PubSubSystem;
+﻿using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using Kingmaker.Visual.Particles;
-using Kingmaker.Visual.Particles.FxSpawnSystem;
 using Swashbuckler.Utilities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {
@@ -29,7 +19,7 @@ namespace Swashbuckler.Components
         {
             if (evt.AttackRoll.IsHit || Owner.CombatState.EngagedBy.Count < 2)
                 return;
-                
+
             var target = Owner.CombatState.EngagedBy.Where(c => c != evt.Initiator).First();
 
             if (evt.AttackRoll.Roll >= target.Stats.AC)

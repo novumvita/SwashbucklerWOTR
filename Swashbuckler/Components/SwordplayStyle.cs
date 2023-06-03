@@ -1,17 +1,12 @@
 ﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Blueprints.References;
-using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Swashbuckler.Feats;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {

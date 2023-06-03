@@ -4,7 +4,6 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using Swashbuckler.Utilities;
 
 namespace Swashbuckler.Components
 {

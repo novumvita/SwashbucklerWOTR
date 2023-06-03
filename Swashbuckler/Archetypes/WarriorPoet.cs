@@ -1,6 +1,5 @@
 ﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.ContextEx;
-using BlueprintCore.Blueprints.Configurators.Classes.Selection;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
@@ -9,22 +8,16 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using QuickGraph;
 using Swashbuckler.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Archetypes
 {
@@ -173,8 +166,8 @@ namespace Swashbuckler.Archetypes
                 .SetIcon(FeatureRefs.WeaponFinesse.Reference.Get().Icon)
                 .AddComponent<AttackStatReplacementForGlaive>()
                 .AddComponent(new FeatureForPrerequisite() { FakeFact = new BlueprintUnitFactReference() { deserializedGuid = FeatureRefs.WeaponFinesse.Reference.deserializedGuid } })
-                .AddRecommendationNoFeatFromGroup(new() { FeatureRefs.WeaponFinesse.Reference.Get() })
                 .SetIsClassFeature()
+                .AddComponent<AddDuelistWeapon>(c => c.WeaponCategory = WeaponCategory.Glaive)
                 .Configure();
 
             FeatureConfigurator.For(FeatureRefs.WeaponFinesse)

@@ -2,11 +2,6 @@
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swashbuckler.Components
 {

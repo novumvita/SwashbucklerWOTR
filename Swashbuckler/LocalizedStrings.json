@@ -899,7 +899,7 @@
 
   {
     "Key": "DancersFinesse.Description",
-    "enGB": "The warrior poet gains the benefits of Weapon Finesse  with glaives as if they were light weapons. When wielding a glaive, she can treat it as a one-handed piercing or slashing melee weapon for the purposes of swashbuckler abilities that require such a weapon. This ability counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites.",
+    "enGB": "The warrior poet gains the benefits of Weapon Finesse  with glaives as if they were light weapons. When wielding a glaive, she can treat it as a one-handed piercing or slashing melee weapon. This ability counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites.",
     "zhCN": "花间诗剑获得武器娴熟作为奖励专长，并且可以将其应用于大砍刀，即使它不是轻武器。当持用大砍刀时，在判断是否满足游荡剑客能力时，她将大砍刀视为单手穿刺或挥砍武器。这个能力在满足其他专长前置时，视为拥有武器娴熟。"
   },
 
@@ -1016,7 +1016,73 @@
 
   {
     "Key": "DancersHasted.Description",
-    "enGB": "The warrior poet can spend 2 panache to gain the benefits of the haste spell for the duration of this combat. If in any round she does not move at least 10 feet, this effect ends.",
+    "enGB": "The warrior poet can spend 2 panache to gain the benefits of the haste spell for 1 round. During this combat, if she moves at least 10 feet in a round, the duration of this effect is extended by 1 round.",
     "zhCN": "花间诗剑可以花费2点时髦值在本次战斗中获得加速术的效果。如果在任意一轮中她没有移动至少10尺，这个效果结束。"
+  },
+
+  {
+    "Key": "RostlandBravo.Name",
+    "ProcessTemplates": false,
+    "enGB": "Rostland Bravo"
+  },
+
+  {
+    "Key": "RostlandBravo.Description",
+    "enGB": "The Free City of Restov is host to numerous dueling schools, from the renowned Aldori Academy to tiny training grounds in blademasters’ homes. Students of these schools are notoriously competitive, and street-corner duels at dawn and dusk are a constant of Restov life. In most cases, while these “lesser schools” do not teach official Aldori techniques, their methods mesh well with that signature style. Unsurprisingly, many students eventually train in the Aldori style, whether because they aspire to join the swordlords’ ranks or simply for the challenge of mastering the legendary weapon. While some favor more technical approaches, others study flashier maneuvers, wielding the curved blade with artful flair. Disdainfully called “bravos” by classically trained rivals, students of this approach have claimed the label with pride. The Rostland bravos’ most advanced techniques bear dragon-themed names as a snub to traditionalist Aldori swordlords, who have never forgotten their crushing defeat by Choral the Conqueror’s dragons at the Valley of Fire."
+  },
+
+  {
+    "Key": "RostlandBravoProf.Name",
+    "ProcessTemplates": false,
+    "enGB": "Aldori Swashbuckler"
+  },
+
+  {
+    "Key": "RostlandBravoProf.Description",
+    "enGB": "A Rostland bravo focuses on the Aldori dueling sword, scorning the bucklers used by duelists of other styles. In addition, the relative safety and creature comforts allowed by life in the sprawling city of Restov reduces her need for athleticism. A Rostland bravo gains Proficiency with the dueling sword. The Rostland bravo is not proficient with bucklers, and does not gain Athletics as a class skill."
+  },
+
+  {
+    "Key": "RostlandBravoInevitable.Name",
+    "ProcessTemplates": false,
+    "enGB": "Inevitable Victory"
+  },
+
+  {
+    "Key": "RostlandBravoInevitable.Description",
+    "enGB": "The Rostland bravo’s technique is all about flair; a display of her skill is enough to make any Restov brawler reconsider picking a fight. At 3rd level, the Rostland bravo gains Dazzling Display as a bonus feat. She can activate its effect only while wielding an Aldori dueling sword, and she must spend 1 panache point to do so."
+  },
+
+  {
+    "Key": "RostlandBravoSweeping.Name",
+    "ProcessTemplates": false,
+    "enGB": "Sweeping Wind Feint"
+  },
+
+  {
+    "Key": "RostlandBravoSweeping.Description",
+    "enGB": "At 7th level, the Rostland bravo masters an exotic feinting style, tossing her blade to the other hand and performing a sweeping attack or upward slash before the opponent reacts. Once per round, she can spend 1 point of panache to attempt a feint as a swift action."
+  },
+
+  {
+    "Key": "RostlandBravoRage.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dragon’s Rage"
+  },
+
+  {
+    "Key": "RostlandBravoRage.Description",
+    "enGB": "At 11th level, the Rostland bravo can cast aside restraint in favor of a blindingly fast assault of unpredictable strikes inspired in part by the overwhelming brutality of a dragon in combat. Once per round as part of a full attack, the bravo can spend 1 panache point to make an additional attack with her dueling sword at her highest attack bonus. If she reduces a creature to 0 or fewer hit points while using this ability, she regains 2 panache points rather than the normal 1 point she would gain from striking a killing blow."
+  },
+
+  {
+    "Key": "RostlandBravoTerror.Name",
+    "ProcessTemplates": false,
+    "enGB": "Terror of the Great Wyrm"
+  },
+
+  {
+    "Key": "RostlandBravoTerror.Description",
+    "enGB": "At 15th level, the Rostland bravo can use her inevitable victory deed as part of a full attack or dragon’s rage. A creature demoralized in this way is shaken for one additional round. If such a creature would be shaken for 4 or more rounds, the target is frightened for 1 round before becoming shaken for the appropriate duration. This deed replaces swashbuckler’s edge."
   }
 ]

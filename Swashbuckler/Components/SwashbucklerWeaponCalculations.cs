@@ -1,7 +1,4 @@
-﻿using BlueprintCore.Blueprints.References;
-using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.Items.Weapons;
+﻿using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
@@ -17,7 +14,7 @@ namespace Swashbuckler.Components
         public static bool IsSwashbucklerWeapon(BlueprintItemWeapon weapon, UnitDescriptor wielder)
         {
             // Identical check for Duelist weapons
-            if (weapon.IsMelee && (weapon.Category.HasSubCategory(WeaponSubCategory.Light) || weapon.Category.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon.Category == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon.Category)) || (weapon.Category == WeaponCategory.Glaive && wielder.HasFact(Swashbuckler.dancers_finesse)))
+            if (weapon.IsMelee && (weapon.Category.HasSubCategory(WeaponSubCategory.Light) || weapon.Category.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon.Category == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon.Category)))
             {
                 return true;
             }
@@ -27,7 +24,7 @@ namespace Swashbuckler.Components
         public static bool IsSwashbucklerWeapon(WeaponCategory weapon, UnitDescriptor wielder)
         {
             // Identical check for Duelist weapons
-            if (weapon.GetSubCategories().Any(WeaponSubCategory.Melee) && (weapon.HasSubCategory(WeaponSubCategory.Light) || weapon.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon)) || (weapon == WeaponCategory.Glaive && wielder.HasFact(Swashbuckler.dancers_finesse)))
+            if (weapon.GetSubCategories().Any(WeaponSubCategory.Melee) && (weapon.HasSubCategory(WeaponSubCategory.Light) || weapon.HasSubCategory(WeaponSubCategory.OneHandedPiercing) || (wielder.State.Features.DuelingMastery && weapon == WeaponCategory.DuelingSword) || wielder.Ensure<UnitPartDamageGrace>().HasEntry(weapon)))
             {
                 return true;
             }
@@ -47,6 +44,42 @@ namespace Swashbuckler.Components
             if (SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(evt.Weapon.Blueprint, evt.Initiator.Descriptor) && flag)
             {
                 evt.AttackBonusStat = this.ReplacementStat;
+            }
+        }
+
+        public void OnEventDidTrigger(RuleCalculateAttackBonusWithoutTarget evt)
+        {
+        }
+    }
+    internal class SwashbucklerWeaponDamageBonus : UnitFactComponentDelegate, ISubscriber, IInitiatorRulebookHandler<RuleCalculateWeaponStats>, IRulebookHandler<RuleCalculateWeaponStats>, IInitiatorRulebookSubscriber
+    {
+        public int DamageBonus = 1;
+
+        public ModifierDescriptor Descriptor = ModifierDescriptor.UntypedStackable;
+
+        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt)
+        {
+            if (evt.Weapon != null && SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(evt.Weapon.Blueprint, evt.Initiator))
+            {
+                evt.AddDamageModifier(DamageBonus * base.Fact.GetRank(), base.Fact, Descriptor);
+            }
+        }
+
+        public void OnEventDidTrigger(RuleCalculateWeaponStats evt)
+        {
+        }
+    }
+    internal class SwashbucklerWeaponAttackBonus : UnitFactComponentDelegate, ISubscriber, IInitiatorRulebookHandler<RuleCalculateAttackBonusWithoutTarget>, IRulebookHandler<RuleCalculateAttackBonusWithoutTarget>, IInitiatorRulebookSubscriber
+    {
+        public int AttackBonus = 1;
+
+        public ModifierDescriptor Descriptor = ModifierDescriptor.UntypedStackable;
+
+        public void OnEventAboutToTrigger(RuleCalculateAttackBonusWithoutTarget evt)
+        {
+            if (evt.Weapon != null && SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(evt.Weapon.Blueprint, evt.Initiator))
+            {
+                evt.AddModifier(AttackBonus * base.Fact.GetRank(), base.Fact, Descriptor);
             }
         }
 
@@ -173,6 +206,44 @@ namespace Swashbuckler.Components
             if (evt.Weapon != null && evt.Weapon.Blueprint.Category == WeaponCategory.Rapier)
             {
                 evt.CriticalEdgeBonus += 1;
+            }
+        }
+
+        public void OnEventDidTrigger(RuleCalculateWeaponStats evt)
+        {
+        }
+    }
+    internal class WeaponCategoryDamageBonus : UnitFactComponentDelegate, ISubscriber, IInitiatorRulebookHandler<RuleCalculateWeaponStats>, IRulebookHandler<RuleCalculateWeaponStats>, IInitiatorRulebookSubscriber
+    {
+        public WeaponCategory Category;
+
+        public int DamageBonus;
+
+        public ModifierDescriptor Descriptor = ModifierDescriptor.UntypedStackable;
+
+        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt)
+        {
+            if (evt.Weapon != null && evt.Weapon.Blueprint.Category == Category)
+            {
+                evt.AddDamageModifier(DamageBonus * base.Fact.GetRank(), base.Fact, Descriptor);
+            }
+        }
+
+        public void OnEventDidTrigger(RuleCalculateWeaponStats evt)
+        {
+        }
+    }
+    internal class RapierDamageBonus : UnitFactComponentDelegate, ISubscriber, IInitiatorRulebookHandler<RuleCalculateWeaponStats>, IRulebookHandler<RuleCalculateWeaponStats>, IInitiatorRulebookSubscriber
+    {
+        public int DamageBonus = 1;
+
+        public ModifierDescriptor Descriptor = ModifierDescriptor.UntypedStackable;
+
+        public void OnEventAboutToTrigger(RuleCalculateWeaponStats evt)
+        {
+            if (evt.Weapon != null && evt.Weapon.Blueprint.Category == WeaponCategory.Rapier)
+            {
+                evt.AddDamageModifier(DamageBonus * base.Fact.GetRank() + 1, base.Fact, Descriptor);
             }
         }
 

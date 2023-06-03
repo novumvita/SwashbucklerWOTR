@@ -8,15 +8,17 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Class.LevelUp;
 using Kingmaker.UnitLogic.Parts;
 using Swashbuckler.Components;
+using Swashbuckler.Utilities;
 using System;
 
 namespace Swashbuckler.Patches
 {
     [HarmonyPatch(typeof(UnitPartWeaponTraining))]
-    [HarmonyPatch("GetWeaponRank", MethodType.Normal)]
+    [HarmonyPatch(nameof(UnitPartWeaponTraining.GetWeaponRank), MethodType.Normal)]
     [HarmonyPatch(new Type[] { typeof(ItemEntityWeapon) })]
     class Patch_UnitPartWeaponTraining_GetWeaponRank
     {
+        private static readonly Logging.Logger Logger = Logging.GetLogger("Patch_WeaponTraining");
         static BlueprintFeature swashbuckler_weapon_training = Swashbuckler.swash_weapon_training;
         static BlueprintFeature rapier_training = Archetypes.InspiredBlade.rapier_training;
 
@@ -31,6 +33,7 @@ namespace Swashbuckler.Patches
 
             if (fact != null && SwashbucklerWeaponCalculations.IsSwashbucklerWeapon(weapon.Blueprint, __instance.Owner.Unit.Descriptor))
             {
+                Logger.Log("Swashbuckler Weapon: " + weapon.ToString());
                 var rank = fact.GetRank();
 
                 if (rank > __result)
@@ -43,6 +46,7 @@ namespace Swashbuckler.Patches
 
             if (fact != null && weapon.Blueprint.Category == WeaponCategory.Rapier)
             {
+                Logger.Log("Rapier: " + weapon.ToString());
                 var rank = fact.GetRank();
 
                 if (rank > __result)
