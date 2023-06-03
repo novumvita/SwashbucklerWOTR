@@ -1118,5 +1118,16 @@
   {
     "Key": "LightningStance.Description",
     "enGB": "If you move atleast 60 feet in a turn, you gain 50% concealment for 1 round."
+  },
+
+  {
+    "Key": "AbundantPanache.Name",
+    "ProcessTemplates": false,
+    "enGB": "Abundant Panache"
+  },
+
+  {
+    "Key": "AbundantPanache.Description",
+    "enGB": "Your every attack is a stroke of beauty.\n Each time the swashbuckler hits with a light or one-handed piercing melee weapon, she regains 1 panache point."
   }
 ]

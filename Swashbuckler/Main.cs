@@ -65,6 +65,9 @@ namespace Swashbuckler
                     Logger.Info("Configuring Swashbuckler.");
                     Swashbuckler.Configure();
 
+                    Logger.Info("Configuring Mythic Feats.");
+                    Mythic.Configure();
+
 
                 }
                 catch (Exception e)
