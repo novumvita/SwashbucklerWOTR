@@ -8,6 +8,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
 * Archetypes
   * [Inspired Blade](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/inspired-blade) 
   * [Azatariel](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/azatariel-swashbuckler-archetype/)
+  * [Rostland Bravo](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/bravo-swashbuckler-archetype/)
 
 * Homebrew Aechetype
   * Warrior Poet : (Inspired by the [Samurai Archetype](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
