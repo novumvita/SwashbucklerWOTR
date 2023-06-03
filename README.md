@@ -10,7 +10,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Azatariel](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/azatariel-swashbuckler-archetype/)
   * [Rostland Bravo](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuckler/archetypes/paizo-swashbuckler-archetypes/bravo-swashbuckler-archetype/)
 
-* Homebrew Aechetype
+* Homebrew Archetype
   * Warrior Poet : (Inspired by the [Samurai Archetype](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
 
 * Feats
@@ -21,6 +21,8 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Greater Feint](https://www.d20pfsrd.com/feats/combat-feats/greater-feint-combat)
   * [Swordplay Style](https://www.d20pfsrd.com/feats/combat-feats/swordplay-style-combat-style)
   * [Swordplay Upset](https://www.d20pfsrd.com/feats/combat-feats/swordplay-upset-combat)
+  * [Wind Stance](https://www.d20pfsrd.com/feats/combat-feats/wind-stance-combat/)
+  * [Lightning Stance](https://www.d20pfsrd.com/feats/combat-feats/lightning-stance-combat/)
 
 * 3pp Feats
   * [Seize the Opportunity](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/feats/seize-the-opportunity-combat/) : Changed to only allow vital strike.
