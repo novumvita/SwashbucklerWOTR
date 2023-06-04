@@ -1,4 +1,6 @@
 ﻿using BlueprintCore.Actions.Builder;
+using BlueprintCore.Blueprints.References;
+using Kingmaker.Blueprints;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
@@ -19,7 +21,7 @@ namespace Swashbuckler.Components
                 return;
 
             evt.Initiator.SpendAction(UnitCommand.CommandType.Swift, false, 0);
-            base.Fact.RunActionInContext(ActionsBuilder.New().Add<Demoralize>().Build(), evt.Target);
+            base.Fact.RunActionInContext(ActionsBuilder.New().Add<Demoralize>(c => { c.m_Buff = BuffRefs.Shaken.Reference.Get().ToReference<BlueprintBuffReference>(); c.m_GreaterBuff = BuffRefs.Frightened.Reference.Get().ToReference<BlueprintBuffReference>(); }).Build(), evt.Target);
         }
     }
 }
