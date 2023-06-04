@@ -44,6 +44,7 @@ namespace Swashbuckler
 
         static internal BlueprintAbilityResource panache_resource;
         static internal BlueprintFeature panache_feature;
+        static internal BlueprintFeature abundant_panache_feature;
 
         static internal BlueprintFeature profs;
 
@@ -389,6 +390,11 @@ namespace Swashbuckler
         internal const string Deeds19Guid = "C4997A33-FBD1-46AC-BC00-03FA8F7943A1";
         internal const string DeedsDisplayName = "Deeds.Name";
         internal const string DeedsDescription = "Deeds.Description";
+
+        internal const string AbundantPanacheName = "AbundantPanacheFeat";
+        internal const string AbundantPanacheGuid = "BD2A0AC5-AB53-4A3F-BE66-8460C496E5DA";
+        internal const string AbundantPanacheDisplayName = "AbundantPanache.Name";
+        internal const string AbundantPanacheDescription = "AbundantPanache.Description";
         #endregion
 
         internal static void Configure()
@@ -424,6 +430,9 @@ namespace Swashbuckler
             dancers_finesse = Archetypes.WarriorPoet.CreateFinesse();
 
             panache_feature = CreatePanache();
+
+            abundant_panache_feature = CreateMythicPanache();
+
             swash_finesse = CreateFinesse();
             charmed_life = CreateCharmed();
             profs = CreateProficiencies();
@@ -490,6 +499,15 @@ namespace Swashbuckler
             RootConfigurator.For(RootRefs.BlueprintRoot)
                 .ModifyProgression(c => c.m_CharacterClasses = c.m_CharacterClasses.AddToArray(swash_class.ToReference<BlueprintCharacterClassReference>()))
                 .Configure(delayed: true);
+        }
+        internal static BlueprintFeature CreateMythicPanache()
+        {
+            return FeatureConfigurator.New(AbundantPanacheName, AbundantPanacheGuid, FeatureGroup.MythicAbility)
+                .SetDisplayName(AbundantPanacheDisplayName)
+                .SetDescription(AbundantPanacheDescription)
+                .SetIcon(FeatureRefs.Bravery.Reference.Get().Icon)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, onlyHit: true)
+                .Configure();
         }
 
         internal static BlueprintFeature CreateProficiencies()

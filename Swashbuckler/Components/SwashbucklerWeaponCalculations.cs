@@ -217,7 +217,7 @@ namespace Swashbuckler.Components
     {
         public WeaponCategory Category;
 
-        public int DamageBonus;
+        public int DamageBonus = 1;
 
         public ModifierDescriptor Descriptor = ModifierDescriptor.UntypedStackable;
 

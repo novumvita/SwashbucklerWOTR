@@ -36,6 +36,8 @@ namespace Swashbuckler.Components
             {
                 willSpend = false;
 
+                int cost = 1;
+
                 if (!evt.Parry.IsTriggered)
                     return;
 
@@ -59,9 +61,14 @@ namespace Swashbuckler.Components
                         }
                         Logger.Log("Damage rule triggered");
 
+                        if (Owner.HasFact(Swashbuckler.abundant_panache_feature))
+                        {
+                            cost -= 1;
+                        }
+
                     }
                 }
-                Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 1);
+                Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, cost);
             }
         }
     }

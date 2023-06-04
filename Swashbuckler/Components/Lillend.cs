@@ -28,6 +28,13 @@ namespace Swashbuckler.Components
                 Context.TriggerRule(rule);
             }
 
+            int cost = 2;
+
+            if (Owner.HasFact(Swashbuckler.abundant_panache_feature))
+            {
+                cost -= 1;
+            }
+
             var attackerPos = evt.Initiator.Position;
             var casterPos = evt.Target.Position;
 
@@ -38,7 +45,7 @@ namespace Swashbuckler.Components
             evt.Initiator.Position = casterPos;
             evt.Target.Position = attackerPos;
 
-            Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, 2);
+            Owner.Descriptor.Resources.Spend(Swashbuckler.panache_resource, cost);
         }
     }
 }
