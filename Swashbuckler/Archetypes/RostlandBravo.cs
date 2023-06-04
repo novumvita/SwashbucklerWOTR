@@ -163,7 +163,7 @@ namespace Swashbuckler.Archetypes
             return FeatureConfigurator.New(Deeds3Name, Deeds3Guid)
                 .SetDisplayName(Swashbuckler.DeedsDisplayName)
                 .SetDescription(Swashbuckler.DeedsDescription)
-                .AddFacts(new() { CreateInevitable(), Swashbuckler.swash_init_feature, Swashbuckler.kip_feature })
+                .AddFacts(new() { CreateInevitable(), Swashbuckler.swash_init_feature, Swashbuckler.kip_feature, Swashbuckler.precise_feat })
                 .SetIsClassFeature()
                 .Configure();
         }

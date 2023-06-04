@@ -284,7 +284,7 @@ namespace Swashbuckler.Archetypes
             return FeatureConfigurator.New(DancerDeeds1, DancerDeeds1Guid)
                 .SetDisplayName(Swashbuckler.DeedsDisplayName)
                 .SetDescription(Swashbuckler.DeedsDescription)
-                .AddFacts(new() { CreateParry(), Swashbuckler.derring_feat })
+                .AddFacts(new() { Swashbuckler.derring_feat, CreateParry() })
                 .SetIsClassFeature()
                 .Configure();
         }
@@ -305,7 +305,7 @@ namespace Swashbuckler.Archetypes
             return FeatureConfigurator.New(DancerDeeds7, DancerDeeds7Guid)
                 .SetDisplayName(Swashbuckler.DeedsDisplayName)
                 .SetDescription(Swashbuckler.DeedsDescription)
-                .AddFacts(new() { Swashbuckler.grace_feat, CreateBloom() })
+                .AddFacts(new() { Swashbuckler.grace_feat, Swashbuckler.sup_feint_feat, CreateBloom() })
                 .SetIsClassFeature()
                 .Configure();
         }
@@ -400,7 +400,7 @@ namespace Swashbuckler.Archetypes
             return FeatureConfigurator.New(DancerDeeds15, DancerDeeds15Guid)
                 .SetDisplayName(Swashbuckler.DeedsDisplayName)
                 .SetDescription(Swashbuckler.DeedsDescription)
-                .AddFacts(new() { CreateEdge(), CreateHarmony() })
+                .AddFacts(new() { CreateEdge(), CreateHarmony(), Swashbuckler.dizzying_feat })
                 .SetIsClassFeature()
                 .Configure();
         }

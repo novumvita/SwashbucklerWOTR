@@ -76,6 +76,7 @@ namespace Swashbuckler
         static internal BlueprintFeature swash_init_feature;
 
         static internal BlueprintBuff precise_strike_buff;
+        static internal BlueprintFeature precise_feat;
 
         static internal BlueprintBuff dizzying_defense_buff;
 
@@ -863,7 +864,7 @@ namespace Swashbuckler
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .Configure();
 
-            return FeatureConfigurator.New(PreciseFeature, PreciseFeatureGuid)
+            precise_feat = FeatureConfigurator.New(PreciseFeature, PreciseFeatureGuid)
                 .SetDisplayName(PreciseDisplayName)
                 .SetDescription(PreciseDescription)
                 .SetIcon(FeatureRefs.PreciseStrikeAbility.Reference.Get().Icon)
@@ -871,6 +872,8 @@ namespace Swashbuckler
                 .AddComponent<SwashbucklerPreciseStrike>()
                 .SetIsClassFeature()
                 .Configure();
+
+            return precise_feat;
         }
 
         internal static BlueprintFeature CreateInitiative()
