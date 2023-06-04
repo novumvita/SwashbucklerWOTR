@@ -31,7 +31,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * Spring-Heeled Reaping : You can apply the benefits of Vital Strike when using Spring Attack. If you have Improved or Greater Vital Strike, instead apply their benefits when using Spring Attack. (Inspired by [Chrysanthemum’s Blooming](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
 
 * Homebrew Mythic Abilities
-  * Abundant Panache : Every successful attack with a light or one-handed piercing weapon restores panache.
+  * Abundant Panache : Each time the swashbuckler hits with a light or one-handed piercing melee weapon, or redirects an enemy attack to another enemy, she regains 1 panache point.
 
 ## Deviations from TableTop
 * Some abilities which required immediate action now only use free action.
