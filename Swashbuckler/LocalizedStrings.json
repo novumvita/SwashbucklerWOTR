@@ -1101,33 +1101,39 @@
   {
     "Key": "WindStance.Name",
     "ProcessTemplates": false,
-    "enGB": "Wind Stance"
+    "enGB": "Wind Stance",
+    "zhCN": "疾风步"
   },
 
   {
     "Key": "WindStance.Description",
-    "enGB": "If you move atleast 10 feet in a turn, you gain 20% concealment for 1 round against ranged attacks."
+    "enGB": "If you move atleast 10 feet in a turn, you gain 20% concealment for 1 round against ranged attacks.",
+    "zhCN": "若你在一轮中移动超过10尺，则该轮中你针对远程攻击获得20％隐蔽。"
   },
 
   {
     "Key": "LightningStance.Name",
     "ProcessTemplates": false,
-    "enGB": "Lightning Stance"
+    "enGB": "Lightning Stance",
+    "zhCN": "闪电步"
   },
 
   {
     "Key": "LightningStance.Description",
-    "enGB": "If you move atleast 60 feet in a turn, you gain 50% concealment for 1 round."
+    "enGB": "If you move atleast 60 feet in a turn, you gain 50% concealment for 1 round.",
+    "zhCN": "若你在一轮中移动超过60尺，则该轮中你获得50％隐蔽。"
   },
 
   {
     "Key": "AbundantPanache.Name",
     "ProcessTemplates": false,
-    "enGB": "Abundant Panache"
+    "enGB": "Abundant Panache",
+    "zhCN": "充裕时髦"
   },
 
   {
     "Key": "AbundantPanache.Description",
-    "enGB": "Your every attack is a masterstroke.\n Each time the swashbuckler hits with a light or one-handed piercing melee weapon, or redirects an enemy attack to another enemy, she regains 1 panache point."
+    "enGB": "Your every attack is a masterstroke.\n Each time the swashbuckler hits with a light or one-handed piercing melee weapon, or redirects an enemy attack to another enemy, she regains 1 panache point.",
+    "zhCN": "你的每次攻击都在秀。\n每次游荡剑客使用轻型或者单手穿刺近战武器击中，或者将敌人的攻击导向其他敌人时，都能返还1点时髦值。"
   }
 ]
