@@ -58,9 +58,10 @@ namespace Swashbuckler
                     Logger.Info("Configuring Feats.");
                     FeintFeats.Configure();
                     SwordplayStyle.Configure();
-                    SpringAttack.CreateSpringAttackFeat();
-                    SeizeTheOpportunity.CreateStO();
+                    SpringAttack.Configure();
+                    SeizeTheOpportunity.Configure();
                     WindLightning.Configure();
+                    StyleMastery.Configure();
 
                     Logger.Info("Configuring Swashbuckler.");
                     Swashbuckler.Configure();

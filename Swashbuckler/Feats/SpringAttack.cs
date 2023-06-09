@@ -125,7 +125,7 @@ namespace Swashbuckler.Feats
                 .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.m_Resource = Swashbuckler.panache_resource.ToReference<BlueprintAbilityResourceReference>(); c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
                 .Configure();
         }
-        internal static void CreateSpringAttackFeat()
+        internal static void Configure()
         {
             springAttackDebuff2 = BuffConfigurator.New(SpringAttackDebuff2, SpringAttackDebuff2Guid)
                 .AddAttackBonus(-5)
@@ -283,7 +283,7 @@ namespace Swashbuckler.Feats
                 return;
             }
 
-            if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
+            if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() >= 2f)
             {
                 Logger.Log("First attack command");
                 if (command.Executor.HasFact(SpringAttack.kitsune))

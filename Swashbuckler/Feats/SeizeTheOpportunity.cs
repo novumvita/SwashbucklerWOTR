@@ -31,7 +31,7 @@ namespace Swashbuckler.Feats
         private static string StOFeatDisplayName = "SeizeTheOpportunity.Name";
         private static string StOFeatDescription = "SeizeTheOpportunity.Description";
 
-        internal static void CreateStO()
+        internal static void Configure()
         {
             StOBuff = BuffConfigurator.New(StOBuffName, StOBuffGuid)
                 .SetFlags(BlueprintBuff.Flags.HiddenInUi)
