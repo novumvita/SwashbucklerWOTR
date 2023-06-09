@@ -186,6 +186,7 @@ namespace Swashbuckler.Archetypes
                 .AddComponent<DancersGrace>()
                 .SetIcon(FeatureRefs.WitchHexFortuneFeature.Reference.Get().Icon)
                 .SetIsClassFeature()
+                .AddRecalculateOnStatChange(stat: StatType.Charisma)
                 .Configure();
 
             return dancers_grace;

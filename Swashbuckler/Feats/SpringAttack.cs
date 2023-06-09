@@ -285,16 +285,13 @@ namespace Swashbuckler.Feats
 
             if (!command.Executor.HasFact(SpringAttack.springAttackBuff1) && !command.Executor.HasFact(SpringAttack.springAttackBuff2) && !command.Executor.HasFact(SpringAttack.springAttackBuff3) && path.GetTotalLength() > 2f)
             {
+                Logger.Log("First attack command");
                 if (command.Executor.HasFact(SpringAttack.kitsune))
-                    Logger.Log("First attack command");
                 {
-                    ;
                     Logger.Log("Attempting to feint");
                     Fact.RunActionInContext(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = FeintFeats.feint_action).Build(), command.Target);
                     command.Executor.Resources.Spend(Swashbuckler.panache_resource, 1);
                 }
-
-                Logger.Log("First attack command");
                 target1 = command.Target.Unit;
                 command.Executor.AddBuff(SpringAttack.springAttackBuff1, command.Executor, 1.Rounds().Seconds);
                 Logger.Log("Applied buff1");
