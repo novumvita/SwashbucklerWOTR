@@ -1140,11 +1140,13 @@
   {
     "Key": "StyleMastery.Name",
     "ProcessTemplates": false,
-    "enGB": "Style Mastery"
+    "enGB": "Style Mastery",
+    "zhCN": "流派大师"
   },
 
   {
     "Key": "StyleMastery.Description",
-    "enGB": "You can have two combat styles active at once."
+    "enGB": "You can have two combat styles active at once.",
+    "zhCN": "你可以同时激活两个战斗流派架势。"
   }
 ]
