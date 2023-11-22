@@ -17,15 +17,15 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
   * [Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/spring-attack-combat)
   * [Improved Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/improved-spring-attack-combat)
   * [Greater Spring Attack](https://www.d20pfsrd.com/feats/combat-feats/greater-spring-attack-combat)
+
+    Spring Attack has only been tested for turn-based. To use it, attempt to attack an enemy by clicking on it while it is more than 10 ft away from you. This should give you a buff denoting the activation of Spring Attack, as well as making it so your turn doesnt end after the attack.
+
   * [Improved Feint](https://www.d20pfsrd.com/feats/combat-feats/improved-feint-combat)
   * [Greater Feint](https://www.d20pfsrd.com/feats/combat-feats/greater-feint-combat)
   * [Swordplay Style](https://www.d20pfsrd.com/feats/combat-feats/swordplay-style-combat-style)
   * [Swordplay Upset](https://www.d20pfsrd.com/feats/combat-feats/swordplay-upset-combat)
   * [Wind Stance](https://www.d20pfsrd.com/feats/combat-feats/wind-stance-combat/)
   * [Lightning Stance](https://www.d20pfsrd.com/feats/combat-feats/lightning-stance-combat/)
-
-* 3pp Feats
-  * [Seize the Opportunity](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/feats/seize-the-opportunity-combat/) : Changed to only allow vital strike.
 
 * Homebrew Feats
   * Spring-Heeled Reaping : You can apply the benefits of Vital Strike when using Spring Attack. If you have Improved or Greater Vital Strike, instead apply their benefits when using Spring Attack. (Inspired by [Chrysanthemum’s Blooming](https://www.d20pfsrd.com/classes/alternate-classes/samurai/archetypes/paizo-samurai-archetypes/warrior-poet-samurai-archetype/))
@@ -41,6 +41,7 @@ Adds the [Swashbuckler](https://www.d20pfsrd.com/classes/hybrid-classes/swashbuc
 * Lillend's Misdirection does not require a combat maneuver check.
 * Whimsical Riposte provides Charisma bonus to attack and damage rolls for all attacks of opportunity.
 * Swashbuckler Weapon Training allows Advanced Weapon Training feats to be selected.
+* Rostland Bravo gets Dueling Mastery as a bonus feat.
  
 ## Problems or Suggestions
 
