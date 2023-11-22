@@ -102,7 +102,7 @@ namespace Swashbuckler.Archetypes
             bravo_deeds15 = CreateDeeds15();
 
             archetype
-                .AddToAddFeatures(1, bravo_profs)
+                .AddToAddFeatures(1, bravo_profs, FeatureRefs.DuelingMastery.Reference.Get())
                 .AddToAddFeatures(3, bravo_deeds3)
                 .AddToAddFeatures(7, bravo_deeds7)
                 .AddToAddFeatures(11, bravo_deeds11)

@@ -865,19 +865,6 @@
   },
 
   {
-    "Key": "SeizeTheOpportunity.Name",
-    "ProcessTemplates": false,
-    "enGB": "Seize the Opportunity",
-    "zhCN": "把握良机"
-  },
-
-  {
-    "Key": "SeizeTheOpportunity.Description",
-    "enGB": "When you make an attack of opportunity, you can use Vital Strike.",
-    "zhCN": "当你做出借机攻击时，你可以应用要害打击。"
-  },
-
-  {
     "Key": "WarriorPoet.Name",
     "ProcessTemplates": false,
     "enGB": "Warrior Poet",
@@ -1042,7 +1029,7 @@
 
   {
     "Key": "RostlandBravoProf.Description",
-    "enGB": "A Rostland bravo focuses on the Aldori dueling sword, scorning the bucklers used by duelists of other styles. In addition, the relative safety and creature comforts allowed by life in the sprawling city of Restov reduces her need for athleticism. A Rostland bravo gains Proficiency with the dueling sword. The Rostland bravo is not proficient with bucklers, and does not gain Athletics as a class skill.",
+    "enGB": "A Rostland bravo focuses on the Aldori dueling sword, scorning the bucklers used by duelists of other styles. In addition, the relative safety and creature comforts allowed by life in the sprawling city of Restov reduces her need for athleticism. A Rostland bravo gains Proficiency with the dueling sword. She also gains Aldori Dueling Mastery as a bonus feat. The Rostland bravo is not proficient with bucklers, and does not gain Athletics as a class skill.",
     "zhCN": "雷斯兰暴徒专注于奥多里决斗剑，不屑于学习其它决斗流派中的小圆盾技巧。另一方面，相对安全的环境和只有一些祥和的生物慵懒地游荡在雷斯托夫的城市之中，也减少了他们求胜欲望。雷斯兰暴徒获得擅长异种武器（决斗剑）作为奖励专长，但不擅长小圆盾，也不会将攀爬和游泳视作本职技能。"
   },
 
