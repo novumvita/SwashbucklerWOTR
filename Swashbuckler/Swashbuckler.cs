@@ -19,7 +19,6 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.Designers.Mechanics.WeaponEnchants;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
@@ -33,6 +32,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Swashbuckler.Components;
+using Swashbuckler.Feats;
 using Swashbuckler.Patches;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
@@ -938,7 +938,7 @@ namespace Swashbuckler
                 .AllowTargeting(enemies: true)
                 .SetActionType(UnitCommand.CommandType.Standard)
                 .SetRange(AbilityRange.Weapon)
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(Feats.FeintFeats.greater_feint_buff, durationValue: ContextDuration.Fixed(2)))
+                .AddAbilityEffectRunAction(FeintFeats.greater_feint_action)
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterSwashbucklerWeaponCheck>()
                 .AddComponent<AbilityCasterHasAtLeastOnePanache>()

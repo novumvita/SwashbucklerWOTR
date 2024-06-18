@@ -1,5 +1,4 @@
-﻿using BlueprintCore.Actions.Builder;
-using BlueprintCore.Blueprints.References;
+﻿using BlueprintCore.Blueprints.References;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
@@ -23,7 +22,7 @@ namespace Swashbuckler.Components
                 return;
             if (evt.IsHit)
                 return;
-            (this.Fact as IFactContextOwner)?.RunActionInContext(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = FeintFeats.feint_action).Build(), evt.Initiator);
+            (this.Fact as IFactContextOwner)?.RunActionInContext(FeintFeats.vanilla_feint_action, evt.Initiator);
         }
     }
 

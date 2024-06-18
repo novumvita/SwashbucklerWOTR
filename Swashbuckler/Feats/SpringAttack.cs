@@ -289,7 +289,7 @@ namespace Swashbuckler.Feats
                 if (command.Executor.HasFact(SpringAttack.kitsune))
                 {
                     Logger.Log("Attempting to feint");
-                    Fact.RunActionInContext(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = FeintFeats.feint_action).Build(), command.Target);
+                    Fact.RunActionInContext(AbilityRefs.FeintAbility.Reference.Get().GetComponent<AbilityEffectRunAction>().Actions, command.Target);
                     command.Executor.Resources.Spend(Swashbuckler.panache_resource, 1);
                 }
                 target1 = command.Target.Unit;

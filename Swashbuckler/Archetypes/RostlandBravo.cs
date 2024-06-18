@@ -5,16 +5,14 @@ using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
-using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Swashbuckler.Components;
+using Swashbuckler.Feats;
 using static Kingmaker.UnitLogic.ActivatableAbilities.ActivatableAbilityResourceLogic;
-using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace Swashbuckler.Archetypes
 {
@@ -179,7 +177,7 @@ namespace Swashbuckler.Archetypes
                 .SetRange(AbilityRange.Weapon)
                 .AddComponent<AttackAnimation>()
                 .AddComponent<AbilityCasterDuelingSwordCheck>()
-                .AddAbilityEffectRunAction(ActionsBuilder.New().Add<ContextFeintSkillCheck>(c => c.Success = Feats.FeintFeats.feint_action).Build())
+                .AddAbilityEffectRunAction(FeintFeats.vanilla_feint_action)
                 .AddAbilityResourceLogic(requiredResource: Swashbuckler.panache_resource, amount: 1, isSpendResource: true)
                 .Configure();
 
