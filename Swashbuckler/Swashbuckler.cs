@@ -507,7 +507,7 @@ namespace Swashbuckler
                 .SetDisplayName(AbundantPanacheDisplayName)
                 .SetDescription(AbundantPanacheDescription)
                 .SetIcon(FeatureRefs.Bravery.Reference.Get().Icon)
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, onlyHit: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, value: 1), actionsOnInitiator: true, duelistWeapon: true, onlyHit: true)
                 .Configure();
         }
 
@@ -530,8 +530,8 @@ namespace Swashbuckler
         internal static BlueprintFeature CreatePanache()
         {
             panache_resource = AbilityResourceConfigurator.New(PanacheResource, PanacheResourceGuid)
-                .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByStat(StatType.Charisma))
-                .SetMin(1)
+                .SetMaxAmount(ResourceAmountBuilder.New(0))
+                .SetMin(0)
                 .Configure();
 
             return FeatureConfigurator.New(PanacheFeature, PanacheFeatureGuid)
@@ -540,10 +540,12 @@ namespace Swashbuckler
                 .SetDescriptionShort(PanacheDescriptionShort)
                 .SetIcon(FeatureRefs.Bravery.Reference.Get().Icon)
                 .AddAbilityResources(resource: panache_resource, restoreAmount: true)
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, criticalHit: true)
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, 1), actionsOnInitiator: true, duelistWeapon: true, reduceHPToZero: true)
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, reduceHPToZero: true)
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, criticalHit: true)
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma, min: 1))
+                .AddIncreaseResourceAmountBySharedValue(resource: panache_resource, value: ContextValues.Rank())
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, value: 1), actionsOnInitiator: true, duelistWeapon: true, criticalHit: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().RestoreResource(panache_resource, value: 1), actionsOnInitiator: true, duelistWeapon: true, reduceHPToZero: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, value: 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, reduceHPToZero: true)
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(ConditionsBuilder.New().CasterHasFact(dancers_finesse), ifTrue: ActionsBuilder.New().RestoreResource(panache_resource, value: 1)), actionsOnInitiator: true, category: WeaponCategory.Glaive, criticalHit: true)
                 .SetIsClassFeature()
                 .Configure();
         }

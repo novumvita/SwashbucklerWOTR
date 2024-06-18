@@ -118,10 +118,12 @@ namespace Swashbuckler.Archetypes
                 .SetDisplayName(InspiredPanacheDisplayName)
                 .SetDescription(InspiredPanacheDescription)
                 .SetIcon(FeatureRefs.Bravery.Reference.Get().Icon)
-                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Intelligence))
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Intelligence, min: 1, type: AbilityRankType.StatBonus))
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma, min: 1))
                 .AddAbilityResources(resource: Swashbuckler.panache_resource, restoreAmount: true)
                 .AddIncreaseResourceAmountBySharedValue(resource: Swashbuckler.panache_resource, value: ContextValues.Rank())
-                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(conditions: ConditionsBuilder.New().HasBuff(inspired_buff).HasBuff(inspired_crit_buff).Build(), ifFalse: ActionsBuilder.New().RestoreResource(Swashbuckler.panache_resource, 1)), actionsOnInitiator: true, category: WeaponCategory.Rapier, criticalHit: true)
+                .AddIncreaseResourceAmountBySharedValue(resource: Swashbuckler.panache_resource, value: ContextValues.Rank(AbilityRankType.StatBonus))
+                .AddInitiatorAttackWithWeaponTrigger(action: ActionsBuilder.New().Conditional(conditions: ConditionsBuilder.New().HasBuff(inspired_buff).HasBuff(inspired_crit_buff).Build(), ifFalse: ActionsBuilder.New().RestoreResource(Swashbuckler.panache_resource, value: 1)), actionsOnInitiator: true, category: WeaponCategory.Rapier, criticalHit: true)
                 .SetIsClassFeature()
                 .Configure();
         }
