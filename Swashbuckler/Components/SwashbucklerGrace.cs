@@ -10,7 +10,7 @@ namespace Swashbuckler.Components
     {
         public void OnEventAboutToTrigger(RuleAttackRoll evt)
         {
-            if (!evt.RuleAttackWithWeapon.IsAttackOfOpportunity || (evt.Target.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) < 1) || (evt.Target.Descriptor.Buffs.HasFact(BuffRefs.MobilityUseAbilityBuff.Reference)))
+            if (evt.RuleAttackWithWeapon == null || !evt.RuleAttackWithWeapon.IsAttackOfOpportunity || (evt.Target.Descriptor.Resources.GetResourceAmount(Swashbuckler.panache_resource) < 1) || (evt.Target.Descriptor.Buffs.HasFact(BuffRefs.MobilityUseAbilityBuff.Reference)))
                 return;
 
             RuleCalculateCMD cmdrule = new RuleCalculateCMD(evt.Target, evt.Target, CombatManeuver.None);
